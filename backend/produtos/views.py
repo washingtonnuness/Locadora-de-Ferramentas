@@ -1,8 +1,8 @@
-from django.shortcuts import redirect, render
-from .models import Produtos, Patrimonio
 from django.forms import inlineformset_factory
+from django.shortcuts import redirect, render
 
-from .forms import ProdutctForm, PatrimonioForm, ProdutoFormset
+from .forms import PatrimonioForm, ProdutctForm, ProdutoFormset
+from .models import Patrimonio, Produtos
 
 # Create your views here.
 

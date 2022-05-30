@@ -1,14 +1,17 @@
 from itertools import product
-from django.shortcuts import render
-from .models import Orcamentos
-from backend.clientes.models import Clientes
-from backend.produtos.models import Patrimonio, Produtos
-from backend.produtos.forms import *
-from .forms import OrcamentosForm
 
-from django.http import HttpResponse
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
+from django.http import HttpResponse
+from django.shortcuts import render
+
+from backend.clientes.models import Clientes
+from backend.produtos.forms import *
+from backend.produtos.models import Patrimonio, Produtos
+
+from .forms import OrcamentosForm
+from .models import Orcamentos
+
 # Create your views here.
 
 

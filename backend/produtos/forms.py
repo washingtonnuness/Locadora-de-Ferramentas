@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Produtos, Categoria, Marca, Patrimonio
+
+from .models import Categoria, Marca, Patrimonio, Produtos
 
 
 class ProdutctForm(forms.ModelForm):

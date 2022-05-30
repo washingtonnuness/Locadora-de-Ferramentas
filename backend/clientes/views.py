@@ -1,7 +1,8 @@
-from django.shortcuts import render
 from django.shortcuts import redirect, render
-from .models import Clientes
+
 from .forms import ClientesForm
+from .models import Clientes
+
 # Create your views here.
 
 
