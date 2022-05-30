@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from .models import Orcamentos
-from SOE.produtos.models import Produtos
+from backend.produtos.models import Produtos
 
 class OrcamentosForm(ModelForm):
     required_css_class = 'required'

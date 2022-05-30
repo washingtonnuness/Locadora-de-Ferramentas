@@ -1,6 +1,6 @@
 from django.urls import path
 
-from SOE.produtos import views as v
+from backend.produtos import views as v
 
 app_name = 'produtos'
 

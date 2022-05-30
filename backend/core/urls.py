@@ -1,6 +1,6 @@
 from django.urls import path
 
-from SOE.core import views as v
+from backend.core import views as v
 
 app_name = 'core'
 

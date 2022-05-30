@@ -1,6 +1,6 @@
 from django.urls import path
 
-from SOE.orcamentos import views as v
+from backend.orcamentos import views as v
 
 app_name = 'orcamentos'
 

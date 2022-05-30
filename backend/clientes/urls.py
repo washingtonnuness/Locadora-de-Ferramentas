@@ -1,6 +1,6 @@
 from django.urls import path
 
-from SOE.clientes import views as v
+from backend.clientes import views as v
 
 app_name = 'clientes'
 
