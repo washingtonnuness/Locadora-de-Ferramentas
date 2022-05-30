@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orcamentositens',
             name='patrimonio',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='patrimonio_orcamentos', to='produtos.patrimonio'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    related_name='patrimonio_orcamentos', to='produtos.patrimonio'),
         ),
         migrations.RemoveField(
             model_name='orcamentos',
@@ -29,6 +30,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orcamentos',
             name='cliente',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='cliente_orcamentos', to='clientes.clientes'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    related_name='cliente_orcamentos', to='clientes.clientes'),
         ),
     ]

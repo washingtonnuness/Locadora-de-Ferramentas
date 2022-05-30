@@ -17,15 +17,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Orcamentos',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('delete_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('checkbox', models.BooleanField(max_length=100, verbose_name='Excluir')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('created_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('delete_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('checkbox', models.BooleanField(
+                    max_length=100, verbose_name='Excluir')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('delete_at', models.DateTimeField(null=True)),
-                ('cliente', models.ManyToManyField(blank=True, to='clientes.clientes')),
-                ('patrimonio', models.ManyToManyField(blank=True, to='produtos.patrimonio')),
+                ('cliente', models.ManyToManyField(
+                    blank=True, to='clientes.clientes')),
+                ('patrimonio', models.ManyToManyField(
+                    blank=True, to='produtos.patrimonio')),
             ],
             options={
                 'verbose_name': 'Orçamento',
@@ -36,10 +42,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OrcamentosItens',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('valor', models.DecimalField(blank=True, decimal_places=2, max_digits=6, null=True, verbose_name='Valor')),
-                ('orcamento', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='orcamentos', to='orcamentos.orcamentos')),
-                ('produto', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='produto_orcamentos', to='produtos.produtos')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('valor', models.DecimalField(blank=True, decimal_places=2,
+                 max_digits=6, null=True, verbose_name='Valor')),
+                ('orcamento', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                 related_name='orcamentos', to='orcamentos.orcamentos')),
+                ('produto', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                 related_name='produto_orcamentos', to='produtos.produtos')),
             ],
             options={
                 'verbose_name': 'Orçamento Item',

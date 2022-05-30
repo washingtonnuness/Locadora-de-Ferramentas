@@ -28,11 +28,13 @@ def listProdutos(request):
     }
     return render(request, template_name, context)
 
+
 def inserir(request):
     template_name = 'form.html'
     if request.method == "GET":
         form = ProdutctForm()
-        form_telefone_factory = inlineformset_factory(Produtos, Patrimonio, form=ProdutctForm, extra=1)
+        form_telefone_factory = inlineformset_factory(
+            Produtos, Patrimonio, form=ProdutctForm, extra=1)
         form_telefone = form_telefone_factory()
         context = {
             'form': form,
@@ -42,7 +44,8 @@ def inserir(request):
 
     elif request.method == "POST":
         form = ProdutctForm(request.POST)
-        form_telefone_factory = inlineformset_factory(Produtos, Patrimonio, form=PatrimonioForm)
+        form_telefone_factory = inlineformset_factory(
+            Produtos, Patrimonio, form=PatrimonioForm)
         form_telefone = form_telefone_factory(request.POST)
         if form.is_valid() and form_telefone.is_valid():
             ocorrencia = form.save()
@@ -55,6 +58,7 @@ def inserir(request):
                 'formset': form_telefone,
             }
             return render(request, template_name, context)
+
 
 def order_item_delete(request, pk):
     order_item = Produtos.objects.get(pk=pk)

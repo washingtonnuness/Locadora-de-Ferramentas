@@ -14,6 +14,7 @@ def index(request):
     }
     return render(request, template_name, context)
 
+
 def listarClientes(request):
     template_name = 'listarCliente.html'
     objects = Clientes.objects.all()
@@ -22,6 +23,7 @@ def listarClientes(request):
         'title': 'Clientes',
     }
     return render(request, template_name, context)
+
 
 def inserir(request):
     template_name = 'formClientes.html'
@@ -34,7 +36,7 @@ def inserir(request):
 
     elif request.method == "POST":
         form = ClientesForm(request.POST)
-        if form.is_valid() :
+        if form.is_valid():
             form.save()
             return redirect('clientes:listarClientes')
         else:

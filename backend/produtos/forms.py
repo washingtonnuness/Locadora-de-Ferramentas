@@ -9,14 +9,15 @@ class ProdutctForm(forms.ModelForm):
     class Meta:
         model = Produtos
         fields = '__all__'
-        exclude = ('created_user', 'delete_user', 'create_at', 'update_at', 'delete_at')
+        exclude = ('created_user', 'delete_user',
+                   'create_at', 'update_at', 'delete_at')
 
 
 class CategoriatForm(forms.ModelForm):
     class Meta:
         model = Categoria
         fields = '__all__'
-        
+
     def __init__(self, *args, **kwargs):
         super(CategoriatForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
@@ -24,6 +25,7 @@ class CategoriatForm(forms.ModelForm):
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
         #self.fields['checkbox'].widget.attrs['class'] = 'form-check-input'
+
 
 class MarcaForm(forms.ModelForm):
     class Meta:
@@ -38,17 +40,18 @@ class MarcaForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
         self.fields['checkbox'].widget.attrs['class'] = 'form-check-input'
 
+
 class PatrimonioForm(forms.ModelForm):
     class Meta:
         model = Patrimonio
-        fields = ['patrimonio',]
-        
+        fields = ['patrimonio', ]
+
     def __init__(self, *args, **kwargs):
         super(PatrimonioForm, self).__init__(*args, **kwargs)
 
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-     
+
 
 ProdutoFormset = inlineformset_factory(
     Produtos,

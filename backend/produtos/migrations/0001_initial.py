@@ -15,11 +15,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Categoria',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('categoria', models.CharField(max_length=100, unique=True)),
-                ('created_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('delete_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('checkbox', models.BooleanField(max_length=100, verbose_name='Excluir')),
+                ('created_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('delete_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('checkbox', models.BooleanField(
+                    max_length=100, verbose_name='Excluir')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('delete_at', models.DateTimeField(null=True)),
@@ -31,12 +35,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Marca',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('marca', models.CharField(max_length=100, unique=True)),
                 ('modelo', models.CharField(max_length=200)),
-                ('created_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('delete_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('checkbox', models.BooleanField(max_length=100, verbose_name='Excluir')),
+                ('created_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('delete_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('checkbox', models.BooleanField(
+                    max_length=100, verbose_name='Excluir')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('delete_at', models.DateTimeField(null=True)),
@@ -48,22 +56,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Produtos',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('codigo', models.IntegerField(verbose_name='Código')),
                 ('nome', models.CharField(max_length=100, verbose_name='Nome')),
-                ('valor_Compra', models.CharField(max_length=100, verbose_name='Preço compra')),
-                ('valor_Locacao', models.CharField(max_length=100, verbose_name='Preço Diária')),
-                ('estoque_minimo', models.CharField(blank=True, max_length=100, null=True, verbose_name='Estoque minimo')),
-                ('qnt_estoque', models.CharField(blank=True, max_length=100, null=True, verbose_name='Qnt em Estoque')),
-                ('estoque_total', models.CharField(blank=True, max_length=100, null=True, verbose_name='Estoque total')),
-                ('created_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('delete_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('checkbox', models.BooleanField(max_length=100, verbose_name='Excluir')),
+                ('valor_Compra', models.CharField(
+                    max_length=100, verbose_name='Preço compra')),
+                ('valor_Locacao', models.CharField(
+                    max_length=100, verbose_name='Preço Diária')),
+                ('estoque_minimo', models.CharField(blank=True,
+                 max_length=100, null=True, verbose_name='Estoque minimo')),
+                ('qnt_estoque', models.CharField(blank=True,
+                 max_length=100, null=True, verbose_name='Qnt em Estoque')),
+                ('estoque_total', models.CharField(blank=True,
+                 max_length=100, null=True, verbose_name='Estoque total')),
+                ('created_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('delete_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('checkbox', models.BooleanField(
+                    max_length=100, verbose_name='Excluir')),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('delete_at', models.DateTimeField(null=True)),
-                ('id_grupo', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='produtos.categoria')),
-                ('id_marca', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='produtos.marca')),
+                ('id_grupo', models.ForeignKey(blank=True, null=True,
+                 on_delete=django.db.models.deletion.SET_NULL, to='produtos.categoria')),
+                ('id_marca', models.ForeignKey(blank=True, null=True,
+                 on_delete=django.db.models.deletion.SET_NULL, to='produtos.marca')),
             ],
             options={
                 'verbose_name': 'Produto',
@@ -74,15 +93,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Patrimonio',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('patrimonio', models.CharField(max_length=100, unique=True)),
-                ('created_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('delete_user', models.CharField(blank=True, max_length=100, null=True)),
-                ('checkbox', models.BooleanField(blank=True, max_length=100, null=True, verbose_name='Excluir')),
+                ('created_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('delete_user', models.CharField(
+                    blank=True, max_length=100, null=True)),
+                ('checkbox', models.BooleanField(blank=True,
+                 max_length=100, null=True, verbose_name='Excluir')),
                 ('created_at', models.DateTimeField(auto_now_add=True, null=True)),
                 ('updated_at', models.DateTimeField(auto_now=True, null=True)),
                 ('delete_at', models.DateTimeField(blank=True, null=True)),
-                ('produtoPatrimonio', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='patrimonios', to='produtos.produtos')),
+                ('produtoPatrimonio', models.ForeignKey(blank=True, null=True,
+                 on_delete=django.db.models.deletion.SET_NULL, related_name='patrimonios', to='produtos.produtos')),
             ],
             options={
                 'ordering': ('patrimonio',),

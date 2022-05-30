@@ -18,9 +18,12 @@ class Produtos(models.Model):
     nome = models.CharField("Nome", max_length=100)
     valor_Compra = models.CharField("Preço compra", max_length=100)
     valor_Locacao = models.CharField("Preço Diária", max_length=100)
-    estoque_minimo = models.CharField("Estoque minimo", max_length=100, null=True, blank=True)
-    qnt_estoque = models.CharField("Qnt em Estoque", max_length=100, null=True, blank=True)
-    estoque_total = models.CharField("Estoque total", max_length=100, null=True, blank=True)
+    estoque_minimo = models.CharField(
+        "Estoque minimo", max_length=100, null=True, blank=True)
+    qnt_estoque = models.CharField(
+        "Qnt em Estoque", max_length=100, null=True, blank=True)
+    estoque_total = models.CharField(
+        "Estoque total", max_length=100, null=True, blank=True)
     created_user = models.CharField(max_length=100, null=True, blank=True)
     delete_user = models.CharField(max_length=100, null=True, blank=True)
     checkbox = models.BooleanField("Excluir", max_length=100)
@@ -48,7 +51,8 @@ class Patrimonio(models.Model):
     patrimonio = models.CharField(max_length=100, unique=True)
     created_user = models.CharField(max_length=100, null=True, blank=True)
     delete_user = models.CharField(max_length=100, null=True, blank=True)
-    checkbox = models.BooleanField("Excluir", max_length=100, null=True, blank=True)
+    checkbox = models.BooleanField(
+        "Excluir", max_length=100, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     delete_at = models.DateTimeField(auto_now=False, null=True, blank=True)
