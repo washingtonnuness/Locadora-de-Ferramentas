@@ -36,21 +36,18 @@ class Produtos(models.Model):
 
     estoque_minimo = models.PositiveIntegerField(
         "Estoque minimo",
-        max_length=100,
         null=True,
         blank=True
     )
 
     qnt_estoque = models.PositiveIntegerField(
         "Qnt em Estoque",
-        max_length=100,
         null=True,
         blank=True
         )
 
     estoque_total = models.PositiveIntegerField(
         "Estoque total",
-        max_length=100,
         null=True,
         blank=True
         )
@@ -196,7 +193,7 @@ class Marca(models.Model):
         ordering = ('marca', 'modelo')
 
     def __str__(self):
-        return '{} - {} - {}'.format(self.pk, self.marca, self.modelo)
+        return f'{self.pk} - {self.marca} - {self.modelo}'
 
 
 class Categoria(models.Model):
