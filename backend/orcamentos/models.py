@@ -3,13 +3,13 @@ from django.urls import reverse_lazy
 from backend.clientes.models import Clientes
 from backend.produtos.models import Produtos, Patrimonio
 
-# Create your models here.
+
 class Orcamentos(models.Model):
     cliente = models.ManyToManyField(
         Clientes,
         blank=True
     )
-    
+
     produtos = models.ManyToManyField(
         Produtos,
         blank=True
@@ -27,10 +27,11 @@ class Orcamentos(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(auto_now=False, null=True)
-    
+
     class Meta:
         verbose_name = "Orçamento"
         verbose_name_plural = verbose_name+"s"
         ordering = ['created_at']
+
     def __str__(self):
         return '{} - {} - {}'.format(self.pk, self.produtos.nome, self.patrimonio)
