@@ -53,7 +53,7 @@ def createorcamentos(request):
 
 
 def add_orcamento(request, client_pk):
-    template_name = 'orcamento_table.html'
+    template_name = 'orcamento_form_add.html'
     cliente = Clientes.objects.get(pk=client_pk)
     context = {'object_list': cliente}
     return render(request, template_name, context)
@@ -73,13 +73,12 @@ def clear(request):
 
 
 def add_produtc_row(request, product_pk):
-    template = 'orcamento_form_add.html'
+    template = 'orcamento_list.html'
     produto = Produtos.objects.get(pk=product_pk)
     productForm = OrcamentosForm()
     print(produto.codigo)
     context = {
         'object_list_product': produto,
-        'productForm': productForm,
     }
     return render(request, template, context)
 

@@ -1,30 +1,24 @@
-{% if results %}
-    {% csrf_token %}
-    <div class="col-md order-md-2 mb-1">
-        <h4 class="d-flex justify-content-between align-items-center mb-1">
-            <span class="text-muted">Produtos Cotados</span>
-            <span class="badge badge-secondary badge-pill">3</span>
-        </h4>
-        <ul class="list-group mb" id="film-list">
-            {% for result in results %}
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div id="film-list">
-                        <h6 class="my-0">{{result.nome}}</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">{{result.preco}}</span>
-                </li>
-            {% endfor%}
+{% extends 'base.html'%}
+{% load static %}
+{% block ProductForm %}
 
-            <li class="list-group-item d-flex justify-content-between fixed-bottom">
-                <span>Total (BRL)</span>
-                <strong>$20</strong>
-            </li>
-        </ul>
-    </div>
-    </div>
 
-    </ul>
-{% else %}
-    <p>Não foi encontrado nada.</p>
-{% endif %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-1">
+    <h2>{{title}}</h2>
+    <div class="container-fluid ">
+        <div class="py-5 text-center mt-1">
+            <img class="d-block mx-auto mb-1" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt=""
+                width="72" height="72">
+            <h4>{{object_list.id}} - {{object_list.nome}}</h4>
+        </div>
+        <div class="container col-md-10">
+            <legend>Buscar Produtos</legend>
+            <input class="form-control" type="search" name="search" placeholder="Digite o produto..."
+                hx-get="{% url 'orcamentos:search' %}" hx-trigger="keyup changed delay:250ms, search"
+                hx-target="#search-results">
+            <span id="search-results"></span>
+        </div>
+        {% include 'orcamento_table.html'%}
+    </div>
+</main>
+{% endblock ProductForm %}
