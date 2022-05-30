@@ -42,3 +42,8 @@ isort -m 3 *
 ## Modelagem
 
 ![orcamentos_modelagem2.png](img/orcamentos_modelagem2.png)
+
+![models.png](img/models.png)
+
+https://www.dicas-de-django.com.br/36-django-visualizando-seus-modelos-com-graph-models
+
