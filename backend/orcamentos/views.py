@@ -26,7 +26,7 @@ def listOrcamentos(request):
 
 
 def createorcamentos(request):
-    template_name = 'formOrcamentos.html'
+    template_name = 'orcamento_table.html'
     name = request.GET.get("searchField")
 
     if name == None:
@@ -53,14 +53,14 @@ def createorcamentos(request):
 
 
 def add_orcamento(request, client_pk):
-    template_name = 'formOrcamentos.html'
+    template_name = 'orcamento_table.html'
     cliente = Clientes.objects.get(pk=client_pk)
     context = {'object_list': cliente}
     return render(request, template_name, context)
 
 
 def search(request):
-    template = 'partials/search-results.html'
+    template = 'orcamento_results_search.html'
     search_text = request.GET.get('search')
     results = Produtos.objects.filter(nome__icontains=search_text)
 
@@ -73,10 +73,10 @@ def clear(request):
 
 
 def add_produtc_row(request, product_pk):
-    template = 'listarOrcamen.html'
+    template = 'orcamento_form_add.html'
     produto = Produtos.objects.get(pk=product_pk)
     productForm = OrcamentosForm()
-    # print(produto.codigo)
+    print(produto.codigo)
     context = {
         'object_list_product': produto,
         'productForm': productForm,
@@ -85,7 +85,7 @@ def add_produtc_row(request, product_pk):
 
 
 def order_update(request, product_pk):
-    template_name = 'listarOrcamen.html'
+    template_name = 'orcamento_form_add.html'
     obj = Produtos.objects.get(pk=product_pk)
     form = OrcamentosForm()
     #form = ProdutctForm(request.POST or None, prefix='main')

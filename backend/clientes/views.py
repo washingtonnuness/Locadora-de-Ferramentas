@@ -7,7 +7,7 @@ from .models import Clientes
 
 
 def index(request):
-    template_name = 'formClientes.html'
+    template_name = 'cliente_details.html'
     objects = Clientes.objects.all()
     context = {
         'object_list': objects,
@@ -17,7 +17,7 @@ def index(request):
 
 
 def listarClientes(request):
-    template_name = 'listarCliente.html'
+    template_name = 'cliente_list.html'
     objects = Clientes.objects.all()
     context = {
         'object_list': objects,
@@ -27,7 +27,7 @@ def listarClientes(request):
 
 
 def inserir(request):
-    template_name = 'formClientes.html'
+    template_name = 'cliente_form_add_v2.html'
     if request.method == "GET":
         form = ClientesForm()
         context = {
