@@ -29,9 +29,9 @@ class Orcamentos(models.Model):
     delete_at = models.DateTimeField(auto_now=False, null=True)
 
     class Meta:
+        ordering = ('created_at',)
         verbose_name = "Orçamento"
-        verbose_name_plural = verbose_name+"s"
-        ordering = ['created_at']
+        verbose_name_plural = "Orçamentos"
 
     def __str__(self):
-        return '{} - {} - {}'.format(self.pk, self.produtos.nome, self.patrimonio)
+        return f'{self.pk} - {self.produtos.nome} - {self.patrimonio}'
