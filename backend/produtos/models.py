@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Produtos(models.Model):
     codigo = models.IntegerField("Código")
@@ -24,7 +22,7 @@ class Produtos(models.Model):
     qnt_estoque = models.CharField("Qnt em Estoque", max_length=100, null=True, blank=True)
     estoque_total = models.CharField("Estoque total", max_length=100, null=True, blank=True)
     created_user = models.CharField(max_length=100, null=True, blank=True)
-    delete_user = models.CharField(max_length=100, null=True, blank=True) 
+    delete_user = models.CharField(max_length=100, null=True, blank=True)
     checkbox = models.BooleanField("Excluir", max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -34,7 +32,11 @@ class Produtos(models.Model):
         verbose_name = "Produto"
         verbose_name_plural = "Produtos"
         ordering = ('id_grupo', 'id_marca', 'nome')
-        
+
+    def __str__(self):
+        return f'{self.nome}'
+
+
 class Patrimonio(models.Model):
     produtoPatrimonio = models.ForeignKey(
         Produtos,
@@ -45,38 +47,40 @@ class Patrimonio(models.Model):
     )
     patrimonio = models.CharField(max_length=100, unique=True)
     created_user = models.CharField(max_length=100, null=True, blank=True)
-    delete_user = models.CharField(max_length=100, null=True, blank=True) 
+    delete_user = models.CharField(max_length=100, null=True, blank=True)
     checkbox = models.BooleanField("Excluir", max_length=100, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     delete_at = models.DateTimeField(auto_now=False, null=True, blank=True)
-    
+
     class Meta:
         ordering = ('patrimonio',)
 
     def __str__(self):
-        return '{} - {} - {}'.format(self.pk, self.produtoPatrimonio.nome, self.patrimonio)
+        return f'{self.patrimonio}'
+
 
 class Marca(models.Model):
     marca = models.CharField(max_length=100, unique=True)
     modelo = models.CharField(max_length=200, unique=False)
     created_user = models.CharField(max_length=100, null=True, blank=True)
-    delete_user = models.CharField(max_length=100, null=True, blank=True) 
+    delete_user = models.CharField(max_length=100, null=True, blank=True)
     checkbox = models.BooleanField("Excluir", max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     delete_at = models.DateTimeField(auto_now=False, null=True)
 
     class Meta:
-        ordering = ('marca','modelo')
+        ordering = ('marca', 'modelo')
 
     def __str__(self):
         return '{} - {} - {}'.format(self.pk, self.marca, self.modelo)
 
+
 class Categoria(models.Model):
     categoria = models.CharField(max_length=100, unique=True)
     created_user = models.CharField(max_length=100, null=True, blank=True)
-    delete_user = models.CharField(max_length=100, null=True, blank=True) 
+    delete_user = models.CharField(max_length=100, null=True, blank=True)
     checkbox = models.BooleanField("Excluir", max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -86,5 +90,4 @@ class Categoria(models.Model):
         ordering = ('categoria',)
 
     def __str__(self):
-        return self.categoria
-
+        return f'{self.categoria}'
