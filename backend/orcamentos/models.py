@@ -6,20 +6,44 @@ from backend.produtos.models import Patrimonio, Produtos
 
 
 class Orcamentos(models.Model):
+
     cliente = models.ForeignKey(
         Clientes,
         on_delete=models.SET_NULL,
         related_name='cliente_orcamentos',
         null=True,
         blank=True
-    )
-    created_user = models.CharField(max_length=100, null=True, blank=True)
-    delete_user = models.CharField(max_length=100, null=True, blank=True)
+        )
 
-    checkbox = models.BooleanField("Excluir", max_length=100)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    delete_at = models.DateTimeField(null=True, blank=True)
+    created_user = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True
+        )
+
+    delete_user = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True
+        )
+
+    checkbox = models.BooleanField(
+        "Excluir",
+        max_length=10
+        )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+        )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+        )
+
+    delete_at = models.DateTimeField(
+        null=True,
+        blank=True
+        )
 
     class Meta:
         ordering = ('created_at',)
