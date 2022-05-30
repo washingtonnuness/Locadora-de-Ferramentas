@@ -47,3 +47,5 @@ isort -m 3 *
 
 https://www.dicas-de-django.com.br/36-django-visualizando-seus-modelos-com-graph-models
 
+
+![diagrama_ER_DBeaver.png](img/diagrama_ER_DBeaver.png)
