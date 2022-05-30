@@ -1,0 +1,66 @@
+{% load static %}
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">ServiLoc Locações</a>
+
+</nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column" id="nav_accordion">
+            <li class="nav-item has-submenu">
+              <a class="nav-link active" href="{% url 'core:index' %}">
+                <span data-feather="home"></span>
+                Dashboard <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'core:index' %}">
+                <span data-feather="file"></span>
+                Orçamentos
+              </a>
+              <ul class="submenu collapse">
+                <li><a class="nav-link" href="#"><span data-feather="plus-circle"></span>Gerar Novo</a></li>
+                <li><a class="nav-link" href="{% url 'orcamentos:listOrcamentos' %}"><span data-feather="list"></span>Listar</a></li>
+              </ul>
+            </li>
+            <li class="nav-item has-submenu">
+              <a class="nav-link" href="#">
+                <span data-feather="shopping-cart"></span>
+                Produtos
+              </a>
+              <ul class="submenu collapse">
+                <li><a href="{% url 'produtos:createProdutos' %}" class="nav-link"><span data-feather="plus-circle"></span>Cadastrar</a></li>
+                <li><a href="{% url 'core:index' %}" class="nav-link"><span data-feather="link"></span>Patrimonios</a></li>
+                <li><a href="{% url 'core:index' %}" class="nav-link"><span data-feather="package"></span>Kit</a></li>
+                <li><a class="nav-link" href="{% url 'produtos:listarProdutos' %}" ><span data-feather="list"></span>Listar</a></li>
+
+              </ul>
+            </li>
+            <li class="nav-item has-submenu">
+              <a class="nav-link" href="#">
+                <span data-feather="users"></span>
+                Clientes
+              </a>
+              <ul class="submenu collapse">
+                <li><a href="{% url 'clientes:listarClientes' %}" class="nav-link"><span data-feather="plus-circle"></span>Listar</a></li>
+                <li><a href="{% url 'clientes:cadClientes' %}" class="nav-link"><span data-feather="plus-circle"></span>Cadastrar</a></li>
+                <li><a href="" class="nav-link"><span data-feather="layers"></span>Contratos</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item has-submenu">
+              <a class="nav-link" href="#">
+                <span data-feather="bar-chart-2"></span>
+                Relatórios
+              </a>
+              <ul class="submenu collapse">
+                <li><a href="#" class="nav-link">Geral</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </nav>

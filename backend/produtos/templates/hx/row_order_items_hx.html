@@ -1,0 +1,9 @@
+{% load widget_tweaks %}
+
+<div id="patrimonio-{{ forloop.counter0 }}" class="form-group">
+
+  <div class="form-group">
+    {% render_field order_item_form.patrimonio data-field='order' %}
+  </div>
+
+</div>

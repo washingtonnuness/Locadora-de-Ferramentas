@@ -1,0 +1,23 @@
+{% if results %}
+    {% csrf_token %}
+    <ul class="list-group col-xs-12">
+    {% for result in results %}
+    <a>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ result.nome }}
+            <span class="badge badge-success badge-pill" 
+                style="cursor: pointer;"
+                hx-trigger="click"
+                hx-post="{% url 'orcamentos:add_row_hx' result.id %}"
+                hx-swap= "beforebegin"
+                hx-vals='{"resultname": "{{result.nome}}"'
+                hx-target="#table-list">Adicionar
+            </span> 
+        </li>
+    </a>
+    {% endfor %}
+    
+    </ul>   
+{% else %}
+    <p>Não foi encontrado nada.</p>
+{% endif %}

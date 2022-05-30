@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% include "navbar.html" %}
+
+{% block cadClient %}
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
+        <h2>{{title}}</h2>
+        <div class="container-fluid">
+          <form method="POST">
+            {% csrf_token %}
+         {{form}}
+            <div class="form-group">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Desativar
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+          </form>
+        </div>
+      </main>
+{% endblock %}

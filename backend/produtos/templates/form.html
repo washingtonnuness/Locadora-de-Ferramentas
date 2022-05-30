@@ -1,0 +1,104 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+{% block ProductForm %}
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
+    <h2>{{title}}</h2>
+    <div class="container-fluid">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-sm">
+                    <label>Código</label>
+                    {% render_field form.codigo class="form-control" %}
+                </div>
+                <div class="form-group col-sm">
+                    <label>{{form.id_grupo.label}}</label>
+                    {% render_field form.id_grupo class="form-control" %}
+                </div>
+                <div class="form-group col-sm">
+                    <label>{{form.id_marca.label}}</label>
+                    {% render_field form.id_marca class="form-control" %}
+                </div>
+                <div class="form-group col-md-12">
+                    <label>{{form.nome.label}}</label>
+                    {% render_field form.nome class="form-control" %}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md">
+                    <label>{{form.valor_Compra.label}}</label>
+                    {% render_field form.valor_Compra class="form-control" %}
+                </div>
+                <div class="form-group col-md">
+                    <label>{{form.valor_Locacao.label}}</label>
+                    {% render_field form.valor_Locacao class="form-control" %}
+                </div>
+                <div class="form-group col-md">
+                    <label>{{form.estoque_minimo.label}}</label>
+                    {% render_field form.estoque_minimo class="form-control" %}
+                </div>
+                <div class="form-group col-md">
+                    <label for="inputAddress">Quantidade Estoque</label>
+                    {% render_field form.qnt_estoque class="form-control" %}
+                </div>
+                <div class="form-group col-md">
+                    <label for="inputAddress">Quantidade Total</label>
+                    {% render_field form.estoque_total class="form-control" %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    {% render_field form.checkbox class='form-check-input' type='checkbox' %}
+                    <label class="form-check-label" for="gridCheck">
+                        Desativar
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <legend class="legend">Patrimonio</legend>
+
+                <div id="order" class="form-row">
+                </div>
+            </div>
+
+            {{ formset.management_form }}
+
+            {% for ft in formset %}
+            <div class="form-group">
+                <div class="form-row">
+
+                    <div class="inlineform">
+                        <hr>
+                        {{ ft.patrimonio }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <div class="row">
+                <button class='btn btn-primary' type="submit">Salvar</button>
+                <a class="btn btn-danger" href='#'>Cancelar</a>
+            </div>
+
+        </form>
+    </div>
+    </div>
+</main>
+{% endblock ProductForm %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+    $(function () {
+        $('.inlineform').formset({
+            prefix: '{{ formset.prefix }}',
+            addText: 'Adicionar novo Patrimonio',
+            deleteText: 'Remover este Patrimonio',
+        });
+    })
+</script>
+{% endblock scripts %}

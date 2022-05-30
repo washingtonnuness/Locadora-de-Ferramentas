@@ -1,0 +1,54 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block ProductForm %}
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
+        <h2>Cadastro de Produtos</h2>
+        <div class="container-fluid">
+            <div class="top-buffer">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    {{ formset.management_form }}
+                   
+                        {% for ft in formset %}
+                        <div class="form-group">
+                            <div class="form-row">
+                           
+                            <div class="inlineform">
+                                <hr>
+                                {{ ft.patrimonio }}
+                            </div>
+                       </div>
+                        </div>
+                        {% endfor %}
+                   
+                        
+
+
+                    <div class="row">
+                        <button class='btn btn-primary' type="submit">Salvar</button>
+                        <a class="btn btn-danger" href='#'>Cancelar</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+      </main>
+{% endblock ProductForm %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+    $(function() {
+        $('.inlineform').formset({
+            prefix: '{{ formset.prefix }}',
+            addText: 'Adicionar novo Patrimonio',
+            deleteText: 'Remover este Patrimonio',
+        });
+    })
+</script>
+{% endblock scripts %}
