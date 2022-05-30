@@ -30,7 +30,7 @@
                             <td>{{field.cidade}}</td>
                             <td>{{field.estado}}</td>
                             <td>{{field.created_at}}</td>
-                            {% if field.checkbox == True%}
+                            {% if field.checkbox == False%}
                                 <td> Ativo</td>
                                 <td>
                                     <a href="{% url 'orcamentos:add_orcamento' field.pk%}"  <button type="button" class="btn btn-outline-success">Gerar Orçamento</button> </a>
