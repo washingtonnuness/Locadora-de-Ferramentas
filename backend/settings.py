@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #### Apps Terceiros ####
     'django_htmx',
+    'django_extensions',
     'widget_tweaks',
+    'django_seed',
     #### Apps Meus ####
     'backend.core',
     'backend.clientes',
