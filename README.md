@@ -38,3 +38,7 @@ python manage.py createsuperuser --username="admin" --email=""
 ```
 isort -m 3 *
 ```
+
+## Modelagem
+
+![orcamentos_modelagem2.png](img/orcamentos_modelagem2.png)
