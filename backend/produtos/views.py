@@ -7,8 +7,12 @@ from .models import Produtos, Patrimonio
 
 # Create your views here.
 def product_list(request):
-    template_name = 'index.html'
-    context = {}
+    template_name = 'produto/produto_list.html'
+    objects = Produtos.objects.all()
+    context = {
+        'object_list': objects,
+        'title': 'Listar Produtos',
+    }
     return render(request, template_name, context)
 
 def product_create(request):

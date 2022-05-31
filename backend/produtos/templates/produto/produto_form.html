@@ -72,7 +72,14 @@
 
                     <legend class="legend">Patrimonio</legend>
 
-                    <div id="order" class="form-inline">
+                    <span id="addItem" class="btn btn-info mt-2" hx-get="{% url 'produto:add_row_product_items_hx' %}"
+                    hx-target="#order" hx-swap="beforeend">
+                    <i class="fa fa-plus"></i>
+                    Adicionar
+                    </span>
+
+                    <div id="order" class="form-inline mt-2">
+
                     </div>
 
                 </div>
@@ -102,11 +109,6 @@
         <button class='btn btn-primary' type="submit">Salvar</button>
         <a class="btn btn-danger" href='#'>Cancelar</a>
     </div>
-    <span id="addItem" class="btn btn-info mt-2" hx-get="{% url 'produto:add_row_product_items_hx' %}"
-        hx-target="#order" hx-swap="beforeend">
-        <i class="fa fa-plus"></i>
-        Adicionar
-    </span>
     </div>
     </form>
     </div>
