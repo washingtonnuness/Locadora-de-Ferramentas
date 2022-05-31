@@ -1,66 +1,42 @@
 from django.forms import inlineformset_factory
 from django.shortcuts import redirect, render
-
-from .forms import PatrimonioForm, ProdutctForm, ProdutoFormset
-from .models import Patrimonio, Produtos
+#Importando do Forms os formulários criados.
+from .forms import ProdutoForm, ProdutoPatrimonioForm, ProdutoItemsFormset
+#Realizando o importo no models da classes para Produtos e patrimonio
+from .models import Produtos, Patrimonio
 
 # Create your views here.
+def product_list(request):
+    template_name = 'index.html'
+    context = {}
+    return render(request, template_name, context)
 
+def product_create(request):
+    template_name = 'produto/produto_form.html'
+    order_instance = Produtos()
 
-def index(request):
-    template_name = 'formProdutos.html'
-    # forms = ProdutctForm(request.POST or None)
-    # objects = EstoqueEntrada.objects.all()
-    context = {
-        # 'object_list': objects,
-        'title': 'Cadastro de Produtos',
-    }
+    form = ProdutoForm(request.POST or None, instance=order_instance, prefix='main')
+    formset = ProdutoItemsFormset(request.POST or None, instance=order_instance, prefix='items')
+    
+    if request.method == 'POST':
+        print(formset)
+        if form.is_valid() and formset.is_valid():
+            form.save()
+            formset.save()
+            return redirect('produto:product_list')
+
+    context = {'form': form, 'formset': formset}
     return render(request, template_name, context)
 
 
-def listProdutos(request):
-    template_name = 'listarProdutos.html'
-    objects = Produtos.objects.all()
-    context = {
-        'object_list': objects,
-        'title': 'Listar Produtos',
-        'url_add': 'produtos:'
-    }
+def add_row_product_items_hx(request):
+    template_name = 'produto/hx/row_produtc_items_hx.html'
+    form = ProdutoItemsFormset()
+    context = {'order_item_form': form}
     return render(request, template_name, context)
-
-
-def inserir(request):
-    template_name = 'form.html'
-    if request.method == "GET":
-        form = ProdutctForm()
-        form_telefone_factory = inlineformset_factory(
-            Produtos, Patrimonio, form=ProdutctForm, extra=1)
-        form_telefone = form_telefone_factory()
-        context = {
-            'form': form,
-            'formset': form_telefone,
-        }
-        return render(request, template_name, context)
-
-    elif request.method == "POST":
-        form = ProdutctForm(request.POST)
-        form_telefone_factory = inlineformset_factory(
-            Produtos, Patrimonio, form=PatrimonioForm)
-        form_telefone = form_telefone_factory(request.POST)
-        if form.is_valid() and form_telefone.is_valid():
-            ocorrencia = form.save()
-            form_telefone.instance = ocorrencia
-            form_telefone.save()
-            return redirect('core:index')
-        else:
-            context = {
-                'form': form,
-                'formset': form_telefone,
-            }
-            return render(request, template_name, context)
 
 
 def order_item_delete(request, pk):
     order_item = Produtos.objects.get(pk=pk)
     order_item.delete()
-    return HttpResponse('asdfasdfasdf')
+    return HttpResponse('')

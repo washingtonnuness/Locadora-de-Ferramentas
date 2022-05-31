@@ -4,7 +4,7 @@ from django.forms import inlineformset_factory
 from .models import Categoria, Marca, Patrimonio, Produtos
 
 
-class ProdutctForm(forms.ModelForm):
+class ProdutoForm(forms.ModelForm):
     required_css_class = 'required'
 
     class Meta:
@@ -42,22 +42,22 @@ class MarcaForm(forms.ModelForm):
         self.fields['checkbox'].widget.attrs['class'] = 'form-check-input'
 
 
-class PatrimonioForm(forms.ModelForm):
+class ProdutoPatrimonioForm(forms.ModelForm):
     class Meta:
         model = Patrimonio
         fields = ['patrimonio', ]
 
     def __init__(self, *args, **kwargs):
-        super(PatrimonioForm, self).__init__(*args, **kwargs)
+        super(ProdutoPatrimonioForm, self).__init__(*args, **kwargs)
 
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
 
-ProdutoFormset = inlineformset_factory(
+ProdutoItemsFormset = inlineformset_factory(
     Produtos,
     Patrimonio,
-    form=PatrimonioForm,
+    form=ProdutoPatrimonioForm,
     extra=0,
     can_delete=False,
     min_num=1,

@@ -32,19 +32,26 @@
         {% include "navbar.html" %}
 
         {% block main %}
+
+        {% block orcamentos_form %}
+        {% endblock orcamentos_form %}
+
+        {% block orcamentos_list %}
+        {% endblock orcamentos_list %}
+
+        {% block produto_form %}
+        {% endblock produto_form %}
+
+        {% block produto_list %}
+        {% endblock produto_list %}
+
+        {% block cliente_form %}
+        {% endblock cliente_form %}
+
+        {% block cliente_list %}
+        {% endblock cliente_list %}
+        
         {% endblock main %}
-
-        {% block ProductForm %}
-        {% endblock ProductForm %}
-
-        {% block cadClient %}
-        {% endblock cadClient %}
-
-        {% block listClient %}
-        {% endblock listClient %}
-
-        {% block cadOrcamento %}
-        {% endblock cadOrcamento %}
 
         <!-- Bootstrap core JavaScript
     ================================================== -->
