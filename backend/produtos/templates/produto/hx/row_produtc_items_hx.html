@@ -1,10 +1,10 @@
 {% load widget_tweaks %}
-{% render_field order_item_form.errors class="text-danger" %}
+
 <div id="item-{{ forloop.counter0 }}" class="form-group">
-  {{ order_item_form.id }}
 
   <div class="form-group">
-    {{ order_item_form}}
+    {% render_field product_item_form.patrimonio data-field='order' %}
+    {{product_item_form}}
   </div>
 
   <span class="span-is-link no ml-2" onclick="removeRow()">

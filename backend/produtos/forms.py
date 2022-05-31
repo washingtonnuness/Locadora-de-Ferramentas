@@ -45,7 +45,9 @@ class MarcaForm(forms.ModelForm):
 class ProdutoPatrimonioForm(forms.ModelForm):
     class Meta:
         model = Patrimonio
-        fields = ['patrimonio', ]
+        fields = '__all__'
+        exclude = ('created_user', 'delete_user',
+                   'create_at', 'update_at', 'delete_at')
 
     def __init__(self, *args, **kwargs):
         super(ProdutoPatrimonioForm, self).__init__(*args, **kwargs)
@@ -60,6 +62,6 @@ ProdutoItemsFormset = inlineformset_factory(
     form=ProdutoPatrimonioForm,
     extra=0,
     can_delete=False,
-    min_num=1,
+    min_num=0,
     validate_min=True,
 )
