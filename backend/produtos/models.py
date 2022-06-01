@@ -102,7 +102,9 @@ class Patrimonio(models.Model):
 
     patrimonio = models.CharField(
         max_length=100,
-        unique=True
+        null=True,
+        blank=True,
+        unique=True,
         )
 
     created_user = models.CharField(

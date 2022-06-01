@@ -24,7 +24,6 @@ def product_create(request):
     formset = ProdutoItemsFormset(request.POST or None, instance=order_instance, prefix='items')
     
     if request.method == 'POST':
-        print(formset)
         if form.is_valid() and formset.is_valid():
             form.save()
             formset.save()
@@ -36,8 +35,8 @@ def product_create(request):
 
 def add_row_product_items_hx(request):
     template_name = 'produto/hx/row_produtc_items_hx.html'
-    form = ProdutoItemsFormset()
-    context = {'product_item_form': form}
+    form = ProdutoPatrimonioForm()
+    context = {'order_item_form': form}
     return render(request, template_name, context)
 
 

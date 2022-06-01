@@ -43,11 +43,11 @@ class MarcaForm(forms.ModelForm):
 
 
 class ProdutoPatrimonioForm(forms.ModelForm):
+    id = forms.IntegerField()
+
     class Meta:
         model = Patrimonio
-        fields = '__all__'
-        exclude = ('created_user', 'delete_user',
-                   'create_at', 'update_at', 'delete_at')
+        fields = ('id', 'patrimonio', 'checkbox', )
 
     def __init__(self, *args, **kwargs):
         super(ProdutoPatrimonioForm, self).__init__(*args, **kwargs)
@@ -55,6 +55,11 @@ class ProdutoPatrimonioForm(forms.ModelForm):
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
+        # self.fields['checkbox'].label = ''
+        # self.fields['checkbox'].widget = forms.HiddenInput()
+
+        self.fields['id'].label = ''
+        self.fields['id'].widget = forms.HiddenInput()
 
 ProdutoItemsFormset = inlineformset_factory(
     Produtos,
@@ -62,6 +67,6 @@ ProdutoItemsFormset = inlineformset_factory(
     form=ProdutoPatrimonioForm,
     extra=0,
     can_delete=False,
-    min_num=0,
+    min_num=1,
     validate_min=True,
 )
