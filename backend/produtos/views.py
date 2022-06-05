@@ -17,13 +17,14 @@ def product_list(request):
     return render(request, template_name, context)
 
 def product_create(request):
-    template_name = 'produto/produto_form.html'
+    template_name = 'produto/order_form.html'
     order_instance = Produtos()
 
     form = ProdutoForm(request.POST or None, instance=order_instance, prefix='main')
     formset = ProdutoItemsFormset(request.POST or None, instance=order_instance, prefix='items')
-    
+
     if request.method == 'POST':
+        print(formset)
         if form.is_valid() and formset.is_valid():
             form.save()
             formset.save()

@@ -12,7 +12,8 @@ document.querySelector('#addItem').addEventListener('click', function() {
 function reorderItems() {
   Array.from(document.querySelectorAll("[id^='id_patrimonio']"))
     .forEach((item, i) => {
-      item.setAttribute('id', 'patrimonio-' + i)
+      item.setAttribute('name', 'patrimonios-' + (i + 1) + '-id')
+      item.setAttribute('id', 'patrimonios-' + i)
 
       if (!item.querySelector('[data-field="order"]')) {
         return
@@ -21,18 +22,10 @@ function reorderItems() {
       item.querySelector('[data-field="order"]').setAttribute('name', 'items-' + i + '-order')
       item.querySelector('[data-field="order"]').setAttribute('id', 'id_items-' + i + '-order')
 
-      item.querySelector('[data-field="product"]').setAttribute('name', 'items-' + i + '-product')
-      item.querySelector('[data-field="product"]').setAttribute('hx-target', '#id_items-'+ i +'-price')
-
-      item.querySelector('[data-field="quantity"]').setAttribute('name', 'items-' + i + '-quantity')
-
-      item.querySelector('[data-field="price"]').setAttribute('name', 'items-' + i + '-price')
-      item.querySelector('[data-field="price"]').setAttribute('id', 'id_items-' + i + '-price')
   })
 
-  Array.from(document.querySelectorAll("#id_patrimonio"))
-    .forEach((item, i) => item.setAttribute('name', 'items-' + (i + 1) + '-id'))
-
+  Array.from(document.querySelectorAll("#item-"))
+    .forEach((item, i) => item.setAttribute('name', 'patrimonios-' + (i + 1) + '-id'))
   let totalItems = $('#order').children().length
   document.querySelector('#id_items-TOTAL_FORMS').value = totalItems
 
