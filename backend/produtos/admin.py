@@ -22,7 +22,7 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 
 class PatrimonioAdmin(admin.ModelAdmin):
-    readonly_fields = ("created_at", "updated_at", "delete_at")
+    #readonly_fields = ("created_at", "updated_at", "delete_at")
     list_display = [f.name for f in Patrimonio._meta.fields]
 
 

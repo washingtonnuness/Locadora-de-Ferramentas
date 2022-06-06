@@ -287,4 +287,3 @@ staticfiles/
 .idea
 .ipynb_checkpoints/
 .vscode
-backend/clientes/migrations/__init__.py

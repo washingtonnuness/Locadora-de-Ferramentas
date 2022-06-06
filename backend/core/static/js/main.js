@@ -10,10 +10,9 @@ document.querySelector('#addItem').addEventListener('click', function() {
 })
 
 function reorderItems() {
-  Array.from(document.querySelectorAll("[id^='id_patrimonio']"))
+  Array.from(document.querySelectorAll("[id^='item-']"))
     .forEach((item, i) => {
-      item.setAttribute('name', 'patrimonios-' + (i + 1) + '-id')
-      item.setAttribute('id', 'patrimonios-' + i)
+      item.setAttribute('id', 'item-' + i)
 
       if (!item.querySelector('[data-field="order"]')) {
         return
@@ -24,8 +23,9 @@ function reorderItems() {
 
   })
 
-  Array.from(document.querySelectorAll("#item-"))
-    .forEach((item, i) => item.setAttribute('name', 'patrimonios-' + (i + 1) + '-id'))
+  Array.from(document.querySelectorAll("#id_id"))
+    .forEach((item, i) => item.setAttribute('name', 'items-' + (i + 1) + '-id'))
+
   let totalItems = $('#order').children().length
   document.querySelector('#id_items-TOTAL_FORMS').value = totalItems
 

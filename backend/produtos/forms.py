@@ -47,7 +47,7 @@ class ProdutoPatrimonioForm(forms.ModelForm):
 
     class Meta:
         model = Patrimonio
-        fields = ('id', 'patrimonio', 'checkbox', )
+        fields = ('id', 'patrimonio', )
 
     def __init__(self, *args, **kwargs):
         super(ProdutoPatrimonioForm, self).__init__(*args, **kwargs)
