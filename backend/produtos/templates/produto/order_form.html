@@ -9,21 +9,21 @@
         <form method="POST">
             {% csrf_token %}
             {% if formset.errors %}
-                {% for err in formset.errors %}
-                <div class="alert alert-danger">
-                    {{ err }}
-                </div>
-                {% endfor %}
+            {% for err in formset.errors %}
+            <div class="alert alert-danger">
+                {{ err }}
+            </div>
+            {% endfor %}
             {% endif %}
 
             {% if form.errors %}
-                {% for err in form.errors %}
-                <div class="alert alert-danger">
-                    {{ err }}
-                </div>
-                {% endfor %}
+            {% for err in form.errors %}
+            <div class="alert alert-danger">
+                {{ err }}
+            </div>
+            {% endfor %}
             {% endif %}
-            
+
             <div class="form-row">
                 <div class="form-group col-sm">
                     <label>Código</label>
@@ -78,8 +78,6 @@
                 </div>
             </div>
 
-
-
             <span class="span-is-link no ml-2 remove-row"
                 hx-delete="{url 'ecommerce:order_item_delete' order_item_form.id.value %}"
                 hx-confirm="Deseja mesmo deletar o item {{order_item_form.id.value}}?"
@@ -92,7 +90,6 @@
             </span>
 
     </div>
-
 
     {% for ft in formset %}
 
