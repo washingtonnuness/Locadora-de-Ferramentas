@@ -19,7 +19,7 @@ function reorderItems() {
       }
 
       item.querySelector('[data-field="order"]').setAttribute('name', 'items-' + i + '-order')
-      item.querySelector('[data-field="order"]').setAttribute('id', 'id_items-' + i + '-order')
+      item.querySelector('[data-field="order"]').setAttribute('id', 'items-' + i + '-order')
 
   })
 

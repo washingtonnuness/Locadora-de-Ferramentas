@@ -24,7 +24,7 @@ def product_create(request):
     formset = ProdutoItemsFormset(request.POST or None, instance=order_instance, prefix='items')
 
     if request.method == 'POST':
-        print(formset.errors)
+        print( formset.management_form.errors.items)
         if form.is_valid() and formset.is_valid():
             form.save()
             formset.save()
