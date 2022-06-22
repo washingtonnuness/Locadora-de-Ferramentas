@@ -5,6 +5,7 @@ from .forms import ProdutoForm, ProdutoPatrimonioForm, ProdutoItemsFormset
 #Realizando o importo no models da classes para Produtos e patrimonio
 from .models import Produtos, Patrimonio
 
+
 # Create your views here.
 def product_list(request):
     template_name = 'produto/produto_list.html'
@@ -17,21 +18,32 @@ def product_list(request):
     return render(request, template_name, context)
 
 def product_create(request):
-    template_name = 'produto/order_form.html'
-    order_instance = Produtos()
+    template_name = 'produto/produto_form.html'
+    if request.method == "GET":
+        form = ProdutoForm()
+        form_telefone_factory = ProdutoItemsFormset
+        form_telefone = form_telefone_factory()
+        context = {
+            'form': form,
+            'formset': ProdutoItemsFormset,
+        }
+        return render(request, template_name, context)
 
-    form = ProdutoForm(request.POST or None, instance=order_instance, prefix='main')
-    formset = ProdutoItemsFormset(request.POST or None, instance=order_instance, prefix='items')
-
-    if request.method == 'POST':
-        print( formset.management_form.errors.items)
-        if form.is_valid() and formset.is_valid():
-            form.save()
-            formset.save()
+    elif request.method == "POST":
+        form = ProdutoForm(request.POST)
+        form_telefone_factory = ProdutoItemsFormset
+        form_telefone = form_telefone_factory(request.POST)
+        if form.is_valid() and form_telefone.is_valid():
+            ocorrencia = form.save()
+            form_telefone.instance = ocorrencia
+            form_telefone.save()
             return redirect('produto:product_list')
-
-    context = {'form': form, 'formset': formset}
-    return render(request, template_name, context)
+        else:
+            context = {
+                'form': form,
+                'formset': form_telefone,
+            }
+            return render(request, template_name, context)
 
 
 def add_row_product_items_hx(request):

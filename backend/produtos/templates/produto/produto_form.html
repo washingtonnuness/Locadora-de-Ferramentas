@@ -3,121 +3,118 @@
 {% load widget_tweaks %}
 {% block produto_form %}
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
-    <h2>{{title}}</h2>
-    <div class="container-fluid">
-        <form method="POST">
-            {% csrf_token %}
-
-            {% if formset.errors %}
-                {% for err in formset.errors %}
-                <div class="alert alert-danger">
-                    {{ err }}
-                </div>
-                {% endfor %}
-            {% endif %}
-
-            {% if form.errors %}
-                {% for err in form.errors %}
-                <div class="alert alert-danger">
-                    {{ err }}
-                </div>
-                {% endfor %}
-            {% endif %}
-            
-            <div class="form-row">
-                <div class="form-group col-sm">
-                    <label>Código</label>
-                    {% render_field form.codigo class="form-control" %}
-                </div>
-                <div class="form-group col-sm">
-                    <label>{{form.id_grupo.label}}</label>
-                    {% render_field form.id_grupo class="form-control" %}
-                </div>
-                <div class="form-group col-sm">
-                    <label>{{form.id_marca.label}}</label>
-                    {% render_field form.id_marca class="form-control" %}
-                </div>
-                <div class="form-group col-md-12">
-                    <label>{{form.nome.label}}</label>
-                    {% render_field form.nome class="form-control" %}
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md">
-                    <label>{{form.valor_Compra.label}}</label>
-                    {% render_field form.valor_Compra class="form-control" %}
-                </div>
-                <div class="form-group col-md">
-                    <label>{{form.valor_Locacao.label}}</label>
-                    {% render_field form.valor_Locacao class="form-control" %}
-                </div>
-                <div class="form-group col-md">
-                    <label>{{form.estoque_minimo.label}}</label>
-                    {% render_field form.estoque_minimo class="form-control" %}
-                </div>
-                <div class="form-group col-md">
-                    <label for="inputAddress">Quantidade Estoque</label>
-                    {% render_field form.qnt_estoque class="form-control" %}
-                </div>
-                <div class="form-group col-md">
-                    <label for="inputAddress">Quantidade Total</label>
-                    {% render_field form.estoque_total class="form-control" %}
-                </div>
-            </div>
-
-            {{ formset.management_form }}
-
-            <div class="row">
-                <div class="col-sm-12">
-
-                    <legend class="legend">Patrimonio</legend>
-
-                    <span id="addItem" class="btn btn-info mt-2" hx-get="{% url 'produto:add_row_product_items_hx' %}"
-                    hx-target="#order" hx-swap="beforeend">
-                    <i class="fa fa-plus"></i>
-                    Adicionar
-                    </span>
-
-                    <div id="order" class="form-inline mt-2">
-
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
+        <h2>{{title}}</h2>
+        <div class="container-fluid">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-sm">
+                        <label>Código</label>
+                        {% render_field form.codigo class="form-control" %}
                     </div>
-
+                    <div class="form-group col-sm">
+                        <label>{{form.id_grupo.label}}</label>
+                        {% render_field form.id_grupo class="form-control" %}
+                    </div>
+                    <div class="form-group col-sm">
+                        <label>{{form.id_marca.label}}</label>
+                        {% render_field form.id_marca class="form-control" %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>{{form.nome.label}}</label>
+                        {% render_field form.nome class="form-control" %}
+                    </div>
                 </div>
-            </div>
-            {{ formset.patrimonio }}
-            <span class="span-is-link no ml-2 remove-row"
-                hx-delete="{url 'ecommerce:order_item_delete' order_item_form.id.value %}"
-                hx-confirm="Deseja mesmo deletar o item {{order_item_form.id.value}}?"
-                hx-target="#item-{{ forloop.counter0 }}" hx-swap="outerHTML">
-                <i class="fa fa-times fa-lg"></i>
-            </span>
+                <div class="form-row">
+                    <div class="form-group col-md">
+                        <label>{{form.valor_Compra.label}}</label>
+                        {% render_field form.valor_Compra class="form-control" %}
+                    </div>
+                    <div class="form-group col-md">
+                        <label>{{form.valor_Locacao.label}}</label>
+                        {% render_field form.valor_Locacao class="form-control" %}
+                    </div>
+                    <div class="form-group col-md">
+                        <label>{{form.estoque_minimo.label}}</label>
+                        {% render_field form.estoque_minimo class="form-control" %}
+                    </div>
+                    <div class="form-group col-md">
+                        <label for="inputAddress">Quantidade Estoque</label>
+                        {% render_field form.qnt_estoque class="form-control" %}
+                    </div>
+                    <div class="form-group col-md">
+                        <label for="inputAddress">Quantidade Total</label>
+                        {% render_field form.estoque_total class="form-control" %}
+                    </div>
+                </div>
 
-            <span class="span-is-link no ml-2" onclick="removeRow()">
-                <i class="fa fa-times fa-lg"></i>
-            </span>
+                <div class="form-group">
+                    <div class="form-check">
+                        {% render_field form.checkbox class='form-check-input' type='checkbox' %}
+                        <label class="form-check-label" for="gridCheck">
+                            Desativar
+                        </label>
+                    </div>
+                </div>
 
-    </div>
+                {{ formset.management_form }}
+                <div class="row">
+                    <div class="col-sm-12">
+    
+                        <legend class="legend">Patrimonio</legend>
+                        <div class="row">
+                            <button class='btn btn-primary mb-2' id="add-item" type="button">Adicionar</button>
+                        </div>
+                        <div id="order" class="form-inline">
+                            {% for item_order_form in formset %}
+                            <div class="form-group">
+                                <div id="item-{{ forloop.counter0 }}">
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+    
+                    </div>
+                </div>    
 
-    <div class="row">
-        <button class='btn btn-primary' type="submit">Salvar</button>
-        <a class="btn btn-danger" href='#'>Cancelar</a>
+                <div class="row  mt-4">
+                    <button class='btn btn-primary' type="submit">Salvar</button>
+                    <button type="button" class="btn btn-danger">Cancelar</button>
+                </div>
+
+            </form>
+        </div>
     </div>
-    </div>
-    </form>
-    </div>
-    </div>
-</main>
+    </main>
 {% endblock produto_form %}
 
 
-{% block js %}
+{% block scripts %}
+<!-- TESTE -->
+<script type="text/html" id="item-order">
+    <div id="item-__prefix__">
+        {{ formset.empty_form.patrimonio}}
+    </div>
+</script>
+<script>
 
-  <script>
-    // Necessário por causa do delete
-    document.body.addEventListener('htmx:configRequest', (event) => {
-      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    $(document).ready(function(){
+        $("#add-item").click(function(ev) {
+            ev.preventDefault();
+            var count = $('#order').children().length;
+            var tmplMarkup = $("#item-order").html();
+            var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
+            $("div#order").append(compiledTmpl);
+
+            // update form count
+            $('#id_patrimonios-TOTAL_FORMS').attr('value', count + 1);
+
+            // some animate to scroll to view our new form
+            $('html, body').animate({
+                scrollTop: $("#add-item").position().top-200
+            }, 800);
+        });
     });
-  </script>
-
-{% endblock js %}
+</script>
+{% endblock scripts %}

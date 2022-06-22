@@ -10,6 +10,10 @@
                 <th>Valor locação</th>
             </tr>
         </thead>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form}}
+        </form>
         {% include "orcamento_list.html" %}
 
     </table>

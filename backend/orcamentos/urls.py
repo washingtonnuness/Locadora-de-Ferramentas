@@ -6,11 +6,10 @@ app_name = 'orcamentos'
 
 
 urlpatterns = [
-    path('<int:client_pk>/', v.add_orcamento, name='add_orcamento'),
-    path('listar/', v.listOrcamentos, name='listOrcamentos'),
+    #path('', v.index, name='index'),
+    path('create/<int:client_pk>', v.orcamento_create, name='orcamento_create'),
+    path('list/', v.orcamento_list, name='orcamento_list'),
     path('search/', v.search, name='search'),
-    path('add-row/<int:product_pk>', v.add_produtc_row, name='add_row_hx'),
-    path('clear/', v.clear, name='clear'),
-
+    path('add-row/<int:product_pk>', v.add_row_hx, name='add_row_hx'),
     # path('order-item/<int:pk>/delete/', v.order_item_delete, name='order_item_delete'),
 ]
