@@ -39,16 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #### Apps Terceiros ####
+    # Apps Terceiros
     'django_htmx',
     'django_extensions',
     'widget_tweaks',
     'django_seed',
-    #### Apps Meus ####
+    # Apps Meus
     'backend.core',
-    'backend.clientes',
-    'backend.produtos',
-    'backend.orcamentos',
+    'backend.cliente',
+    'backend.produto',
+    'backend.orcamento',
 
 ]
 

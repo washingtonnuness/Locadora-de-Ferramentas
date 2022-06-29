@@ -1,7 +1,7 @@
 from django.db import models
 
-from backend.clientes.models import Clientes
-from backend.produtos.models import Patrimonio, Produtos
+from backend.cliente.models import Clientes
+from backend.produto.models import Patrimonio, Produtos
 
 
 class Orcamentos(models.Model):

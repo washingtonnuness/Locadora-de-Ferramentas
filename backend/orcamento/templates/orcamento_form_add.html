@@ -14,7 +14,7 @@
       <div class="container col-md-10">
         <legend>Buscar Produtos</legend>
         <input class="form-control" type="search" name="search" placeholder="Digite o produto..."
-          hx-get="{% url 'orcamentos:search' %}" hx-trigger="keyup changed delay:250ms, search"
+          hx-get="{% url 'orcamento:search' %}" hx-trigger="keyup changed delay:250ms, search"
           hx-target="#search-results">
         <span id="search-results"></span>
       </div>

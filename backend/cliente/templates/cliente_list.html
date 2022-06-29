@@ -7,7 +7,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-right">
-          <a href="{% url 'clientes:client_create' %}">
+          <a href="{ url 'cliente:cliente_create' %}">
             <button type="button" class="btn btn-success">Cadastrar Cliente</button>
           </a>
         </div>
@@ -40,7 +40,7 @@
               {% if field.checkbox == False%}
                 <td> Ativo</td>
                 <td>
-                  <a href="{% url 'orcamentos:orcamento_create' field.pk %}"  <button type="button" class="btn btn-outline-success">Gerar Orçamento</button> </a>
+                  <a href="{% url 'orcamento:orcamento_create' field.pk %}"  <button type="button" class="btn btn-outline-success">Gerar Orçamento</button> </a>
                 </td>
               {% else %}
                 <td> Bloqueado </td>

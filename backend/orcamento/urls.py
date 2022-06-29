@@ -1,8 +1,8 @@
 from django.urls import path
 
-from backend.orcamentos import views as v
+from backend.orcamento import views as v
 
-app_name = 'orcamentos'
+app_name = 'orcamento'
 
 
 urlpatterns = [

@@ -5,9 +5,9 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
-from backend.clientes.models import Clientes
-from backend.produtos.forms import *
-from backend.produtos.models import Patrimonio, Produtos
+from backend.cliente.models import Clientes
+from backend.produto.forms import *
+from backend.produto.models import Patrimonio, Produtos
 
 from .forms import OrcamentosForm, OrcamentosFormSet
 from .models import Orcamentos, OrcamentosItens
