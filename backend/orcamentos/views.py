@@ -19,7 +19,7 @@ def orcamento_list(request):
     template_name = 'orcamento_list.html'
     objects = Orcamentos.objects.all()
     context = {
-        'object_list': '',
+        'object_list': objects,
         'title': 'Listar Orçamentos',
     }
     return render(request, template_name, context)

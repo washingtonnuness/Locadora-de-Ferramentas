@@ -1,10 +1,25 @@
-<tbody id="table-list">
+{% extends "base.html" %}
 
-  <tr>
-    <td>{{object_list_product.codigo}}</td>
-    <td>{{object_list_product.nome}}</td>
-    <td>{{object_list_product.id_grupo}}</td>
-    <td>{{object_list_product.nome}}</td>
-    <td>{{object_list_product.valor_Locacao}}</td>
-  </tr>
-</tbody>
+{% block content %}
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <h2>{{title}}</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+            <tr>
+              <td>{{ object }}</td>
+              <td>{{ object.cliente }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+{% endblock content %}
