@@ -9,7 +9,7 @@ from .models import Produtos
 
 
 # Create your views here.
-def product_list(request):
+def produto_list(request):
     template_name = 'produto/produto_list.html'
     objects = Produtos.objects.all()
     context = {
@@ -19,7 +19,7 @@ def product_list(request):
     return render(request, template_name, context)
 
 
-def product_create(request):
+def produto_create(request):
     template_name = 'produto/produto_form.html'
     if request.method == "GET":
         form = ProdutoForm()
@@ -39,7 +39,7 @@ def product_create(request):
             ocorrencia = form.save()
             form_telefone.instance = ocorrencia
             form_telefone.save()
-            return redirect('produto:product_list')
+            return redirect('produto:produto_list')
         else:
             context = {
                 'form': form,
@@ -48,7 +48,7 @@ def product_create(request):
             return render(request, template_name, context)
 
 
-def add_row_product_items_hx(request):
+def add_row_produto_items_hx(request):
     template_name = 'produto/hx/row_produtc_items_hx.html'
     form = ProdutoPatrimonioForm()
     context = {'order_item_form': form}

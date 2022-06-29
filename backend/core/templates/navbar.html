@@ -17,12 +17,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'core:index' %}">
+            <a class="nav-link" href="{% url 'orcamento:orcamento_list' %}">
               <span data-feather="file"></span>
               Orçamentos
             </a>
             <ul class="submenu collapse">
-              <li><a class="nav-link" href="{ url 'orcamento:orcamento_create' %}"><span data-feather="plus-circle"></span>Gerar Novo</a></li>
+              <!-- <li><a class="nav-link" href="{ url 'orcamento:orcamento_create' %}"><span data-feather="plus-circle"></span>Gerar Novo</a></li> -->
               <li><a class="nav-link" href="{% url 'orcamento:orcamento_list' %}"><span data-feather="list"></span>Listar</a></li>
             </ul>
           </li>
@@ -32,11 +32,10 @@
               Produtos
             </a>
             <ul class="submenu collapse">
-              <li><a href="{% url 'produto:product_create' %}" class="nav-link"><span data-feather="plus-circle"></span>Cadastrar</a></li>
-              <li><a href="{% url 'core:index' %}" class="nav-link"><span data-feather="link"></span>Patrimonios</a></li>
-              <li><a href="{% url 'core:index' %}" class="nav-link"><span data-feather="package"></span>Kit</a></li>
-              <li><a class="nav-link" href="{% url 'produto:product_list' %}" ><span data-feather="list"></span>Listar</a></li>
-
+              <!-- <li><a href="{% url 'produto:produto_create' %}" class="nav-link"><span data-feather="plus-circle"></span>Cadastrar</a></li> -->
+              <li><a class="nav-link" href="{% url 'produto:produto_list' %}" ><span data-feather="list"></span>Listar</a></li>
+              <!-- <li><a href="{% url 'core:index' %}" class="nav-link"><span data-feather="link"></span>Patrimonios</a></li>
+              <li><a href="{% url 'core:index' %}" class="nav-link"><span data-feather="package"></span>Kit</a></li> -->
             </ul>
           </li>
           <li class="nav-item has-submenu">
@@ -45,8 +44,8 @@
               Clientes
             </a>
             <ul class="submenu collapse">
-              <li><a href="{% url 'cliente:cliente_list' %}" class="nav-link"><span data-feather="plus-circle"></span>Listar</a></li>
-              <li><a href="" class="nav-link"><span data-feather="layers"></span>Contratos</a></li>
+              <li><a class="nav-link" href="{% url 'cliente:cliente_list' %}" ><span data-feather="list"></span>Listar</a></li>
+              <!-- <li><a href="" class="nav-link"><span data-feather="layers"></span>Contratos</a></li> -->
             </ul>
           </li>
 
@@ -63,3 +62,5 @@
         </ul>
       </div>
     </nav>
+  </div>
+</div>

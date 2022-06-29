@@ -1,5 +1,3 @@
-from itertools import product
-
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
@@ -71,9 +69,9 @@ def clear(request):
     return HttpResponse("")
 
 
-def add_row_hx(request, product_pk):
+def add_row_hx(request, pk):
     template = 'orcamento_list.html'
-    produto = Produtos.objects.get(pk=product_pk)
+    produto = Produtos.objects.get(pk=pk)
     form = OrcamentosFormSet()
 
     context = {
@@ -83,9 +81,9 @@ def add_row_hx(request, product_pk):
     return render(request, template, context)
 
 
-def order_update(request, product_pk):
+def order_update(request, pk):
     template_name = 'orcamento_form_add.html'
-    obj = Produtos.objects.get(pk=product_pk)
+    obj = Produtos.objects.get(pk=pk)
     form = OrcamentosForm(isinstance=obj)
     context = {'form': form}
     return render(request, template_name, context)
