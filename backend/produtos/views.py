@@ -14,7 +14,6 @@ def product_list(request):
     objects = Produtos.objects.all()
     context = {
         'object_list': objects,
-        'title': 'Listar Produtos',
     }
 
     return render(request, template_name, context)
