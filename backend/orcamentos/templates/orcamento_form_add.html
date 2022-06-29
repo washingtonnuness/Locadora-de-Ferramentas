@@ -3,22 +3,22 @@
 {% block orcamentos_form %}
 
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-1">
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-1">
     <h5>{{title}}</h5>
     <div class="container-fluid ">
-        <div class="py-5 text-center mt-1">
-            <img class="d-block mx-auto mb-1" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt=""
-                width="72" height="72">
-            <h6>{{object_list.id}} - {{object_list.nome}}</h6>
-        </div>
-        <div class="container col-md-10">
-            <legend>Buscar Produtos</legend>
-            <input class="form-control" type="search" name="search" placeholder="Digite o produto..."
-                hx-get="{% url 'orcamentos:search' %}" hx-trigger="keyup changed delay:250ms, search"
-                hx-target="#search-results">
-            <span id="search-results"></span>
-        </div>
-        {% include 'orcamento_table.html'%}
+      <div class="py-5 text-center mt-1">
+        <img class="d-block mx-auto mb-1" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt=""
+          width="72" height="72">
+        <h6>{{object_list.id}} - {{object_list.nome}}</h6>
+      </div>
+      <div class="container col-md-10">
+        <legend>Buscar Produtos</legend>
+        <input class="form-control" type="search" name="search" placeholder="Digite o produto..."
+          hx-get="{% url 'orcamentos:search' %}" hx-trigger="keyup changed delay:250ms, search"
+          hx-target="#search-results">
+        <span id="search-results"></span>
+      </div>
+      {% include 'orcamento_table.html'%}
     </div>
-</main>
+  </main>
 {% endblock orcamentos_form %}

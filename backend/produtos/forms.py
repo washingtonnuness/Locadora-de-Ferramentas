@@ -61,6 +61,7 @@ class ProdutoPatrimonioForm(forms.ModelForm):
         self.fields['id'].label = ''
         self.fields['id'].widget = forms.HiddenInput()
 
+
 ProdutoItemsFormset = inlineformset_factory(
     Produtos,
     Patrimonio,

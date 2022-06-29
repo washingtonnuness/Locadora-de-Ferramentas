@@ -3,89 +3,89 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="/https://getbootstrap.com/docs/4.1/assets/img/favicons/favicon.ico">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/https://getbootstrap.com/docs/4.1/assets/img/favicons/favicon.ico">
 
-        <title>Dashboard Template for Bootstrap</title>
+    <title>Dashboard Template for Bootstrap</title>
 
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
 
-        <!-- Bootstrap core CSS -->
-        <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="https://getbootstrap.com/docs/4.1/examples/dashboard/dashboard.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/4.1/examples/dashboard/dashboard.css" rel="stylesheet">
 
-        <!-- CSS sideBar -->
-        <link rel="stylesheet" href={% static 'css/sidebar.css' %}>
+    <!-- CSS sideBar -->
+    <link rel="stylesheet" href={% static 'css/sidebar.css' %}>
 
-        <!-- HTMX -->
-        <script src="https://unpkg.com/htmx.org@1.6.0"></script>
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.6.0"></script>
 
-    </head>
+  </head>
 
-    <body>
-        {% include "navbar.html" %}
+  <body>
+    {% include "navbar.html" %}
 
-        {% block main %}
+    {% block main %}
 
-        {% block orcamentos_form %}
-        {% endblock orcamentos_form %}
+      {% block orcamentos_form %}
+      {% endblock orcamentos_form %}
 
-        {% block orcamentos_list %}
-        {% endblock orcamentos_list %}
+      {% block orcamentos_list %}
+      {% endblock orcamentos_list %}
 
-        {% block produto_form %}
-        {% endblock produto_form %}
+      {% block produto_form %}
+      {% endblock produto_form %}
 
-        {% block produto_list %}
-        {% endblock produto_list %}
+      {% block produto_list %}
+      {% endblock produto_list %}
 
-        {% block cliente_form %}
-        {% endblock cliente_form %}
+      {% block cliente_form %}
+      {% endblock cliente_form %}
 
-        {% block cliente_list %}
-        {% endblock cliente_list %}
-        
-        {% endblock main %}
+      {% block cliente_list %}
+      {% endblock cliente_list %}
 
-        <!-- Bootstrap core JavaScript
+    {% endblock main %}
+
+    <!-- Bootstrap core JavaScript
     ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://getbootstrap.com/docs/4.1/dist/js/bootstrap.min.js"></script>
 
-        <!-- Icons -->
-        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-        <script>
-            feather.replace()
-        </script>
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
 
-        <!-- Graphs -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
+    <!-- Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
-        <script>
-            document.body.addEventListener('htmx:configRequest', (event) => {
-                event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
-            })
-        </script>
+    <script>
+      document.body.addEventListener('htmx:configRequest', (event) => {
+        event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+      })
+    </script>
 
-        <!-- /.container -->
-        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'jquery.formset.js' %}"></script>
-        <script src="{% static 'js/sidebar.js' %}"></script>
+    <!-- /.container -->
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'jquery.formset.js' %}"></script>
+    <script src="{% static 'js/sidebar.js' %}"></script>
 
-        {% block scripts %}
-        {% endblock scripts %}
+    {% block scripts %}
+    {% endblock scripts %}
 
-    </body>
+  </body>
 
 </html>

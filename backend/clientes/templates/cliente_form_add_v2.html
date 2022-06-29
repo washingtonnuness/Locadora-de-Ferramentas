@@ -4,81 +4,81 @@
 
 {% block cliente_form %}
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
-        <h2>{{title}}</h2>
-        <div class="container-fluid">
-            <form method="POST">
-                {% csrf_token %}
-                <div class="form-row">
-                    <div class="form-group col-md-2">
-                        <label for="inputState">Registro</label>
-                        {% render_field form.tipo %}
-                    </div>
-                    <div class="form-group col-sm-3" id="inputRegistro">
-                        <label>Registro</label>
-                        {% render_field form.cnpj class="form-control"  %}
-                    </div>
-                    <div class="form-group col-sm-3" id="inputRg">
-                        <label>RG</label>
-                        {% render_field form.rg class="form-control"  %}
-                    </div>
-                    <div class="form-group col-sm" id="inputCpf">
-                        <label>CPF</label>
-                        {% render_field form.cpf class="form-control"  %}
-                    </div>
-                    <div class="form-group col-md-12" id="inputClient">
-                        <label>Nome Completo</label>
-                        {% render_field form.nome  %}
-                    </div>
-                    <div class="form-group col-md-12" id="inputRazao">
-                        <label>Razão Social</label>
-                        {% render_field form.razaoSocial  %}
-                    </div>
-                    <div class="form-group col-md-12" id="inputNameFant">
-                        <label>Nome Fantasia</label>
-                        {% render_field form.nomeFantasia  %}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputAddress">Endereço:</label>
-                    {% render_field form.endereco  %}
-                </div>
-                <div class="form-group">
-                    <label for="inputAddress2">Endereço Entrega</label>
-                    {% render_field form.endereco2  %}
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCity">Cidade</label>
-                        {% render_field form.cidade %}
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputState">Estado</label>
-                        {% render_field form.estado %}
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputZip">Cep</label>
-                        {% render_field form.cep %}
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="form-check">
-                        {% render_field form.checkbox class="form-check-input"  %}
-                        <label class="form-check-label" for="gridCheck">
-                            Desativar
-                        </label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <button class='btn btn-primary' type="submit">Salvar</button>
-                </div>
-
-            </form>
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
+    <h2>{{title}}</h2>
+    <div class="container-fluid">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-row">
+          <div class="form-group col-md-2">
+            <label for="inputState">Registro</label>
+            {% render_field form.tipo %}
+          </div>
+          <div class="form-group col-sm-3" id="inputRegistro">
+            <label>Registro</label>
+            {% render_field form.cnpj class="form-control"  %}
+          </div>
+          <div class="form-group col-sm-3" id="inputRg">
+            <label>RG</label>
+            {% render_field form.rg class="form-control"  %}
+          </div>
+          <div class="form-group col-sm" id="inputCpf">
+            <label>CPF</label>
+            {% render_field form.cpf class="form-control"  %}
+          </div>
+          <div class="form-group col-md-12" id="inputClient">
+            <label>Nome Completo</label>
+            {% render_field form.nome  %}
+          </div>
+          <div class="form-group col-md-12" id="inputRazao">
+            <label>Razão Social</label>
+            {% render_field form.razaoSocial  %}
+          </div>
+          <div class="form-group col-md-12" id="inputNameFant">
+            <label>Nome Fantasia</label>
+            {% render_field form.nomeFantasia  %}
+          </div>
         </div>
-    </main>
+        <div class="form-group">
+          <label for="inputAddress">Endereço:</label>
+          {% render_field form.endereco  %}
+        </div>
+        <div class="form-group">
+          <label for="inputAddress2">Endereço Entrega</label>
+          {% render_field form.endereco2  %}
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputCity">Cidade</label>
+            {% render_field form.cidade %}
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Estado</label>
+            {% render_field form.estado %}
+          </div>
+          <div class="form-group col-md-2">
+            <label for="inputZip">Cep</label>
+            {% render_field form.cep %}
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-check">
+            {% render_field form.checkbox class="form-check-input"  %}
+            <label class="form-check-label" for="gridCheck">
+              Desativar
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class='btn btn-primary' type="submit">Salvar</button>
+        </div>
+
+      </form>
+    </div>
+  </main>
 {% endblock cliente_form %}
 
 {% block scripts %}
-    <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
 {% endblock scripts %}

@@ -1,10 +1,9 @@
-from django.forms import ModelForm
-
-from django.forms import inlineformset_factory
+from django.forms import ModelForm, inlineformset_factory
 
 from backend.produtos.models import Produtos
 
 from .models import Orcamentos, OrcamentosItens
+
 
 class OrcamentosForm(ModelForm):
     required_css_class = 'required'
@@ -21,6 +20,7 @@ class OrcamentosForm(ModelForm):
             field = self.fields.get(field_name)
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
+
 
 class OrcamentosItensForm(ModelForm):
     required_css_class = 'required'

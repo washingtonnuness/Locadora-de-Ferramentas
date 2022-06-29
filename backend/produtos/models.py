@@ -44,42 +44,42 @@ class Produtos(models.Model):
         "Qnt em Estoque",
         null=True,
         blank=True
-        )
+    )
 
     estoque_total = models.PositiveIntegerField(
         "Estoque total",
         null=True,
         blank=True
-        )
-        
+    )
+
     created_user = models.CharField(
         max_length=100,
         null=True,
         blank=True
-        )
+    )
     delete_user = models.CharField(
         max_length=100,
         null=True,
         blank=True
-        )
+    )
 
     checkbox = models.BooleanField(
         "Excluir",
         max_length=100
-        )
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True
-        )
+    )
 
     updated_at = models.DateTimeField(
         auto_now=True
-        )
+    )
 
     delete_at = models.DateTimeField(
         auto_now=False,
         null=True
-        )
+    )
 
     class Meta:
         verbose_name = "Produto"
@@ -98,14 +98,14 @@ class Patrimonio(models.Model):
         null=True,
         blank=True,
         related_name='patrimonios',
-        )
+    )
 
     patrimonio = models.CharField(
         max_length=100,
         null=True,
         blank=True,
         unique=True,
-        )
+    )
 
     class Meta:
         ordering = ('patrimonio',)
@@ -118,42 +118,42 @@ class Marca(models.Model):
     marca = models.CharField(
         max_length=100,
         unique=True
-        )
+    )
 
     modelo = models.CharField(
         max_length=200,
         unique=False
-        )
+    )
 
     created_user = models.CharField(
         max_length=100,
         null=True,
         blank=True
-        )
+    )
 
     delete_user = models.CharField(
         max_length=100,
         null=True,
         blank=True
-        )
+    )
 
     checkbox = models.BooleanField(
         "Excluir",
         max_length=100
-        )
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True
-        )
+    )
 
     updated_at = models.DateTimeField(
         auto_now=True
-        )
+    )
 
     delete_at = models.DateTimeField(
         auto_now=False,
         null=True
-        )
+    )
 
     class Meta:
         ordering = ('marca', 'modelo')
@@ -167,37 +167,37 @@ class Categoria(models.Model):
     categoria = models.CharField(
         max_length=100,
         unique=True
-        )
-        
+    )
+
     created_user = models.CharField(
         max_length=100,
         null=True,
         blank=True
-        )
+    )
 
     delete_user = models.CharField(
         max_length=100,
         null=True,
         blank=True
-        )
+    )
 
     checkbox = models.BooleanField(
         "Excluir",
         max_length=100
-        )
+    )
 
     created_at = models.DateTimeField(
         auto_now_add=True
-        )
+    )
 
     updated_at = models.DateTimeField(
         auto_now=True
-        )
+    )
 
     delete_at = models.DateTimeField(
         auto_now=False,
         null=True
-        )
+    )
 
     class Meta:
         ordering = ('categoria',)

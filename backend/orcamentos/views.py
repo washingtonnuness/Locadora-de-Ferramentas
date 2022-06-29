@@ -3,7 +3,8 @@ from itertools import product
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
+
 from backend.clientes.models import Clientes
 from backend.produtos.forms import *
 from backend.produtos.models import Patrimonio, Produtos
@@ -70,6 +71,7 @@ def search(request):
 def clear(request):
     return HttpResponse("")
 
+
 def add_row_hx(request, product_pk):
     template = 'orcamento_list.html'
     produto = Produtos.objects.get(pk=product_pk)
@@ -77,10 +79,11 @@ def add_row_hx(request, product_pk):
     #product = get_object_or_404(Produtos, pk=product_pk)
 
     context = {
-            'form': form,
-            'object_list_product': produto,
-        }
+        'form': form,
+        'object_list_product': produto,
+    }
     return render(request, template, context)
+
 
 def order_update(request, product_pk):
     template_name = 'orcamento_form_add.html'
@@ -89,12 +92,13 @@ def order_update(request, product_pk):
     context = {'form': form}
     return render(request, template_name, context)
 
+
 def post_update(request, id):
     product = get_object_or_404(Produtos, pk=id)
     form = Produtos(instance=product)
     if(request.method == 'POST'):
         form = Produtos(request.POST, instance=product)
-        
+
         if(form.is_valid()):
             post = form.save(commit=False)
             post.title = form.cleaned_data['title']
@@ -105,6 +109,6 @@ def post_update(request, id):
             post.save()
             return redirect('blog:post_list')
         else:
-            return render(request, 'blog/edit_post.html', {'form': form, 'post' : post})
+            return render(request, 'blog/edit_post.html', {'form': form, 'post': post})
     elif(request.method == 'GET'):
-        return render(request, 'blog/edit_post.html', {'form': form, 'post' : post})
+        return render(request, 'blog/edit_post.html', {'form': form, 'post': post})

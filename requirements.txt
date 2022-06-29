@@ -1,7 +1,9 @@
-Django==4.0.4
+autopep8==1.6.0
 django-extensions==3.1.5
-python-decouple==3.6
 django-htmx==1.9.0
+django-seed==0.3.1
 django-widget-tweaks==1.4.12
+Django==4.0.4
 djhtml==1.5.0
 isort==5.10.1
+python-decouple==3.6

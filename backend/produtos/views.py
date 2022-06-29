@@ -1,9 +1,10 @@
 from django.forms import inlineformset_factory
 from django.shortcuts import redirect, render
-#Importando do Forms os formulários criados.
-from .forms import ProdutoForm, ProdutoPatrimonioForm, ProdutoItemsFormset
-#Realizando o importo no models da classes para Produtos e patrimonio
-from .models import Produtos, Patrimonio
+
+# Importando do Forms os formulários criados.
+from .forms import ProdutoForm, ProdutoItemsFormset, ProdutoPatrimonioForm
+# Realizando o importo no models da classes para Produtos e patrimonio
+from .models import Patrimonio, Produtos
 
 
 # Create your views here.
@@ -16,6 +17,7 @@ def product_list(request):
     }
 
     return render(request, template_name, context)
+
 
 def product_create(request):
     template_name = 'produto/produto_form.html'

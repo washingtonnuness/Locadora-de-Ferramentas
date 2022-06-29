@@ -13,26 +13,31 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='produtos',
             name='estoque_minimo',
-            field=models.PositiveIntegerField(blank=True, null=True, verbose_name='Estoque minimo'),
+            field=models.PositiveIntegerField(
+                blank=True, null=True, verbose_name='Estoque minimo'),
         ),
         migrations.AlterField(
             model_name='produtos',
             name='estoque_total',
-            field=models.PositiveIntegerField(blank=True, null=True, verbose_name='Estoque total'),
+            field=models.PositiveIntegerField(
+                blank=True, null=True, verbose_name='Estoque total'),
         ),
         migrations.AlterField(
             model_name='produtos',
             name='qnt_estoque',
-            field=models.PositiveIntegerField(blank=True, null=True, verbose_name='Qnt em Estoque'),
+            field=models.PositiveIntegerField(
+                blank=True, null=True, verbose_name='Qnt em Estoque'),
         ),
         migrations.AlterField(
             model_name='produtos',
             name='valor_Compra',
-            field=models.DecimalField(blank=True, decimal_places=2, max_digits=6, null=True, verbose_name='Preço compra'),
+            field=models.DecimalField(
+                blank=True, decimal_places=2, max_digits=6, null=True, verbose_name='Preço compra'),
         ),
         migrations.AlterField(
             model_name='produtos',
             name='valor_Locacao',
-            field=models.DecimalField(blank=True, decimal_places=2, max_digits=6, null=True, verbose_name='Preço Diária'),
+            field=models.DecimalField(
+                blank=True, decimal_places=2, max_digits=6, null=True, verbose_name='Preço Diária'),
         ),
     ]
