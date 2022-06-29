@@ -9,7 +9,6 @@ def index(request):
     objects = Clientes.objects.all()
     context = {
         'object_list': objects,
-        'title': 'Cadastro de Clientes',
     }
     return render(request, template_name, context)
 
@@ -19,7 +18,6 @@ def client_list(request):
     objects = Clientes.objects.all()
     context = {
         'object_list': objects,
-        'title': 'Clientes',
     }
     return render(request, template_name, context)
 
