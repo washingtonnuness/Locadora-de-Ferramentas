@@ -12,10 +12,3 @@ class OrcamentosItensInline(admin.TabularInline):
 class OrcamentosAdmin(admin.ModelAdmin):
     inlines = (OrcamentosItensInline,)
     list_display = ('__str__',)
-    # readonly_fields = ('slug',)
-    # list_display_links = ('name',)
-    # search_fields = ('name',)
-    # list_filter = ('type',)
-    # date_hierarchy = 'created'
-    # ordering = ('-created',)
-    # actions = ('',)

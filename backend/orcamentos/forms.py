@@ -1,7 +1,5 @@
 from django.forms import ModelForm, inlineformset_factory
 
-from backend.produtos.models import Produtos
-
 from .models import Orcamentos, OrcamentosItens
 
 

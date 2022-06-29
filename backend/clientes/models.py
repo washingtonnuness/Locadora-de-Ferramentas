@@ -1,7 +1,4 @@
 from django.db import models
-from django.urls import reverse_lazy
-
-# Create your models here.
 
 
 class Clientes(models.Model):
@@ -101,9 +98,9 @@ class Clientes(models.Model):
         return self.tipo in {self.CNPJ, self.CPF}
 
     class Meta:
-        verbose_name = "Cliente"
-        verbose_name_plural = "Cliente"+'s'
         ordering = ('tipo', 'nome', 'nomeFantasia')
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"
 
     def __str__(self):
         return f'{self.nome}'

@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse_lazy
 
 from backend.clientes.models import Clientes
 from backend.produtos.models import Patrimonio, Produtos

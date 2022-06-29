@@ -1,10 +1,11 @@
 from django.forms import inlineformset_factory
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
 # Importando do Forms os formulários criados.
 from .forms import ProdutoForm, ProdutoItemsFormset, ProdutoPatrimonioForm
 # Realizando o importo no models da classes para Produtos e patrimonio
-from .models import Patrimonio, Produtos
+from .models import Produtos
 
 
 # Create your views here.

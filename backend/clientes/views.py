@@ -3,8 +3,6 @@ from django.shortcuts import redirect, render
 from .forms import ClientesForm
 from .models import Clientes
 
-# Create your views here.
-
 
 def index(request):
     template_name = 'cliente_details.html'

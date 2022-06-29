@@ -20,7 +20,6 @@ def orcamento_list(request):
     objects = Orcamentos.objects.all()
     context = {
         'object_list': objects,
-        'title': 'Listar Orçamentos',
     }
     return render(request, template_name, context)
 
@@ -76,7 +75,6 @@ def add_row_hx(request, product_pk):
     template = 'orcamento_list.html'
     produto = Produtos.objects.get(pk=product_pk)
     form = OrcamentosFormSet()
-    #product = get_object_or_404(Produtos, pk=product_pk)
 
     context = {
         'form': form,
