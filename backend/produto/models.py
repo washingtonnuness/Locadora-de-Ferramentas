@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Produtos(models.Model):
+class Produto(models.Model):
     codigo = models.IntegerField("Código")
     id_grupo = models.ForeignKey(
         'Categoria',
@@ -93,7 +93,7 @@ class Produtos(models.Model):
 class Patrimonio(models.Model):
 
     produtoPatrimonio = models.ForeignKey(
-        Produtos,
+        Produto,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,

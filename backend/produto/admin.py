@@ -1,12 +1,12 @@
 from django.contrib import admin
 
-from .models import Categoria, Marca, Patrimonio, Produtos
+from .models import Categoria, Marca, Patrimonio, Produto
 
 
-@admin.register(Produtos)
-class ProdutosAdmin(admin.ModelAdmin):
+@admin.register(Produto)
+class ProdutoAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at", "updated_at", "delete_at")
-    list_display = [f.name for f in Produtos._meta.fields]
+    list_display = [f.name for f in Produto._meta.fields]
     search_fields = ('nome',)
 
 
@@ -24,5 +24,4 @@ class CategoriaAdmin(admin.ModelAdmin):
 
 @admin.register(Patrimonio)
 class PatrimonioAdmin(admin.ModelAdmin):
-    #readonly_fields = ("created_at", "updated_at", "delete_at")
     list_display = [f.name for f in Patrimonio._meta.fields]

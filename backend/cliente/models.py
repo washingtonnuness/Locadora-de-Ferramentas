@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Clientes(models.Model):
+class Cliente(models.Model):
     CNPJ = 'CNPJ'
     CPF = 'CPF'
 

@@ -1,13 +1,13 @@
 from django.db import models
 
-from backend.cliente.models import Clientes
-from backend.produto.models import Patrimonio, Produtos
+from backend.cliente.models import Cliente
+from backend.produto.models import Patrimonio, Produto
 
 
-class Orcamentos(models.Model):
+class Orcamento(models.Model):
 
     cliente = models.ForeignKey(
-        Clientes,
+        Cliente,
         on_delete=models.SET_NULL,
         related_name='cliente_orcamentos',
         null=True,
@@ -53,14 +53,14 @@ class Orcamentos(models.Model):
         return f'{self.pk}'
 
 
-class OrcamentosItens(models.Model):
+class OrcamentoItens(models.Model):
     orcamento = models.ForeignKey(
-        Orcamentos,
+        Orcamento,
         on_delete=models.CASCADE,
         related_name='orcamentos',
     )
     produto = models.ForeignKey(
-        Produtos,
+        Produto,
         on_delete=models.SET_NULL,
         related_name='produto_orcamentos',
         null=True,

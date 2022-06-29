@@ -1,12 +1,12 @@
 from django.shortcuts import redirect, render
 
-from .forms import ClientesForm
-from .models import Clientes
+from .forms import ClienteForm
+from .models import Cliente
 
 
 def cliente_list(request):
     template_name = 'cliente_list.html'
-    objects = Clientes.objects.all()
+    objects = Cliente.objects.all()
     context = {
         'object_list': objects,
     }

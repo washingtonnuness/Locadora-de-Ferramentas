@@ -3,19 +3,24 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
-from backend.cliente.models import Clientes
-from backend.produto.forms import *
-from backend.produto.models import Patrimonio, Produtos
+from backend.cliente.models import Cliente
+from backend.produto.forms import (
+    CategoriatForm,
+    MarcaForm,
+    ProdutoForm,
+    ProdutoPatrimonioForm
+)
+from backend.produto.models import Produto
 
-from .forms import OrcamentosForm, OrcamentosFormSet
-from .models import Orcamentos, OrcamentosItens
+from .forms import OrcamentoForm, OrcamentoFormSet
+from .models import Orcamento, OrcamentoItens
 
 # Create your views here.
 
 
 def orcamento_list(request):
     template_name = 'orcamento_list.html'
-    objects = Orcamentos.objects.all()
+    objects = Orcamento.objects.all()
     context = {
         'object_list': objects,
     }
@@ -28,11 +33,11 @@ def orcamento_create(request, client_pk):
 
     if name == None:
         name = ''
-        cliente = Clientes.objects.filter(nome__icontains=name)
-        cliente = Clientes.objects.get(pk=client_pk)
+        cliente = Cliente.objects.filter(nome__icontains=name)
+        cliente = Cliente.objects.get(pk=client_pk)
     else:
         # add film
-        cliente = Clientes.objects.filter(nome__icontains=name)
+        cliente = Cliente.objects.filter(nome__icontains=name)
         context = {
             'object_list': cliente,
             'title': 'Cadastro Orçamentos',
@@ -51,7 +56,7 @@ def orcamento_create(request, client_pk):
 
 def add_orcamento(request, client_pk):
     template_name = 'orcamento_form_add.html'
-    cliente = Clientes.objects.get(pk=client_pk)
+    cliente = Cliente.objects.get(pk=client_pk)
     context = {'object_list': cliente}
     return render(request, template_name, context)
 
@@ -59,7 +64,7 @@ def add_orcamento(request, client_pk):
 def search(request):
     template = 'orcamento_results_search.html'
     search_text = request.GET.get('search')
-    results = Produtos.objects.filter(nome__icontains=search_text)
+    results = Produto.objects.filter(nome__icontains=search_text)
 
     context = {"results": results}
     return render(request, template, context)
@@ -71,8 +76,8 @@ def clear(request):
 
 def add_row_hx(request, pk):
     template = 'orcamento_list.html'
-    produto = Produtos.objects.get(pk=pk)
-    form = OrcamentosFormSet()
+    produto = Produto.objects.get(pk=pk)
+    form = OrcamentoFormSet()
 
     context = {
         'form': form,
@@ -83,17 +88,17 @@ def add_row_hx(request, pk):
 
 def order_update(request, pk):
     template_name = 'orcamento_form_add.html'
-    obj = Produtos.objects.get(pk=pk)
-    form = OrcamentosForm(isinstance=obj)
+    obj = Produto.objects.get(pk=pk)
+    form = OrcamentoForm(isinstance=obj)
     context = {'form': form}
     return render(request, template_name, context)
 
 
 def post_update(request, id):
-    product = get_object_or_404(Produtos, pk=id)
-    form = Produtos(instance=product)
+    product = get_object_or_404(Produto, pk=id)
+    form = Produto(instance=product)
     if(request.method == 'POST'):
-        form = Produtos(request.POST, instance=product)
+        form = Produto(request.POST, instance=product)
 
         if(form.is_valid()):
             post = form.save(commit=False)

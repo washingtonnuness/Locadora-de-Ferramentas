@@ -1,8 +1,7 @@
 {% extends 'base.html'%}
 {% load static %}
-{% block orcamentos_form %}
 
-
+{% block content %}
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-1">
     <h5>{{title}}</h5>
     <div class="container-fluid ">
@@ -21,4 +20,4 @@
       {% include 'orcamento_table.html'%}
     </div>
   </main>
-{% endblock orcamentos_form %}
+{% endblock content %}

@@ -2,16 +2,13 @@ from django.forms import inlineformset_factory
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-# Importando do Forms os formulários criados.
 from .forms import ProdutoForm, ProdutoItemsFormset, ProdutoPatrimonioForm
-# Realizando o importo no models da classes para Produtos e patrimonio
-from .models import Produtos
+from .models import Produto
 
 
-# Create your views here.
 def produto_list(request):
     template_name = 'produto/produto_list.html'
-    objects = Produtos.objects.all()
+    objects = Produto.objects.all()
     context = {
         'object_list': objects,
     }
@@ -56,6 +53,6 @@ def add_row_produto_items_hx(request):
 
 
 def order_item_delete(request, pk):
-    order_item = Produtos.objects.get(pk=pk)
+    order_item = Produto.objects.get(pk=pk)
     order_item.delete()
     return HttpResponse('')

@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from .models import Clientes
+from .models import Cliente
 
 
-class ClientesAdmin(admin.ModelAdmin):
+class ClienteAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at", "updated_at", "delete_at")
-    list_display = [f.name for f in Clientes._meta.fields]
+    list_display = [f.name for f in Cliente._meta.fields]
 
 
-admin.site.register(Clientes, ClientesAdmin)
+admin.site.register(Cliente, ClienteAdmin)

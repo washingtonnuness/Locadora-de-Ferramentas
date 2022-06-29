@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from .models import Orcamentos, OrcamentosItens
+from .models import Orcamento, OrcamentoItens
 
 
-class OrcamentosItensInline(admin.TabularInline):
-    model = OrcamentosItens
+class OrcamentoItensInline(admin.TabularInline):
+    model = OrcamentoItens
     extra = 0
 
 
-@admin.register(Orcamentos)
-class OrcamentosAdmin(admin.ModelAdmin):
-    inlines = (OrcamentosItensInline,)
-    list_display = ('__str__',)
+@admin.register(Orcamento)
+class OrcamentoAdmin(admin.ModelAdmin):
+    inlines = (OrcamentoItensInline,)
+    list_display = ('__str__', 'cliente')

@@ -1,14 +1,14 @@
 from django import forms
 from django.forms import inlineformset_factory
 
-from .models import Categoria, Marca, Patrimonio, Produtos
+from .models import Categoria, Marca, Patrimonio, Produto
 
 
 class ProdutoForm(forms.ModelForm):
     required_css_class = 'required'
 
     class Meta:
-        model = Produtos
+        model = Produto
         fields = '__all__'
         exclude = ('created_user', 'delete_user',
                    'create_at', 'update_at', 'delete_at')
@@ -63,7 +63,7 @@ class ProdutoPatrimonioForm(forms.ModelForm):
 
 
 ProdutoItemsFormset = inlineformset_factory(
-    Produtos,
+    Produto,
     Patrimonio,
     form=ProdutoPatrimonioForm,
     extra=0,
