@@ -19,8 +19,8 @@ def produto_create(request):
     template_name = 'produto/produto_form.html'
     produto_instance = Produto()
 
-    form = ProdutoForm(request.POST or None, instance=produto_instance, prefix='main')
-    formset = ProdutoItemsFormset(request.POST or None, instance=produto_instance, prefix='items')
+    form = ProdutoForm(request.POST or None, instance=produto_instance, prefix='main')  # noqa E501
+    formset = ProdutoItemsFormset(request.POST or None, instance=produto_instance, prefix='items')  # noqa E501
 
     if request.method == 'POST':
         if form.is_valid() and formset.is_valid():
