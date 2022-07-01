@@ -4,12 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from backend.cliente.models import Cliente
-from backend.produto.forms import (
-    CategoriatForm,
-    MarcaForm,
-    ProdutoForm,
-    ProdutoPatrimonioForm
-)
+from backend.produto.forms import CategoriatForm, MarcaForm, ProdutoForm
 from backend.produto.models import Produto
 
 from .forms import OrcamentoForm, OrcamentoFormSet

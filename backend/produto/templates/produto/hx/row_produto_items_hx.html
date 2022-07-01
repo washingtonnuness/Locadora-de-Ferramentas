@@ -1,0 +1,15 @@
+{% load widget_tweaks %}
+
+<div class="row">
+  <div id="item-{{ forloop.counter0 }}" class="form-group">
+    {% render_field produto_item_form.produto data-field='produto' %}
+
+    <label>{{ produto_item_form.patrimonio.label }}</label>
+    {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
+  </div>
+
+  <span class="span-is-link no ml-2" onclick="removeRow()">
+    <i class="fa fa-times fa-lg"></i>
+  </span>
+</div>
+

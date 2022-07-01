@@ -25,7 +25,6 @@ class CategoriatForm(forms.ModelForm):
             field = self.fields.get(field_name)
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
-        #self.fields['checkbox'].widget.attrs['class'] = 'form-check-input'
 
 
 class MarcaForm(forms.ModelForm):
@@ -42,21 +41,21 @@ class MarcaForm(forms.ModelForm):
         self.fields['checkbox'].widget.attrs['class'] = 'form-check-input'
 
 
-class ProdutoPatrimonioForm(forms.ModelForm):
+class PatrimonioForm(forms.ModelForm):
     id = forms.IntegerField()
 
     class Meta:
         model = Patrimonio
-        fields = ('id', 'patrimonio', )
+        fields = ('produto', 'id', 'patrimonio')
 
     def __init__(self, *args, **kwargs):
-        super(ProdutoPatrimonioForm, self).__init__(*args, **kwargs)
+        super(PatrimonioForm, self).__init__(*args, **kwargs)
 
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 
-        # self.fields['checkbox'].label = ''
-        # self.fields['checkbox'].widget = forms.HiddenInput()
+        self.fields['produto'].label = ''
+        self.fields['produto'].widget = forms.HiddenInput()
 
         self.fields['id'].label = ''
         self.fields['id'].widget = forms.HiddenInput()
@@ -65,7 +64,7 @@ class ProdutoPatrimonioForm(forms.ModelForm):
 ProdutoItemsFormset = inlineformset_factory(
     Produto,
     Patrimonio,
-    form=ProdutoPatrimonioForm,
+    form=PatrimonioForm,
     extra=0,
     can_delete=False,
     min_num=1,

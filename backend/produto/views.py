@@ -1,8 +1,7 @@
-from django.forms import inlineformset_factory
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from .forms import ProdutoForm, ProdutoItemsFormset, ProdutoPatrimonioForm
+from .forms import PatrimonioForm, ProdutoForm, ProdutoItemsFormset
 from .models import Produto
 
 
@@ -18,37 +17,25 @@ def produto_list(request):
 
 def produto_create(request):
     template_name = 'produto/produto_form.html'
-    if request.method == "GET":
-        form = ProdutoForm()
-        form_telefone_factory = ProdutoItemsFormset
-        form_telefone = form_telefone_factory()
-        context = {
-            'form': form,
-            'formset': ProdutoItemsFormset,
-        }
-        return render(request, template_name, context)
+    produto_instance = Produto()
 
-    elif request.method == "POST":
-        form = ProdutoForm(request.POST)
-        form_telefone_factory = ProdutoItemsFormset
-        form_telefone = form_telefone_factory(request.POST)
-        if form.is_valid() and form_telefone.is_valid():
-            ocorrencia = form.save()
-            form_telefone.instance = ocorrencia
-            form_telefone.save()
+    form = ProdutoForm(request.POST or None, instance=produto_instance, prefix='main')  # noqa E501
+    formset = ProdutoItemsFormset(request.POST or None, instance=produto_instance, prefix='items')  # noqa E501
+
+    if request.method == 'POST':
+        if form.is_valid() and formset.is_valid():
+            form.save()
+            formset.save()
             return redirect('produto:produto_list')
-        else:
-            context = {
-                'form': form,
-                'formset': form_telefone,
-            }
-            return render(request, template_name, context)
+
+    context = {'form': form, 'formset': formset}
+    return render(request, template_name, context)
 
 
 def add_row_produto_items_hx(request):
-    template_name = 'produto/hx/row_produtc_items_hx.html'
-    form = ProdutoPatrimonioForm()
-    context = {'order_item_form': form}
+    template_name = 'produto/hx/row_produto_items_hx.html'
+    form = PatrimonioForm()
+    context = {'produto_item_form': form}
     return render(request, template_name, context)
 
 
