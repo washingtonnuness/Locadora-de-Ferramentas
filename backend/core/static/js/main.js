@@ -5,7 +5,6 @@
 
 document.querySelector('#addItem').addEventListener('click', function() {
   setTimeout(() => {
-    console.log('aqui')
     reorderItems()
   }, 500)
 })
@@ -30,7 +29,7 @@ function reorderItems() {
     .forEach((item, i) => item.setAttribute('name', 'items-' + (i + 1) + '-id'))
 
   let totalItems = $('#produto').children().length
-  document.querySelector('#items-TOTAL_FORMS').value = totalItems
+  document.querySelector('#id_items-TOTAL_FORMS').value = totalItems
 
   // htmx.org/api/#process
   htmx.process(document.querySelector("#produto"))

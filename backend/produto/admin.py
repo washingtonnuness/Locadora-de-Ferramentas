@@ -14,6 +14,7 @@ class ProdutoAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at", "updated_at", "delete_at")
     list_display = [f.name for f in Produto._meta.fields if f.name != 'id']
     search_fields = ('nome',)
+    ordering = ('pk',)
 
 
 @admin.register(Marca)
