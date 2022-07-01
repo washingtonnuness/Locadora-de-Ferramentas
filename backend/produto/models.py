@@ -91,8 +91,7 @@ class Produto(models.Model):
 
 
 class Patrimonio(models.Model):
-
-    produtoPatrimonio = models.ForeignKey(
+    produto = models.ForeignKey(
         Produto,
         on_delete=models.SET_NULL,
         null=True,
@@ -101,6 +100,7 @@ class Patrimonio(models.Model):
     )
 
     patrimonio = models.CharField(
+        'patrimônio',
         max_length=100,
         null=True,
         blank=True,

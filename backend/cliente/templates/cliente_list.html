@@ -4,13 +4,11 @@
 {% block content %}
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
     <h2>Clientes</h2>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-right">
-          <a href="{ url 'cliente:cliente_create' %}">
-            <button type="button" class="btn btn-success">Cadastrar Cliente</button>
-          </a>
-        </div>
+    <div class="row">
+      <div class="col-md-12 pb-2">
+        <a href="{ url 'cliente:cliente_create' %}">
+          <button type="button" class="btn btn-success">Cadastrar Cliente</button>
+        </a>
       </div>
     </div>
     <div class="table-responsive">
@@ -44,6 +42,7 @@
                 </td>
               {% else %}
                 <td> Bloqueado </td>
+                <td></td>
               {% endif %}
             </tr>
           {% endfor %}

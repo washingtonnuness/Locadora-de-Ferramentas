@@ -5,6 +5,7 @@
 
 document.querySelector('#addItem').addEventListener('click', function() {
   setTimeout(() => {
+    console.log('aqui')
     reorderItems()
   }, 500)
 })
@@ -14,23 +15,25 @@ function reorderItems() {
     .forEach((item, i) => {
       item.setAttribute('id', 'item-' + i)
 
-      if (!item.querySelector('[data-field="order"]')) {
+      if (!item.querySelector('[data-field="produto"]')) {
         return
       }
 
-      item.querySelector('[data-field="order"]').setAttribute('name', 'items-' + i + '-order')
-      item.querySelector('[data-field="order"]').setAttribute('id', 'items-' + i + '-order')
+      item.querySelector('[data-field="produto"]').setAttribute('name', 'items-' + i + '-produto')
+      item.querySelector('[data-field="produto"]').setAttribute('id', 'id_items-' + i + '-produto')
 
+      item.querySelector('[data-field="patrimonio"]').setAttribute('name', 'items-' + i + '-patrimonio')
+      item.querySelector('[data-field="patrimonio"]').setAttribute('id', 'id_items-' + i + '-patrimonio')
   })
 
   Array.from(document.querySelectorAll("#id_id"))
     .forEach((item, i) => item.setAttribute('name', 'items-' + (i + 1) + '-id'))
 
-  let totalItems = $('#order').children().length
-  document.querySelector('#id_items-TOTAL_FORMS').value = totalItems
+  let totalItems = $('#produto').children().length
+  document.querySelector('#items-TOTAL_FORMS').value = totalItems
 
   // htmx.org/api/#process
-  htmx.process(document.querySelector("#order"))
+  htmx.process(document.querySelector("#produto"))
 }
 
 function removeRow() {

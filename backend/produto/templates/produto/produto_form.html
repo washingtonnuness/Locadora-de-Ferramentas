@@ -1,10 +1,10 @@
 {% extends 'base.html'%}
 {% load static %}
 {% load widget_tweaks %}
-{% block produto_form %}
 
+{% block content %}
   <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
-    <h2>{{title}}</h2>
+    <h2>Cadastrar Produto</h2>
     <div class="container-fluid">
       <form method="POST">
         {% csrf_token %}
@@ -59,21 +59,38 @@
         </div>
 
         {{ formset.management_form }}
+
         <div class="row">
           <div class="col-sm-12">
 
             <legend class="legend">Patrimonio</legend>
             <div class="row">
-              <button class='btn btn-primary mb-2' id="add-item" type="button">Adicionar</button>
+              <button
+                id="addItem"
+                class='btn btn-primary mb-2'
+                hx-get="{% url 'produto:add_row_produto_items_hx' %}"
+                hx-target="#produto"
+                hx-swap="beforeend"
+              >Adicionar</button>
             </div>
-            <div id="order" class="form-inline">
-              {% for item_order_form in formset %}
-                <div class="form-group">
+
+            <div id="produto">
+
+              {% for produto_item_form in formset %}
+                <div class="row">
+                  <div class="form-group">
                   <div id="item-{{ forloop.counter0 }}">
+                    {% render_field produto_item_form.produto data-field='produto' %}
+                    {{ produto_item_form.id }}
+
+                    {{ produto_item_form.patrimonio.label }}
+                    {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
                   </div>
                 </div>
+                </div>
               {% endfor %}
-            </div>
+
+          </div>
 
           </div>
         </div>
@@ -87,34 +104,16 @@
     </div>
   </div>
   </main>
-{% endblock produto_form %}
+{% endblock content %}
 
+{% block script %}
+  <script src="{% static 'js/main.js' %}"></script>
 
-{% block scripts %}
-  <!-- TESTE -->
-  <script type="text/html" id="item-order">
-    <div id="item-__prefix__">
-    {{ formset.empty_form.patrimonio}}
-    </div>
-  </script>
   <script>
-
-    $(document).ready(function(){
-      $("#add-item").click(function(ev) {
-        ev.preventDefault();
-        var count = $('#order').children().length;
-        var tmplMarkup = $("#item-order").html();
-        var compiledTmpl = tmplMarkup.replace(/__prefix__/g, count);
-        $("div#order").append(compiledTmpl);
-
-        // update form count
-        $('#id_patrimonios-TOTAL_FORMS').attr('value', count + 1);
-
-        // some animate to scroll to view our new form
-        $('html, body').animate({
-          scrollTop: $("#add-item").position().top-200
-        }, 800);
-      });
+    // Necessário por causa do delete
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
     });
   </script>
-{% endblock scripts %}
+
+{% endblock script %}
