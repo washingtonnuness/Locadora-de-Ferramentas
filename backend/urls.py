@@ -8,5 +8,6 @@ urlpatterns = [
     path('', include('backend.core.urls')),
     path('produtos/', include('backend.produto.urls'), name='produto'),
     path('clientes/', include('backend.cliente.urls'), name='cliente'),
+    path('fornecedores/', include('backend.fornecedores.urls'), name='fornecedores'),
     path('orcamentos/', include('backend.orcamento.urls'), name='orcamento'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

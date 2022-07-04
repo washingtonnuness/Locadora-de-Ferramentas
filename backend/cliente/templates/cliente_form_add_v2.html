@@ -1,12 +1,8 @@
-{% extends 'base.html'%}
+{% extends 'site2/index.html'%}
 {% load static %}
 {% load widget_tweaks %}
 
 {% block cliente_form %}
-
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
-    <h2>{{title}}</h2>
-    <div class="container-fluid">
       <form method="POST">
         {% csrf_token %}
         <div class="form-row">
@@ -75,8 +71,6 @@
         </div>
 
       </form>
-    </div>
-  </main>
 {% endblock cliente_form %}
 
 {% block js %}

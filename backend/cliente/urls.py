@@ -7,5 +7,5 @@ app_name = 'cliente'
 
 urlpatterns = [
     path('listar/', v.cliente_list, name='cliente_list'),
-    # path('create/', v.cliente_create, name='cliente_create'),
+    path('create/', v.cliente_create, name='cliente_create'),
 ]
