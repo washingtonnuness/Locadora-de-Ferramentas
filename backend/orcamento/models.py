@@ -1,11 +1,11 @@
 from django.db import models
 
 from backend.cliente.models import Cliente
-from backend.core.models import TimeStampedModel
+from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
 from backend.produto.models import Patrimonio, Produto
 
 
-class Orcamento(TimeStampedModel):
+class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
     cliente = models.ForeignKey(
         Cliente,
         on_delete=models.SET_NULL,
@@ -13,15 +13,14 @@ class Orcamento(TimeStampedModel):
         null=True,
         blank=True
     )
-    checkbox = models.BooleanField("Excluir", max_length=10)
 
     class Meta:
-        ordering = ('created',)
-        verbose_name = "Orçamento"
-        verbose_name_plural = "Orçamentos"
+        ordering = ('-pk',)
+        verbose_name = 'Orçamento'
+        verbose_name_plural = 'Orçamentos'
 
     def __str__(self):
-        return f'{self.pk}'
+        return f'{str(self.pk).zfill(3)}'
 
 
 class OrcamentoItens(models.Model):
@@ -54,8 +53,8 @@ class OrcamentoItens(models.Model):
 
     class Meta:
         ordering = ('-pk',)
-        verbose_name = "Orçamento Item"
-        verbose_name_plural = "Orçamento Itens"
+        verbose_name = 'Orçamento Item'
+        verbose_name_plural = 'Orçamento Itens'
 
     def __str__(self):
         return f'{self.pk}'

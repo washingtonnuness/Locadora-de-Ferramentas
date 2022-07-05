@@ -4,6 +4,7 @@ from django.core.management.base import BaseCommand
 from faker import Faker
 
 from backend.cliente.models import Cliente
+from backend.orcamento.models import Orcamento, OrcamentoItens
 from backend.produto.models import Categoria, Marca, Patrimonio, Produto
 from backend.utils import utils as u
 
@@ -91,6 +92,29 @@ def corrige_patrimonios():
         patrimonio.save()
 
 
+def corrige_orcamentos():
+    orcamentos = Orcamento.objects.all()
+    for orcamento in orcamentos:
+        clientes = Cliente.objects.all()
+        cliente = choices(clientes)[0]
+        orcamento.cliente = cliente
+        orcamento.save()
+
+
+def corrige_orcamento_itens():
+    orcamento_itens = OrcamentoItens.objects.all()
+    for orcamento in orcamento_itens:
+        produtos = Produto.objects.all()
+        produto = choices(produtos)[0]
+        orcamento.produto = produto
+
+        patrimonios = Patrimonio.objects.all()
+        patrimonio = choices(patrimonios)[0]
+        orcamento.patrimonio = patrimonio
+
+        orcamento.save()
+
+
 class Command(BaseCommand):
     help = 'Corrige dados.'
 
@@ -100,3 +124,5 @@ class Command(BaseCommand):
         corrige_marcas()
         corrige_produtos()
         corrige_patrimonios()
+        corrige_orcamentos()
+        corrige_orcamento_itens()
