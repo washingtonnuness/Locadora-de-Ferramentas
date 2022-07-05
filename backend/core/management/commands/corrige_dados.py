@@ -73,14 +73,6 @@ def corrige_marcas():
         marca.save()
 
 
-def corrige_produtos():
-    produtos = Produto.objects.all()
-    for produto in produtos:
-        titulo = produto.titulo.split()[:3]
-        produto.titulo = ' '.join(titulo)
-        produto.save()
-
-
 def corrige_patrimonios():
     patrimonios = Patrimonio.objects.all()
     for patrimonio in patrimonios:
@@ -90,6 +82,14 @@ def corrige_patrimonios():
         produto = choices(produtos)[0]
         patrimonio.produto = produto
         patrimonio.save()
+
+
+def corrige_produtos():
+    produtos = Produto.objects.all()
+    for produto in produtos:
+        titulo = produto.titulo.split()[:3]
+        produto.titulo = ' '.join(titulo)
+        produto.save()
 
 
 def corrige_orcamentos():
@@ -122,7 +122,7 @@ class Command(BaseCommand):
         corrige_clientes()
         corrige_categorias()
         corrige_marcas()
-        corrige_produtos()
         corrige_patrimonios()
+        corrige_produtos()
         corrige_orcamentos()
         corrige_orcamento_itens()
