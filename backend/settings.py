@@ -30,7 +30,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default=[], cast=Csv())
 
-CSRF_TRUSTED_ORIGINS = ['https://locatools.com.br/']
+CSRF_TRUSTED_ORIGINS = ['https://locatools.com.br',
+                        'https://locatools.herokuapp.com/']
 
 
 # Application definition
