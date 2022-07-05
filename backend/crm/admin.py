@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Cliente
+from .models import Cliente, Fornecedor
 
 ADDRESS_FIELDS = (
     'address',
@@ -13,6 +13,7 @@ ADDRESS_FIELDS = (
 )
 
 
+@admin.register(Cliente)
 class ClienteAdmin(admin.ModelAdmin):
     list_display = (
         'nome',
@@ -31,4 +32,21 @@ class ClienteAdmin(admin.ModelAdmin):
     list_filter = ('tipo', 'uf', 'active')
 
 
-admin.site.register(Cliente, ClienteAdmin)
+@admin.register(Fornecedor)
+class FornecedorAdmin(admin.ModelAdmin):
+    list_display = (
+        'nome',
+        'razao_social',
+        'nome_fantasia',
+        'tipo',
+        'rg',
+        'cpf',
+        'cnpj',
+        'endereco_entrega',
+        'condicao_pagamento',
+        'deleted_by',
+    ) + ADDRESS_FIELDS
+    readonly_fields = ('deleted',)
+    list_display_links = ('nome',)
+    search_fields = ('nome', 'razao_social', 'nome_fantasia')
+    list_filter = ('tipo', 'uf', 'active')

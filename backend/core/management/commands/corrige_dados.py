@@ -3,7 +3,7 @@ from random import choices
 from django.core.management.base import BaseCommand
 from faker import Faker
 
-from backend.cliente.models import Cliente
+from backend.crm.models import Cliente, Fornecedor
 from backend.orcamento.models import Orcamento, OrcamentoItens
 from backend.produto.models import Categoria, Marca, Patrimonio, Produto
 from backend.utils import utils as u
@@ -45,14 +45,44 @@ def corrige_clientes():
 
         _address = address()
         cliente.address = _address['street']
+        cliente.district = fake_ptbr.bairro()
 
-        cliente.endereco2 = address()['street']
+        cliente.endereco_entrega = address()['street']
 
         cliente.city = _address['city']
         cliente.uf = _address['uf']
         cliente.cep = _address['cep']
 
         cliente.save()
+
+
+def corrige_fornecedores():
+    fornecedores = Fornecedor.objects.all()
+    for fornecedor in fornecedores:
+        fornecedor.tipo = choices(('CPF', 'CNPJ'))[0]
+        if fornecedor.tipo == 'CPF':
+            fornecedor.cpf = u.gen_cpf()
+            fornecedor.cnpj = None
+        else:
+            fornecedor.cpf = None
+            fornecedor.cnpj = u.gen_cnpj()
+
+        fornecedor.rg = u.gen_rg()
+        fornecedor.nome = fake.name()
+        fornecedor.razao_social = fake.name()
+        fornecedor.nome_fantasia = fake.name()
+
+        _address = address()
+        fornecedor.address = _address['street']
+        fornecedor.district = fake_ptbr.bairro()
+
+        fornecedor.endereco_entrega = address()['street']
+
+        fornecedor.city = _address['city']
+        fornecedor.uf = _address['uf']
+        fornecedor.cep = _address['cep']
+
+        fornecedor.save()
 
 
 def corrige_categorias():
@@ -120,6 +150,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         corrige_clientes()
+        corrige_fornecedores()
         corrige_categorias()
         corrige_marcas()
         corrige_patrimonios()
