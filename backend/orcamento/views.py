@@ -1,5 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
@@ -13,6 +13,7 @@ from .models import Orcamento, OrcamentoItens
 
 # Create your views here.
 
+
 @login_required
 def orcamento_list(request):
     template_name = 'orcamento_list.html'
@@ -21,6 +22,7 @@ def orcamento_list(request):
         'object_list': objects,
     }
     return render(request, template_name, context)
+
 
 @login_required
 def orcamento_create(request, client_pk):
@@ -49,12 +51,14 @@ def orcamento_create(request, client_pk):
     }
     return render(request, template_name, context)
 
+
 @login_required
 def add_orcamento(request, client_pk):
     template_name = 'orcamento_form_add.html'
     cliente = Cliente.objects.get(pk=client_pk)
     context = {'object_list': cliente}
     return render(request, template_name, context)
+
 
 @login_required
 def search(request):
@@ -65,9 +69,11 @@ def search(request):
     context = {"results": results}
     return render(request, template, context)
 
+
 @login_required
 def clear(request):
     return HttpResponse("")
+
 
 @login_required
 def add_row_hx(request, pk):
@@ -81,6 +87,7 @@ def add_row_hx(request, pk):
     }
     return render(request, template, context)
 
+
 @login_required
 def order_update(request, pk):
     template_name = 'orcamento_form_add.html'
@@ -88,6 +95,7 @@ def order_update(request, pk):
     form = OrcamentoForm(isinstance=obj)
     context = {'form': form}
     return render(request, template_name, context)
+
 
 @login_required
 def post_update(request, id):

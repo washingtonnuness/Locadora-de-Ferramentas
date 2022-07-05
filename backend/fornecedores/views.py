@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from .forms import FornecedoresForm
 from .models import Fornecedores
 
+
 @login_required
 def fornecedores_list(request):
     template_name = 'fornecedores_list.html'
@@ -19,7 +20,6 @@ def fornecedores_create(request):
     template_name = 'fornecedores_form_add_v2.html'
     fornecedorForm = FornecedoresForm
     context = {
-        'form' : fornecedorForm,
+        'form': fornecedorForm,
     }
     return render(request, template_name, context)
-

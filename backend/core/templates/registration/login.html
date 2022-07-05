@@ -4,8 +4,8 @@
 
 
 {% block login_page %}
-<!-- Begin page -->
-<section class="vh-100">
+  <!-- Begin page -->
+  <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
@@ -17,12 +17,12 @@
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
-                    <div class="d-flex align-items-center mb-3 pb-1">
-                        <i class="fas fa-cubes fa-2x me-3" ></i>
-                        <span class="h1 fw-bold mb-0">LocaTools</span>
-                      </div>
-    
-  
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <i class="fas fa-cubes fa-2x me-3" ></i>
+                    <span class="h1 fw-bold mb-0">LocaTools</span>
+                  </div>
+
+
                   <!-- <form method="post">
                     {% csrf_token %}
   
@@ -54,7 +54,7 @@
                     <a href="#!" class="small text-muted">Privacy policy</a>
                   </form> -->
                   <form method="post">
-                    {% csrf_token %} 
+                    {% csrf_token %}
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Email</label>
                       <input type="email" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -71,12 +71,12 @@
                     <button type="submit" class="btn btn-primary">Entrar</button>
 
                   </form>
-  
+
                 </div>
               </div>
               {% for k, v in form.errors.items %}
-              {{ v }}
-            {% endfor %}
+                {{ v }}
+              {% endfor %}
             </div>
           </div>
         </div>

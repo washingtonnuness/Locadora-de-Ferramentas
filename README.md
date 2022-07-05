@@ -29,6 +29,10 @@ pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
 python manage.py createsuperuser --username="admin" --email=""
+python manage.py seed cliente --number=10
+python manage.py seed fornecedor --number=10
+python manage.py seed orcamento --number=10
+python manage.py corrige_dados
 ```
 
 

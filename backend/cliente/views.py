@@ -4,6 +4,7 @@ from django.shortcuts import redirect, render
 from .forms import ClienteForm
 from .models import Cliente
 
+
 @login_required
 def cliente_list(request):
     template_name = 'cliente_list.html'
@@ -19,7 +20,6 @@ def cliente_create(request):
     template_name = 'cliente_form_add_v2.html'
     clienteForm = ClienteForm
     context = {
-        'form' : clienteForm,
+        'form': clienteForm,
     }
     return render(request, template_name, context)
-

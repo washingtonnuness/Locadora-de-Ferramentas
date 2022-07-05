@@ -1,7 +1,8 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 # Create your views here.
+
 
 @login_required
 def index(request):
@@ -9,7 +10,7 @@ def index(request):
     context = {
         'url_add': 'core:',
         'user': 'Washington Nunes',
-        'profile' : 'Administrador',
+        'profile': 'Administrador',
         'user_email': 'washington.nunes@servilub.com.br'
     }
     return render(request, template_name, context)
