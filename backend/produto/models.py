@@ -1,5 +1,5 @@
 from django.db import models
-from backend.core.models import Active, Address, TimeStampedModel, CreatedBy, DeletedBy
+from backend.core.models import Active, TimeStampedModel, CreatedBy, DeletedBy
 
 
 class Produto(TimeStampedModel, CreatedBy, DeletedBy, Active):
@@ -65,18 +65,6 @@ class Patrimonio(TimeStampedModel, CreatedBy, DeletedBy, Active):
 class Marca(TimeStampedModel, CreatedBy, DeletedBy, Active):
     nome = models.CharField(max_length=100, unique=True)
     modelo = models.CharField(max_length=200)
-
-    created_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-
-    delete_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
 
     class Meta:
         ordering = ('nome',)

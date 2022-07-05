@@ -9,36 +9,16 @@ class ProdutoForm(forms.ModelForm):
 
     class Meta:
         model = Produto
-        fields = '__all__'
-        exclude = ('created_user', 'delete_user',
-                   'create_at', 'update_at', 'delete_at')
-
-
-class CategoriatForm(forms.ModelForm):
-    class Meta:
-        model = Categoria
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(CategoriatForm, self).__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field = self.fields.get(field_name)
-            field.widget.attrs.update({'placeholder': field.label})
-            field.widget.attrs['class'] = 'form-control'
-
-
-class MarcaForm(forms.ModelForm):
-    class Meta:
-        model = Marca
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(MarcaForm, self).__init__(*args, **kwargs)
-        for field_name, field in self.fields.items():
-            field = self.fields.get(field_name)
-            field.widget.attrs.update({'placeholder': field.label})
-            field.widget.attrs['class'] = 'form-control'
-        self.fields['checkbox'].widget.attrs['class'] = 'form-check-input'
+        fields = (
+            'codigo',
+            'nome',
+            'categoria',
+            'marca',
+            'preco_compra',
+            'preco_diaria',
+            'estoque_minimo',
+            'estoque_atual',
+        )
 
 
 class PatrimonioForm(forms.ModelForm):
@@ -46,7 +26,7 @@ class PatrimonioForm(forms.ModelForm):
 
     class Meta:
         model = Patrimonio
-        fields = ('produto', 'id', 'patrimonio')
+        fields = ('produto', 'id', 'nome')
 
     def __init__(self, *args, **kwargs):
         super(PatrimonioForm, self).__init__(*args, **kwargs)
@@ -59,6 +39,38 @@ class PatrimonioForm(forms.ModelForm):
 
         self.fields['id'].label = ''
         self.fields['id'].widget = forms.HiddenInput()
+
+
+class CategoriatForm(forms.ModelForm):
+    class Meta:
+        model = Categoria
+        fields = ('nome', 'active')
+
+    def __init__(self, *args, **kwargs):
+        super(CategoriatForm, self).__init__(*args, **kwargs)
+
+        for field_name, field in self.fields.items():
+            field = self.fields.get(field_name)
+            field.widget.attrs.update({'placeholder': field.label})
+            field.widget.attrs['class'] = 'form-control'
+
+        self.fields['active'].widget.attrs['class'] = 'form-check-input'
+
+
+class MarcaForm(forms.ModelForm):
+    class Meta:
+        model = Marca
+        fields = ('nome', 'modelo', 'active')
+
+    def __init__(self, *args, **kwargs):
+        super(MarcaForm, self).__init__(*args, **kwargs)
+
+        for field_name, field in self.fields.items():
+            field = self.fields.get(field_name)
+            field.widget.attrs.update({'placeholder': field.label})
+            field.widget.attrs['class'] = 'form-control'
+
+        self.fields['active'].widget.attrs['class'] = 'form-check-input'
 
 
 ProdutoItemsFormset = inlineformset_factory(
