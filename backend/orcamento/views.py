@@ -1,8 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin as LRM
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from backend.crm.models import Cliente
 from backend.produto.forms import CategoriatForm, MarcaForm, ProdutoForm
@@ -11,17 +13,9 @@ from backend.produto.models import Produto
 from .forms import OrcamentoForm, OrcamentoFormSet
 from .models import Orcamento, OrcamentoItens
 
-# Create your views here.
 
-
-@login_required
-def orcamento_list(request):
-    template_name = 'orcamento_list.html'
-    objects = Orcamento.objects.all()
-    context = {
-        'object_list': objects,
-    }
-    return render(request, template_name, context)
+class OrcamentoListView(LRM, ListView):
+    model = Orcamento
 
 
 @login_required
