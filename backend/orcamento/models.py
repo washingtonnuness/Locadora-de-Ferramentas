@@ -1,11 +1,11 @@
 from django.db import models
 
 from backend.cliente.models import Cliente
+from backend.core.models import TimeStampedModel
 from backend.produto.models import Patrimonio, Produto
 
 
-class Orcamento(models.Model):
-
+class Orcamento(TimeStampedModel):
     cliente = models.ForeignKey(
         Cliente,
         on_delete=models.SET_NULL,
@@ -13,39 +13,10 @@ class Orcamento(models.Model):
         null=True,
         blank=True
     )
-
-    created_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-
-    delete_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-
-    checkbox = models.BooleanField(
-        "Excluir",
-        max_length=10
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True
-    )
-
-    delete_at = models.DateTimeField(
-        null=True,
-        blank=True
-    )
+    checkbox = models.BooleanField("Excluir", max_length=10)
 
     class Meta:
-        ordering = ('created_at',)
+        ordering = ('created',)
         verbose_name = "Orçamento"
         verbose_name_plural = "Orçamentos"
 
