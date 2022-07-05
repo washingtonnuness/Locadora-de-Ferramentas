@@ -11,7 +11,7 @@ class ProdutoForm(forms.ModelForm):
         model = Produto
         fields = (
             'codigo',
-            'nome',
+            'titulo',
             'categoria',
             'marca',
             'preco_compra',
@@ -26,7 +26,7 @@ class PatrimonioForm(forms.ModelForm):
 
     class Meta:
         model = Patrimonio
-        fields = ('produto', 'id', 'nome')
+        fields = ('produto', 'id', 'titulo')
 
     def __init__(self, *args, **kwargs):
         super(PatrimonioForm, self).__init__(*args, **kwargs)
@@ -44,7 +44,7 @@ class PatrimonioForm(forms.ModelForm):
 class CategoriatForm(forms.ModelForm):
     class Meta:
         model = Categoria
-        fields = ('nome', 'active')
+        fields = ('titulo', 'active')
 
     def __init__(self, *args, **kwargs):
         super(CategoriatForm, self).__init__(*args, **kwargs)
@@ -60,7 +60,7 @@ class CategoriatForm(forms.ModelForm):
 class MarcaForm(forms.ModelForm):
     class Meta:
         model = Marca
-        fields = ('nome', 'modelo', 'active')
+        fields = ('titulo', 'modelo', 'active')
 
     def __init__(self, *args, **kwargs):
         super(MarcaForm, self).__init__(*args, **kwargs)
