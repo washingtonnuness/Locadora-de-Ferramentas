@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from telnetlib import LOGOUT
 
 from decouple import config, Csv
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,17 +89,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('POSTGRES_DB', 'postgres'),
-        'USER': config('POSTGRES_USER', 'postgres'),
-        'PASSWORD': config('POSTGRES_PASSWORD'),
-        'HOST': config('DB_HOST', 'localhost'),
-        'PORT': '5432',
-    }
-}
 
+default_dburl = 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')
+DATABASES = {
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
