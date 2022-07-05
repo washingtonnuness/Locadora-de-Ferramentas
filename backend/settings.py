@@ -48,10 +48,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     # Apps Meus
     'backend.core',
-    'backend.cliente',
+    'backend.crm',
     'backend.produto',
     'backend.orcamento',
-    'backend.fornecedores',
 
 ]
 

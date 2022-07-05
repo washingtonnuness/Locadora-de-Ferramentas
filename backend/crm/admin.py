@@ -22,8 +22,8 @@ class ClienteAdmin(admin.ModelAdmin):
         'rg',
         'cpf',
         'cnpj',
-        'endereco2',
-        'delete_user',
+        'endereco_entrega',
+        'deleted_by',
     ) + ADDRESS_FIELDS
     readonly_fields = ('deleted',)
     list_display_links = ('nome',)

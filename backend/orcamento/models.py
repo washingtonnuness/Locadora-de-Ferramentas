@@ -1,7 +1,7 @@
 from django.db import models
 
-from backend.cliente.models import Cliente
 from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
+from backend.crm.models import Cliente
 from backend.produto.models import Patrimonio, Produto
 
 
