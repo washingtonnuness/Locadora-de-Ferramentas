@@ -65,7 +65,7 @@
           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="icon-sm" data-feather="grid"></i>
         </button>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+        <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
           <div class="p-3 border-bottom">
             <div class="row align-items-center">
               <div class="col">
@@ -87,7 +87,8 @@
                   <p class="font-size-12 text-muted mb-0">This is your moment. Let’s reinvent work.</p>
                 </div>
               </div>
-            </a><!-- end dropdown item -->
+            </a>
+
             <a class="notification-item text-reset" href="javascript:void(0);">
               <div class="d-flex border-bottom align-items-center">
                 <div class="flex-shrink-0">
@@ -98,7 +99,8 @@
                   <p class="font-size-12 text-muted mb-0">Showcase your work.</p>
                 </div>
               </div>
-            </a><!-- end dropdown item -->
+            </a>
+
             <a class="notification-item text-reset" href="javascript:void(0);">
               <div class="d-flex border-bottom align-items-center">
                 <div class="flex-shrink-0">
@@ -109,7 +111,8 @@
                   <p class="font-size-12 text-muted mb-0">Dribbble is the world’s leading community for creatives to share, grow, and get hired.</p>
                 </div>
               </div>
-            </a><!-- end dropdown item -->
+            </a>
+
             <a class="notification-item text-reset" href="javascript:void(0);">
               <div class="d-flex border-bottom align-items-center">
                 <div class="flex-shrink-0">
@@ -120,7 +123,8 @@
                   <p class="font-size-12 text-muted mb-0">Keep life organized and work moving—all in one place</p>
                 </div>
               </div>
-            </a><!-- end dropdown item -->
+            </a>
+
             <a class="notification-item text-reset" href="javascript:void(0);">
               <div class="d-flex border-bottom align-items-center">
                 <div class="flex-shrink-0">
@@ -131,7 +135,8 @@
                   <p class="font-size-12 text-muted mb-0">The best value for your digital marketing budget</p>
                 </div>
               </div>
-            </a><!-- end dropdown item -->
+            </a>
+
             <a class="notification-item text-reset" href="javascript:void(0);">
               <div class="d-flex align-items-center">
                 <div class="flex-shrink-0">
@@ -142,9 +147,10 @@
                   <p class="font-size-12 text-muted mb-0">Where the world builds software</p>
                 </div>
               </div>
-            </a><!-- end dropdown item -->
-          </div><!-- end simplebar -->
-        </div>
+            </a>
+
+          </div>
+        </div> -->
       </div>
 
       <div class="dropdown d-inline-block">
@@ -153,7 +159,7 @@
           <i class="icon-sm" data-feather="bell"></i>
           <span class="noti-dot bg-danger"></span>
         </button>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+        <!-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
           aria-labelledby="page-header-notifications-dropdown">
           <div class="p-3">
             <div class="row align-items-center">
@@ -241,7 +247,7 @@
               <i class="uil-arrow-circle-right me-1"></i> <span>View More..</span>
             </a>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="dropdown d-inline-block">
@@ -256,23 +262,23 @@
           <img class="rounded-circle header-profile-user" src={% static 'img/users/avatar-1.jpg' %}
             alt="Header Avatar">
           <span class="ms-2 d-none d-sm-block user-item-desc">
-            <span class="user-name">{{request.user}}</span>
-            <span class="user-sub-title">{{profile}}</span>
+            <span class="user-name">{{user.first_name}}</span>
+            <span class="user-sub-title">{{user.email}}</span>
           </span>
         </button>
         <div class="dropdown-menu dropdown-menu-end pt-0">
           <div class="p-3 bg-primary border-bottom">
-            <h6 class="mb-0 text-white">{{user}}</h6>
-            <p class="mb-0 font-size-11 text-white-50 fw-semibold">{{user_email}}</p>
+            <h6 class="mb-0 text-white">{{user.first_name}}</h6>
+            <p class="mb-0 font-size-11 text-white-50 fw-semibold">{{user.email}}</p>
           </div>
-          <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
+          <!-- <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Profile</span></a>
           <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Messages</span></a>
           <a class="dropdown-item" href="apps-kanban-board.html"><i class="mdi mdi-calendar-check-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Taskboard</span></a>
           <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Help</span></a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$6951.02</b></span></a>
           <a class="dropdown-item d-flex align-items-center" href="user-settings.html"><i class="mdi mdi-cog-outline text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Settings</span><span class="badge badge-soft-success ms-auto">New</span></a>
-          <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
+          <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a> -->
           {% if request.user.is_authenticated %}
             <a class="dropdown-item" href="{% url 'logout' %}"><i class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span class="align-middle">Sair</span></a>
           {% endif %}
