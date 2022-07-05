@@ -4,7 +4,7 @@ from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
 
 
 class Produto(TimeStampedModel, CreatedBy, DeletedBy, Active):
-    codigo = models.IntegerField('Código')
+    codigo = models.PositiveIntegerField('Código')
     titulo = models.CharField('titulo', max_length=100)
     categoria = models.ForeignKey(
         'Categoria',

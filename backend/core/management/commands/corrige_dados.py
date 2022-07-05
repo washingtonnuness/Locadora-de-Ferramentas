@@ -4,6 +4,7 @@ from django.core.management.base import BaseCommand
 from faker import Faker
 
 from backend.cliente.models import Cliente
+from backend.produto.models import Categoria, Marca, Patrimonio, Produto
 from backend.utils import utils as u
 
 fake = Faker()
@@ -53,8 +54,49 @@ def corrige_clientes():
         cliente.save()
 
 
+def corrige_categorias():
+    categorias = Categoria.objects.all()
+    for categoria in categorias:
+        _categoria = categoria.titulo.split()[:3]
+        categoria.titulo = ' '.join(_categoria)
+        categoria.save()
+
+
+def corrige_marcas():
+    marcas = Marca.objects.all()
+    for marca in marcas:
+        titulo = marca.titulo.split()[:3]
+        marca.titulo = ' '.join(titulo)
+        modelo = marca.modelo.split()[:3]
+        marca.modelo = ' '.join(modelo)
+        marca.save()
+
+
+def corrige_produtos():
+    produtos = Produto.objects.all()
+    for produto in produtos:
+        titulo = produto.titulo.split()[:3]
+        produto.titulo = ' '.join(titulo)
+        produto.save()
+
+
+def corrige_patrimonios():
+    patrimonios = Patrimonio.objects.all()
+    for patrimonio in patrimonios:
+        titulo = patrimonio.titulo.split()[:3]
+        patrimonio.titulo = ' '.join(titulo)
+        produtos = Produto.objects.all()
+        produto = choices(produtos)[0]
+        patrimonio.produto = produto
+        patrimonio.save()
+
+
 class Command(BaseCommand):
     help = 'Corrige dados.'
 
     def handle(self, *args, **options):
         corrige_clientes()
+        corrige_categorias()
+        corrige_marcas()
+        corrige_produtos()
+        corrige_patrimonios()
