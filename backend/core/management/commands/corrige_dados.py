@@ -36,17 +36,18 @@ def corrige_clientes():
             cliente.cpf = None
             cliente.cnpj = u.gen_cnpj()
 
+        cliente.rg = u.gen_rg()
         cliente.nome = fake.name()
         cliente.razao_social = fake.name()
         cliente.nome_fantasia = fake.name()
 
         _address = address()
-        cliente.endereco = _address['street']
+        cliente.address = _address['street']
 
         cliente.endereco2 = address()['street']
 
-        cliente.cidade = _address['city']
-        cliente.estado = _address['uf']
+        cliente.city = _address['city']
+        cliente.uf = _address['uf']
         cliente.cep = _address['cep']
 
         cliente.save()
