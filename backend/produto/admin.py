@@ -3,32 +3,46 @@ from django.contrib import admin
 from .models import Categoria, Marca, Patrimonio, Produto
 
 
+@admin.register(Categoria)
+class CategoriaAdmin(admin.ModelAdmin):
+    list_display = ('titulo',)
+    readonly_fields = ('created_by', 'deleted_by', 'deleted',)
+    search_fields = ('titulo',)
+
+
+@admin.register(Marca)
+class MarcaAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'modelo')
+    readonly_fields = ('created_by', 'deleted_by', 'deleted',)
+    search_fields = ('titulo', 'modelo')
+
+
+@admin.register(Patrimonio)
+class PatrimonioAdmin(admin.ModelAdmin):
+    list_display = ('titulo', 'produto')
+    readonly_fields = ('created_by', 'deleted_by', 'deleted',)
+    search_fields = ('titulo', 'produto_titulo')
+
+
 class PatrimonioInline(admin.TabularInline):
     model = Patrimonio
     extra = 0
+    readonly_fields = ('created_by', 'deleted_by', 'deleted',)
 
 
 @admin.register(Produto)
 class ProdutoAdmin(admin.ModelAdmin):
     inlines = (PatrimonioInline,)
-    readonly_fields = ("created_at", "updated_at", "delete_at")
-    list_display = [f.name for f in Produto._meta.fields if f.name != 'id']
-    search_fields = ('nome',)
-    ordering = ('pk',)
-
-
-@admin.register(Marca)
-class MarcaAdmin(admin.ModelAdmin):
-    readonly_fields = ("created_at", "updated_at", "delete_at")
-    list_display = [f.name for f in Marca._meta.fields if f.name != 'id']
-
-
-@admin.register(Categoria)
-class CategoriaAdmin(admin.ModelAdmin):
-    readonly_fields = ("created_at", "updated_at", "delete_at")
-    list_display = [f.name for f in Categoria._meta.fields if f.name != 'id']
-
-
-@admin.register(Patrimonio)
-class PatrimonioAdmin(admin.ModelAdmin):
-    list_display = [f.name for f in Patrimonio._meta.fields if f.name != 'id']
+    list_display = (
+        'codigo',
+        'titulo',
+        'categoria',
+        'marca',
+        'preco_compra',
+        'preco_diaria',
+        'estoque_minimo',
+        'estoque_atual',
+    )
+    list_display_links = ('titulo',)
+    readonly_fields = ('created_by', 'deleted_by', 'deleted',)
+    search_fields = ('titulo',)
