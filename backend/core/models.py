@@ -1,6 +1,6 @@
+from django.contrib.auth.models import User
 from django.db import models
 from localflavor.br.br_states import STATE_CHOICES
-from django.contrib.auth.models import User
 
 
 class TimeStampedModel(models.Model):
@@ -17,6 +17,7 @@ class CreatedBy(models.Model):
         User,
         verbose_name='criado por',
         on_delete=models.SET_NULL,
+        related_name='%(app_label)s_%(class)s_created_by',
         null=True,
         blank=True,
     )
@@ -30,6 +31,7 @@ class DeletedBy(models.Model):
         User,
         verbose_name='deletado por',
         on_delete=models.SET_NULL,
+        related_name='%(app_label)s_%(class)s_deleted_by',
         null=True,
         blank=True,
     )
