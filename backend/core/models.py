@@ -1,11 +1,38 @@
 from django.db import models
 from localflavor.br.br_states import STATE_CHOICES
+from django.contrib.auth.models import User
 
 
 class TimeStampedModel(models.Model):
     created = models.DateTimeField('criado em', auto_now_add=True)
     modified = models.DateTimeField('modificado em', auto_now=True)
     deleted = models.DateTimeField('deletado em', null=True, blank=True)
+
+    class Meta:
+        abstract = True
+
+
+class CreatedBy(models.Model):
+    created_by = models.ForeignKey(
+        User,
+        verbose_name='criado por',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+
+    class Meta:
+        abstract = True
+
+
+class DeletedBy(models.Model):
+    deleted_by = models.ForeignKey(
+        User,
+        verbose_name='deletado por',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
 
     class Meta:
         abstract = True

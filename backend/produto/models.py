@@ -1,96 +1,50 @@
 from django.db import models
+from backend.core.models import Active, Address, TimeStampedModel, CreatedBy, DeletedBy
 
 
-class Produto(models.Model):
-    codigo = models.IntegerField("Código")
-    id_grupo = models.ForeignKey(
+class Produto(TimeStampedModel, CreatedBy, DeletedBy, Active):
+    codigo = models.IntegerField('Código')
+    nome = models.CharField('Nome', max_length=100)
+    categoria = models.ForeignKey(
         'Categoria',
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
-    id_marca = models.ForeignKey(
+    marca = models.ForeignKey(
         'Marca',
         on_delete=models.SET_NULL,
         null=True,
         blank=True
     )
-
-    nome = models.CharField("Nome", max_length=100)
-
-    valor_Compra = models.DecimalField(
+    preco_compra = models.DecimalField(
         'Preço compra',
         max_digits=6,
         decimal_places=2,
         blank=True,
         null=True
     )
-
-    valor_Locacao = models.DecimalField(
+    preco_diaria = models.DecimalField(
         'Preço Diária',
         max_digits=6,
         decimal_places=2,
         blank=True,
         null=True
     )
-
-    estoque_minimo = models.PositiveIntegerField(
-        "Estoque minimo",
-        null=True,
-        blank=True
-    )
-
-    qnt_estoque = models.PositiveIntegerField(
-        "Qnt em Estoque",
-        null=True,
-        blank=True
-    )
-
-    estoque_total = models.PositiveIntegerField(
-        "Estoque total",
-        null=True,
-        blank=True
-    )
-
-    created_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-    delete_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-
-    checkbox = models.BooleanField(
-        "Excluir",
-        max_length=100
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True
-    )
-
-    delete_at = models.DateTimeField(
-        auto_now=False,
-        null=True
-    )
+    estoque_minimo = models.PositiveIntegerField('Estoque Mínimo', null=True, blank=True)
+    estoque_atual = models.PositiveIntegerField('Estoque Atual', null=True, blank=True)
 
     class Meta:
-        verbose_name = "Produto"
-        verbose_name_plural = "Produtos"
-        ordering = ('id_grupo', 'id_marca', 'nome')
+        ordering = ('nome',)
+        verbose_name = 'Produto'
+        verbose_name_plural = 'Produtos'
 
     def __str__(self):
         return f'{self.nome}'
 
 
-class Patrimonio(models.Model):
+class Patrimonio(TimeStampedModel, CreatedBy, DeletedBy, Active):
+    nome = models.CharField('nome', max_length=100, unique=True)
     produto = models.ForeignKey(
         Produto,
         on_delete=models.SET_NULL,
@@ -99,31 +53,18 @@ class Patrimonio(models.Model):
         related_name='patrimonios',
     )
 
-    patrimonio = models.CharField(
-        'patrimônio',
-        max_length=100,
-        null=True,
-        blank=True,
-        unique=True,
-    )
-
     class Meta:
-        ordering = ('patrimonio',)
+        ordering = ('nome',)
+        verbose_name = 'Patrimônio'
+        verbose_name_plural = 'Patrimônios'
 
     def __str__(self):
-        return f'{self.patrimonio}'
+        return f'{self.nome}'
 
 
-class Marca(models.Model):
-    marca = models.CharField(
-        max_length=100,
-        unique=True
-    )
-
-    modelo = models.CharField(
-        max_length=200,
-        unique=False
-    )
+class Marca(TimeStampedModel, CreatedBy, DeletedBy, Active):
+    nome = models.CharField(max_length=100, unique=True)
+    modelo = models.CharField(max_length=200)
 
     created_user = models.CharField(
         max_length=100,
@@ -137,70 +78,18 @@ class Marca(models.Model):
         blank=True
     )
 
-    checkbox = models.BooleanField(
-        "Excluir",
-        max_length=100
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True
-    )
-
-    delete_at = models.DateTimeField(
-        auto_now=False,
-        null=True
-    )
-
     class Meta:
-        ordering = ('marca', 'modelo')
+        ordering = ('nome',)
 
     def __str__(self):
-        return f'{self.pk} - {self.marca} - {self.modelo}'
+        return f'{self.nome}'
 
 
-class Categoria(models.Model):
-
-    categoria = models.CharField(
-        max_length=100,
-        unique=True
-    )
-
-    created_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-
-    delete_user = models.CharField(
-        max_length=100,
-        null=True,
-        blank=True
-    )
-
-    checkbox = models.BooleanField(
-        "Excluir",
-        max_length=100
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True
-    )
-
-    delete_at = models.DateTimeField(
-        auto_now=False,
-        null=True
-    )
+class Categoria(TimeStampedModel, CreatedBy, DeletedBy, Active):
+    nome = models.CharField(max_length=100, unique=True)
 
     class Meta:
-        ordering = ('categoria',)
+        ordering = ('nome',)
 
     def __str__(self):
-        return f'{self.categoria}'
+        return f'{self.nome}'
