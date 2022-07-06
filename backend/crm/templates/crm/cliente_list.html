@@ -103,15 +103,14 @@
                           <td>
                             <div class="d-flex">
                                 <div class="me-2">
-                                    {{ object.active|yesno }}
-                                    {% if object.active == "sim" %}
-                                    <i class="mdi mdi-check-circle-outline text-success">Ativo</i>
+                                    {% if object.active %}
+                                       <i class="mdi mdi-check-circle-outline text-success"></i>
+                                        <a href="{% url 'orcamento:orcamento_create' %}">
+                                          <button type="button" class="btn btn-outline-success">Gerar Orçamento</button>
+                                        </a>
                                     {% else %}
-                                    <i class="mdi mdi-close-circle-outline text-danger">Block</i>
+                                       <i class="mdi mdi-close-circle-outline text-danger"></i>
                                     {% endif %}
-                                </div>
-                                <div>
-                                    <p class="mb-0">{{ object.active|yesno:"Ativo,Bloqueado" }}</p>
                                 </div>
                             </div>
                           </td>
