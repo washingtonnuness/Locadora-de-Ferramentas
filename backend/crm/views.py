@@ -1,6 +1,4 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin as LRM
-from django.shortcuts import render
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from .forms import ClienteForm, FornecedorForm
