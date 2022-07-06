@@ -4,10 +4,10 @@
 
 {% block content %}
     <h4>Cadastrar Produto</h4>
-      <form method="POST">
+<form method="POST">
         {% csrf_token %}
-        <div class="form-row">
-          <div class="row">
+  <div class="form-row">
+    <div class="row">
         {% for field in form.visible_fields %}
           <div class="form-group col-sm-3">
             <label>{{ field.label }}</label>
@@ -17,50 +17,48 @@
             {% endfor %}
           </div>
         {% endfor %}
-
+    </div>
+  </div>
         {{ formset.management_form }}
 
+  <div class="row">
+    <div class="col-sm-12">
+      <legend class="legend">Número de controle</legend>
         <div class="row">
-          <div class="col-sm-12">
+          <button
+            id="addItem"
+            class='btn btn-primary mb-2'
+            hx-get="{% url 'produto:add_row_produto_items_hx' %}"
+            hx-target="#produto"
+            hx-swap="beforeend"
+          >Adicionar</button>
+        </div>
+    </div>
+  </div>
 
-            <legend class="legend">Número de controle</legend>
-            <div class="row">
-              <button
-                id="addItem"
-                class='btn btn-primary mb-2'
-                hx-get="{% url 'produto:add_row_produto_items_hx' %}"
-                hx-target="#produto"
-                hx-swap="beforeend"
-              >Adicionar</button>
-            </div>
+  <div id="produto">
 
-            <div id="produto">
-
-              {% for produto_item_form in produto_item_formset %}
-                <div class="row">
-                  <div class="form-group">
-                    <div id="item-{{ forloop.counter0 }}">
-                      {% render_field produto_item_form.produto data-field='produto' %}
-                      {{ produto_item_form.id }}
-
-                      {{ produto_item_form.patrimonio.label }}
-                      {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
-                    </div>
-                  </div>
-                </div>
-              {% endfor %}
-
-            </div>
-
+    {% for produto_item_form in produto_item_row_form %}   
+      <div class="row">       
+        <div class="form-group">
+          <div id="item-{{ forloop.counter0 }}">
+            teste
+            {% render_field produto_item_form data-field='produto' %}                    
+            {{ produto_item_form.patrimonio.label }}
+            {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
           </div>
-        </div>
+        </div> 
+      </div> 
+      {% endfor %}
 
-        <div class="row  mt-4">
-          <button class='btn btn-primary' type="submit">Salvar</button>
-          <button type="button" class="btn btn-danger">Cancelar</button>
-        </div>
+  </div>
 
-      </form>
+  <div class="row  mt-4">
+    <button class='btn btn-primary' type="submit">Salvar</button>
+    <button type="button" class="btn btn-danger">Cancelar</button>
+  </div>
+
+</form>
 {% endblock content %}
 
 {% block js %}
