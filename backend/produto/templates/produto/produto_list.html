@@ -10,7 +10,6 @@
                   <div class="d-flex justify-content-between">
                       <h4 class="card-title mb-4">Produtos</h4>
                       <div>
-
                         <div class="dropdown d-inline ">
                           <a class="dropdown-toggle text-reset mb-3" href={% url 'produto:produto_create' %}  aria-haspopup="true" aria-expanded="false">
                               <span class="fw-semibold">Cadastrar</span>
@@ -73,8 +72,6 @@
                                   <td>
                                     <a href="{{ object.get_absolute_url }}">{{ object.titulo }}</a>
                                   </td>
-
-
                                   <td>
                                       <div class="d-flex align-items-center">
                                         <!-- Imagem do produto -->
