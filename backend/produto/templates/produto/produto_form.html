@@ -8,55 +8,16 @@
     <div class="container-fluid">
       <form method="POST">
         {% csrf_token %}
-        <div class="form-row">
-          <div class="form-group col-sm">
-            <label>Código</label>
-            {% render_field form.codigo class="form-control" %}
-          </div>
-          <div class="form-group col-sm">
-            <label>{{form.id_grupo.label}}</label>
-            {% render_field form.id_grupo class="form-control" %}
-          </div>
-          <div class="form-group col-sm">
-            <label>{{form.id_marca.label}}</label>
-            {% render_field form.id_marca class="form-control" %}
-          </div>
-          <div class="form-group col-md-12">
-            <label>{{form.nome.label}}</label>
-            {% render_field form.nome class="form-control" %}
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-md">
-            <label>{{form.valor_Compra.label}}</label>
-            {% render_field form.valor_Compra class="form-control" %}
-          </div>
-          <div class="form-group col-md">
-            <label>{{form.valor_Locacao.label}}</label>
-            {% render_field form.valor_Locacao class="form-control" %}
-          </div>
-          <div class="form-group col-md">
-            <label>{{form.estoque_minimo.label}}</label>
-            {% render_field form.estoque_minimo class="form-control" %}
-          </div>
-          <div class="form-group col-md">
-            <label for="inputAddress">Quantidade Estoque</label>
-            {% render_field form.qnt_estoque class="form-control" %}
-          </div>
-          <div class="form-group col-md">
-            <label for="inputAddress">Quantidade Total</label>
-            {% render_field form.estoque_total class="form-control" %}
-          </div>
-        </div>
 
-        <div class="form-group">
-          <div class="form-check">
-            {% render_field form.checkbox class='form-check-input' type='checkbox' %}
-            <label class="form-check-label" for="gridCheck">
-              Desativar
-            </label>
+        {% for field in form.visible_fields %}
+          <div class="form-group col-sm-3">
+            <label>{{ field.label }}</label>
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+              <span class="text-muted">{{ error }}</span>
+            {% endfor %}
           </div>
-        </div>
+        {% endfor %}
 
         {{ formset.management_form }}
 
