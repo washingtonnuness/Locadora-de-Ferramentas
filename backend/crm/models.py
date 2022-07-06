@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 from backend.core.models import (
     Active,
@@ -38,6 +39,9 @@ class Cliente(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
     def __str__(self):
         return f'{self.nome}'
 
+    def get_absolute_url(self):
+        return reverse('crm:cliente_detail', kwargs={'pk': self.pk})
+
 
 class Fornecedor(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
     CNPJ = 'CNPJ'
@@ -59,8 +63,12 @@ class Fornecedor(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
     condicao_pagamento = models.PositiveIntegerField('Prazo de pagamento', null=True, blank=True)  # noqa E501
 
     class Meta:
+        ordering = ('nome',)
         verbose_name = 'Fornecedor'
         verbose_name_plural = 'Fornecedores'
 
     def __str__(self):
         return f'{self.nome}'
+
+    def get_absolute_url(self):
+        return reverse('crm:fornecedor_detail', kwargs={'pk': self.pk})

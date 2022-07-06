@@ -1,0 +1,33 @@
+{% extends 'site2/index.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <form action="." method="POST">
+    {% csrf_token %}
+
+    <div class="form-row">
+      <div class="row">
+
+        {% for field in form.visible_fields %}
+          <div class="form-group col-sm-3">
+            <label>{{ field.label }}</label>
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+              <span class="text-muted">{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+      </div>
+      <div class="row">
+        <button class='btn btn-primary mt-3' type="submit">Salvar</button>
+      </div>
+    </div>
+
+  </form>
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static 'js/script.js' %}"></script>
+{% endblock js %}

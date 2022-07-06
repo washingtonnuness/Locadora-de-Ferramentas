@@ -8,16 +8,32 @@ class ClienteForm(forms.ModelForm):
 
     class Meta:
         model = Cliente
-        fields = '__all__'
-        exclude = ('created_user', 'delete_user',
-                   'create_at', 'update_at', 'delete_at')
+        fields = (
+            'tipo',
+            'cnpj',
+            'rg',
+            'cpf',
+            'nome',
+            'razao_social',
+            'nome_fantasia',
+            'address',
+            'address_number',
+            'complement',
+            'district',
+            'city',
+            'uf',
+            'cep',
+            'endereco_entrega',
+        )
 
     def __init__(self, *args, **kwargs):
-        super(ClienteForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+
         for field_name, field in self.fields.items():
             field = self.fields.get(field_name)
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
+
         self.fields['tipo'].widget.attrs['onchange'] = "getElement(this.value,'element')"
 
 
@@ -26,14 +42,31 @@ class FornecedorForm(forms.ModelForm):
 
     class Meta:
         model = Fornecedor
-        fields = '__all__'
-        exclude = ('created_user', 'delete_user',
-                   'create_at', 'update_at', 'delete_at')
+        fields = (
+            'tipo',
+            'cnpj',
+            'rg',
+            'cpf',
+            'nome',
+            'razao_social',
+            'nome_fantasia',
+            'address',
+            'address_number',
+            'complement',
+            'district',
+            'city',
+            'uf',
+            'cep',
+            'endereco_entrega',
+            'condicao_pagamento',
+        )
 
     def __init__(self, *args, **kwargs):
-        super(FornecedoresForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
+
         for field_name, field in self.fields.items():
             field = self.fields.get(field_name)
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
+
         self.fields['tipo'].widget.attrs['onchange'] = "getElement(this.value,'element')"
