@@ -2,56 +2,141 @@
 {% load static %}
 
 {% block content %}
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-    <div class="row">
-      <div class="col-md-12 pb-2">
-        <a href={% url 'crm:fornecedor_create' %}>
-          <button type="button" class="btn btn-success">Cadastrar Fornecedor</button>
-        </a>
+    <div class="card"> 
+      <div class="card-body">
+          <div class="d-flex justify-content-between">
+              <h4 class="card-title mb-4">Fornecedor</h4>
+              <div>
+
+                <div class="dropdown d-inline ">
+                  <a class="dropdown-toggle text-reset mb-auto" href={% url 'crm:fornecedor_create' %}  aria-haspopup="true" aria-expanded="false">
+                      <span class="fw-semibold">Cadastrar</span>
+                </div>
+              </div>
+                  <div class="dropdown d-inline">
+                      <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <i class="bx bx-search font-size-16"></i><span>Buscar</span>
+                      </a>
+
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+                          <form class="p-2">
+                              <div class="search-box">
+                                  <div class="position-relative">
+                                      <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
+                                      <i class="bx bx-search font-size-16 search-icon"></i>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+          </div>
+
+          <div class="table-responsive">
+              <table class="table table-hover table-nowrap mb-0 align-middle">
+                  <thead class="bg-light">
+                      <tr>
+                          <th class="rounded-start" style="width: 15px;">
+                              <div class="form-check">
+                                  <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckDefault">
+                                  <label class="form-check-label" for="flexCheckDefault"> </label>
+                              </div>
+                          </th>
+                          <th>Código</th>
+                          <th>Nome</th>
+                          <th>Razão Social</th>
+                          <th>Nome Fantasia</th>
+                          <th>Endereço</th>
+                          <th>Bairro</th>
+                          <th>Cidade</th>
+                          <th>Estado</th>
+                          <th>Status</th>                                  
+                      </tr>
+                      <!-- end tr -->
+                  </thead>
+                  <!-- end thead -->
+                  <tbody>
+                    {% for object in object_list %}
+                      <tr>
+                          <td>
+                              <div class="form-check">
+                                  <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckexampleone">
+                                  <label class="form-check-label" for="flexCheckexampleone">
+                                  </label>
+                              </div>
+                          </td>
+                          <td class="fw-medium">
+                             {{ object.codigo }}
+                          </td>
+                          <td>
+                            <a href="{{ object.get_absolute_url }}">{{ object.nome }}</a>
+                          </td>
+                          <td>
+                              <div class="d-flex align-items-center">
+                                <!-- Imagem do produto -->
+                                <!--
+                                  <div class="me-2">
+                                      <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
+                                  </div>
+                                  -->
+                                  <div>
+                                      <h5 class="font-size-14 text-truncate mb-0">{{ object.razao_social }}
+                                      </h5>
+                                  </div>
+                              </div>
+                          </td>
+                          <td>
+                            {{ object.nome_fantasia }}
+                          </td>
+
+                          <td>
+                            {{ object.address }}
+                          </td>
+                          <td>
+                            {{ object.district }}
+                          </td>
+                          <td>
+                            {{ object.city }}
+                          </td>
+                          <td>
+                            {{ object.uf }}
+                          </td>
+                          <td>
+                            <div class="d-flex">
+                                <div class="me-2">
+                                    {% if object.active %}
+                                       <i class="mdi mdi-check-circle-outline text-success"></i>
+                                        <a href="{% url 'orcamento:orcamento_create' %}">
+                                          <button type="button" class="btn btn-outline-success">Gerar Cotação</button>
+                                        </a>
+                                    {% else %}
+                                       <i class="mdi mdi-close-circle-outline text-danger"></i>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <p class="mb-0">{{ object.active|yesno:"Ativo,Bloqueado" }}</p>
+                                </div>
+                            </div>
+                          </td>
+
+                          <td>
+                              <div class="dropdown">
+                                  <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                      <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-menu-end">
+                                      <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                              Edit</a></li>
+                                      <li><a href="#" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
+                                              Delete</a></li>
+                                  </ul>
+                              </div>
+                          </td>
+                      </tr>
+                    {% endfor %}
+                      <!-- end /tr -->
+                  </tbody><!-- end tbody -->
+              </table><!-- end table -->
+          </div>
       </div>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Razão Social</th>
-            <th>Nome Fantasia</th>
-            <th>Endereço</th>
-            <th>Bairro</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>Ativo?</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for object in object_list %}
-            <tr>
-              <td>
-                <a href="{{ object.get_absolute_url }}">{{ object.nome }}</a>
-              </td>
-              <td>{{ object.razao_social }}</td>
-              <td>{{ object.nome_fantasia }}</td>
-              <td>{{ object.address }}</td>
-              <td>{{ object.district }}</td>
-              <td>{{ object.city }}</td>
-              <td>{{ object.uf }}</td>
-              {% if object.active %}
-                <td> Ativo</td>
-                <td>
-                  <a href="{% url 'orcamento:orcamento_create' %}">
-                    <button type="button" class="btn btn-outline-success">Gerar Orçamento</button>
-                  </a>
-                </td>
-              {% else %}
-                <td> Bloqueado </td>
-                <td></td>
-              {% endif %}
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </main>
+  </div>
 {% endblock content %}
