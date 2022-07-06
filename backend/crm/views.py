@@ -7,24 +7,17 @@ from .forms import ClienteForm, FornecedorForm
 from .models import Cliente, Fornecedor
 
 
-@login_required
-def cliente_list(request):
-    template_name = 'cliente_list.html'
-    objects = Cliente.objects.all()
-    context = {
-        'object_list': objects,
-    }
-    return render(request, template_name, context)
+class ClienteListView(LRM, ListView):
+    model = Cliente
 
 
-@login_required
-def cliente_create(request):
-    template_name = 'cliente_form_add_v2.html'
-    clienteForm = ClienteForm
-    context = {
-        'form': clienteForm,
-    }
-    return render(request, template_name, context)
+class ClienteDetailView(LRM, DetailView):
+    model = Cliente
+
+
+class ClienteCreateView(LRM, CreateView):
+    model = Cliente
+    form_class = ClienteForm
 
 
 class FornecedorListView(LRM, ListView):

@@ -6,8 +6,9 @@ app_name = 'crm'
 
 
 cliente_urlpatterns = [
-    path('', v.cliente_list, name='cliente_list'),  # noqa E501
-    path('create/', v.cliente_create, name='cliente_create'),  # noqa E501
+    path('', v.ClienteListView.as_view(), name='cliente_list'),  # noqa E501
+    path('detail/<int:pk>/', v.ClienteDetailView.as_view(), name='cliente_detail'),  # noqa E501
+    path('create/', v.ClienteCreateView.as_view(), name='cliente_create'),  # noqa E501
 ]
 
 
