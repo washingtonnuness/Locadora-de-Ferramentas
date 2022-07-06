@@ -6,7 +6,7 @@ app_name = 'produto'
 
 
 urlpatterns = [
-    path('', v.produto_list, name='produto_list'),
+    path('', v.ProdutoListView.as_view(), name='produto_list'),
     path('create/', v.produto_create, name='produto_create'),
     path('add-row/', v.add_row_produto_items_hx, name='add_row_produto_items_hx'),  # noqa E501
 ]

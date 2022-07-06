@@ -1,18 +1,14 @@
+from django.contrib.auth.mixins import LoginRequiredMixin as LRM
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from .forms import PatrimonioForm, ProdutoForm, ProdutoItemsFormset
 from .models import Produto
 
 
-def produto_list(request):
-    template_name = 'produto/produto_list.html'
-    objects = Produto.objects.all()
-    context = {
-        'object_list': objects,
-    }
-
-    return render(request, template_name, context)
+class ProdutoListView(LRM, ListView):
+    model = Produto
 
 
 def produto_create(request):
