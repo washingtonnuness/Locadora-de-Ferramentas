@@ -3,12 +3,11 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mt-2">
-    <h2>Cadastrar Produto</h2>
-    <div class="container-fluid">
+    <h4>Cadastrar Produto</h4>
       <form method="POST">
         {% csrf_token %}
-
+        <div class="form-row">
+          <div class="row">
         {% for field in form.visible_fields %}
           <div class="form-group col-sm-3">
             <label>{{ field.label }}</label>
@@ -24,7 +23,7 @@
         <div class="row">
           <div class="col-sm-12">
 
-            <legend class="legend">Patrimonio</legend>
+            <legend class="legend">Número de controle</legend>
             <div class="row">
               <button
                 id="addItem"
@@ -37,7 +36,7 @@
 
             <div id="produto">
 
-              {% for produto_item_form in formset %}
+              {% for produto_item_form in produto_item_formset %}
                 <div class="row">
                   <div class="form-group">
                     <div id="item-{{ forloop.counter0 }}">
@@ -62,9 +61,6 @@
         </div>
 
       </form>
-    </div>
-  </div>
-  </main>
 {% endblock content %}
 
 {% block js %}
