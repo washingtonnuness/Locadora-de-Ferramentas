@@ -1,5 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.contrib.auth.mixins import LoginRequiredMixin as LRM
+from django.shortcuts import render
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from .forms import ClienteForm, FornecedorForm
 from .models import Cliente, Fornecedor
@@ -25,21 +27,14 @@ def cliente_create(request):
     return render(request, template_name, context)
 
 
-@login_required
-def fornecedor_list(request):
-    template_name = 'fornecedor_list.html'
-    objects = Fornecedor.objects.all()
-    context = {
-        'object_list': objects,
-    }
-    return render(request, template_name, context)
+class FornecedorListView(LRM, ListView):
+    model = Fornecedor
 
 
-@login_required
-def fornecedor_create(request):
-    template_name = 'fornecedor_form.html'
-    fornecedorForm = FornecedorForm
-    context = {
-        'form': fornecedorForm,
-    }
-    return render(request, template_name, context)
+class FornecedorDetailView(LRM, DetailView):
+    model = Fornecedor
+
+
+class FornecedorCreateView(LRM, CreateView):
+    model = Fornecedor
+    form_class = FornecedorForm

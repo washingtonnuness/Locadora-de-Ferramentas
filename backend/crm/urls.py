@@ -6,14 +6,15 @@ app_name = 'crm'
 
 
 cliente_urlpatterns = [
-    path('', v.cliente_list, name='cliente_list'),
-    path('create/', v.cliente_create, name='cliente_create'),
+    path('', v.cliente_list, name='cliente_list'),  # noqa E501
+    path('create/', v.cliente_create, name='cliente_create'),  # noqa E501
 ]
 
 
 fornecedor_urlpatterns = [
-    path('', v.fornecedor_list, name='fornecedor_list'),
-    path('create/', v.fornecedor_create, name='fornecedor_create'),
+    path('', v.FornecedorListView.as_view(), name='fornecedor_list'),  # noqa E501
+    path('detail/<int:pk>/', v.FornecedorDetailView.as_view(), name='fornecedor_detail'),  # noqa E501
+    path('create/', v.FornecedorCreateView.as_view(), name='fornecedor_create'),  # noqa E501
 ]
 
 
