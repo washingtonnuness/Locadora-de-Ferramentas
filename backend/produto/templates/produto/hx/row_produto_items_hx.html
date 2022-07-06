@@ -3,7 +3,7 @@
 <div class="row">
   <div id="item-{{ forloop.counter0 }}" class="form-group">
     {% render_field produto_item_form.produto data-field='produto' %}
-
+    {{ forloop.counter0 }}
     <label>{{ produto_item_form.patrimonio.label }}</label>
     {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
   </div>

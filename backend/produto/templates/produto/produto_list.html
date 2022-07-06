@@ -16,7 +16,7 @@
                         </div>
                       </div>
                           <div class="dropdown d-inline">
-                              <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <a class="dropdown-toggle text-muted me-3 mb-3 align-middle"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <i class="bx bx-search font-size-16"></i><span>Buscar</span>
                               </a>
 
@@ -24,8 +24,12 @@
                                   <form class="p-2">
                                       <div class="search-box">
                                           <div class="position-relative">
-                                              <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
+                                              <input type="text" name="search" class="form-control rounded bg-light border-0"
+                                              hx-get="{% url 'produto:produto_items_search' %}"
+                                              hx-trigger="keyup changed delay:250ms, search"
+                                              hx-target="#search-results" placeholder="buscando...">
                                               <i class="bx bx-search font-size-16 search-icon"></i>
+                                              <span id="search-results"></span>
                                           </div>
                                       </div>
                                   </form>
