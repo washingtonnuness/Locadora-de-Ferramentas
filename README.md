@@ -79,12 +79,14 @@ No Github clique em Pull requests e clique no botão **New pull request**.
 
 Escolha a branch que você quer mergear com a branch *main*.
 
+Depois clique no botão **Create pull request**.
+
 
 #### Fazendo o Merge requests
 
 Outra pessoa da equipe vai abrir o PR e conferir os commits.
 
-Depois é só clicar em **Merge request**.
+Depois é só clicar em **Merge pull request**.
 
 ### Atualizando a branch main na máquina local
 
