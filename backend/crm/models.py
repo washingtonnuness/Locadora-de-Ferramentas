@@ -36,6 +36,10 @@ class Cliente(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
         verbose_name = 'Cliente'
         verbose_name_plural = 'Clientes'
 
+    @property
+    def codigo(self):
+        return str(self.pk).zfill(3)
+
     def __str__(self):
         return f'{self.nome}'
 
