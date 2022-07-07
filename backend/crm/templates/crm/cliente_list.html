@@ -105,7 +105,7 @@
                                 <div class="me-2">
                                     {% if object.active %}
                                        <i class="mdi mdi-check-circle-outline text-success"></i>
-                                        <a href="{% url 'orcamento:orcamento_create' %}">
+                                        <a href="{% url 'orcamento:orcamento_create' object.pk %}">
                                           <button type="button" class="btn btn-outline-success">Gerar Orçamento</button>
                                         </a>
                                     {% else %}

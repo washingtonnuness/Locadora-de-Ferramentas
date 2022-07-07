@@ -1,0 +1,52 @@
+<tbody id="table-list">
+
+  <tr>
+    <td>
+      <div class="form-check">
+        <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckexampleone">
+        <label class="form-check-label" for="flexCheckexampleone">
+        </label>
+      </div>
+    </td>
+    <td class="fw-medium">
+      {{ object_list_product.codigo }}
+    </td>
+    <td>
+      <a href="{{ object.get_absolute_url }}">{{ object_list_product.nome }}</a>
+    </td>
+    <td>
+      <div class="d-flex align-items-center">
+        <!-- Imagem do produto -->
+        <!--
+                          <div class="me-2">
+                              <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
+                          </div>
+                          -->
+        <div>
+          <h5 class="font-size-14 text-truncate mb-0">{{ object.razao_social }}
+          </h5>
+        </div>
+      </div>
+    </td>
+    <td>
+      {{ object_list_product }}
+    </td>
+
+    <td>
+      {{ object_list_product }}
+    </td>
+    <td>
+      {{ object_list_product }}
+    </td>
+    <td>
+      {{ object_list_product }}
+    </td>
+    <td>
+      {{ object_list_product }} 
+    </td>
+    <td>
+     <a href="#" class="dropdown-item"><i class="mdi mdi-trash-can font-size-16 text-danger me-1"></i></a>
+    </td>
+  </tr>
+  <!-- end /tr -->
+</tbody><!-- end tbody -->

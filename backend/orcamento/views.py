@@ -56,9 +56,9 @@ def add_orcamento(request, client_pk):
 
 @login_required
 def search(request):
-    template = 'orcamento_results_search.html'
+    template = 'hx/orcamento_results_search.html'
     search_text = request.GET.get('search')
-    results = Produto.objects.filter(nome__icontains=search_text)
+    results = Produto.objects.filter(titulo__icontains=search_text)
 
     context = {"results": results}
     return render(request, template, context)
@@ -71,7 +71,7 @@ def clear(request):
 
 @login_required
 def add_row_hx(request, pk):
-    template = 'orcamento_list.html'
+    template = 'hx/orcamento_table.html'
     produto = Produto.objects.get(pk=pk)
     form = OrcamentoFormSet()
 

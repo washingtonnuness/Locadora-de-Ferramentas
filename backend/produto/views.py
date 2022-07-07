@@ -42,7 +42,7 @@ def order_item_delete(request, pk):
 
 def produto_items_search(request):
     template = 'produto/hx/search-results.html'
-    search_field = request.GET.get('search')
-    results = Produto.objects.filter(titulo__icontains=search_field)
+    search_text = request.GET.get('search')
+    results = Produto.objects.filter(titulo__icontains=search_text)
     context = {"results": results}
     return render(request, template, context)
