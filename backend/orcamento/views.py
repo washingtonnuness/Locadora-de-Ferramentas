@@ -65,6 +65,13 @@ def search(request):
 
 
 @login_required
+def invoice(request):
+    template = 'orcamento/orcamento_invoice.html'
+    results = ''
+
+    context = {"results": results}
+    return render(request, template, context)
+@login_required
 def clear(request):
     return HttpResponse("")
 
