@@ -1,22 +1,22 @@
 {% if results %}
-    {% csrf_token %}
-    <ul class="list-group col-xs-12">
+  {% csrf_token %}
+  <ul class="list-group col-xs-12">
     {% for result in results %}
-    <a>
+      <a>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            
-            <span class="badge badge-success badge-pill" 
-                style="cursor: pointer;"
-                hx-trigger="click"
-                hx-swap= "beforebegin"
-                hx-vals='{"resultname": "{{result.titulo}}"'
-                hx-target="#table-list">{{ result.codigo }} - {{ result.titulo }}
-            </span> 
+
+          <span class="badge badge-success badge-pill"
+            style="cursor: pointer;"
+            hx-trigger="click"
+            hx-swap= "beforebegin"
+            hx-vals='{"resultname": "{{result.titulo}}"'
+            hx-target="#table-list">{{ result.codigo }} - {{ result.titulo }}
+          </span>
         </li>
-    </a>
+      </a>
     {% endfor %}
-    
-    </ul>   
+
+  </ul>
 {% else %}
-    <p>Não foi encontrado nada.</p>
+  <p>Não foi encontrado nada.</p>
 {% endif %}
