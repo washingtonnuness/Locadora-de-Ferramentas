@@ -53,3 +53,43 @@ https://www.dicas-de-django.com.br/36-django-visualizando-seus-modelos-com-graph
 
 
 ![diagrama_ER_DBeaver.png](img/diagrama_ER_DBeaver.png)
+
+## branch
+
+### Criando uma nova branch
+
+```
+git checkout -b nova-branch
+```
+
+### Fazendo as alterações
+
+```
+# altere seu código
+git add .
+git commit -m 'Mensagem do commit.'
+git push
+# talvez você tenha que fazer
+# git push --set-upstream origin nova-branch
+```
+
+### Criando o Pull request no Github
+
+No Github clique em Pull requests e clique no botão **New pull request**.
+
+Escolha a branch que você quer mergear com a branch *main*.
+
+
+#### Fazendo o Merge requests
+
+Outra pessoa da equipe vai abrir o PR e conferir os commits.
+
+Depois é só clicar em **Merge request**.
+
+### Atualizando a branch main na máquina local
+
+```
+git checkout main
+git pull origin main
+```
+
