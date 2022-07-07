@@ -11,6 +11,10 @@ class ProdutoListView(LRM, ListView):
     model = Produto
 
 
+class ProdutoDetailView(LRM, DetailView):
+    model = Produto
+
+
 def produto_create(request):
     template_name = 'produto/produto_form.html'
     produto_instance = Produto()
@@ -39,6 +43,7 @@ def order_item_delete(request, pk):
     order_item = Produto.objects.get(pk=pk)
     order_item.delete()
     return HttpResponse('')
+
 
 def produto_items_search(request):
     template = 'produto/hx/search-results.html'

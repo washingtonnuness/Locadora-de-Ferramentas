@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <h2>{{ object }}</h2>
+    <div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Tipo:</p>
+        <h5 class="font-size-14">{{ object }}</h5>
+      </div>
+      <div class="mt-4">
+        {% if object.tipo == 'CPF' %}
+          <p class="text-muted mb-1">CPF:</p>
+          <h5 class="font-size-14">{{ object.cpf }}</h5>
+        {% else %}
+          <p class="text-muted mb-1">CNPJ:</p>
+          <h5 class="font-size-14">{{ object.cnpj }}</h5>
+        {% endif %}
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">RG:</p>
+        <h5 class="font-size-14">{{ object.rg }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Nome Completo:</p>
+        <h5 class="font-size-14">{{ object.nome }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Razão Social:</p>
+        <h5 class="font-size-14">{{ object.razao_social }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Nome Fantasia:</p>
+        <h5 class="font-size-14">{{ object.nome_fantasia }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Endereço:</p>
+        <h5 class="font-size-14">{{ object.address }}, {{ object.address_number }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Complemento:</p>
+        <h5 class="font-size-14">{{ object.complement }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Bairro:</p>
+        <h5 class="font-size-14">{{ object.district }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Cidade:</p>
+        <h5 class="font-size-14">{{ object.city }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">UF:</p>
+        <h5 class="font-size-14">{{ object.uf }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">CEP:</p>
+        <h5 class="font-size-14">{{ object.cep }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Endereco de Entrega:</p>
+        <h5 class="font-size-14">{{ object.endereco_entrega }}</h5>
+      </div>
+      <div class="mt-4">
+        <p class="text-muted mb-1">Condição de Pagamento:</p>
+        <h5 class="font-size-14">{{ object.condicao_pagamento }}</h5>
+      </div>
+    </div>
+  </main>
+{% endblock content %}
