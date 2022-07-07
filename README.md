@@ -95,3 +95,18 @@ git checkout main
 git pull origin main
 ```
 
+**Obs:** Caso você tenha feito mais commits depois de ter feito o Merge do PR, então você vai precisar fazer o merge manualmente.
+
+Considere que você esteja na nova-branch e você já fez
+
+```
+git commit -m 'Nova alteração depois do merge'
+git push
+```
+
+Fazendo o merge manualmente
+
+```
+git checkout main
+git merge
+```
