@@ -1,5 +1,5 @@
-from django.urls import reverse
 from django.db import models
+from django.urls import reverse
 
 from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
 
