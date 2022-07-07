@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 
 from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
@@ -42,6 +43,9 @@ class Produto(TimeStampedModel, CreatedBy, DeletedBy, Active):
 
     def __str__(self):
         return f'{self.titulo}'
+
+    def get_absolute_url(self):
+        return reverse('produto:produto_detail', kwargs={'pk': self.pk})
 
 
 class Patrimonio(TimeStampedModel, CreatedBy, DeletedBy, Active):
