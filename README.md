@@ -108,5 +108,6 @@ Fazendo o merge manualmente
 
 ```
 git checkout main
-git merge
+git merge nova-branch
+git push
 ```
