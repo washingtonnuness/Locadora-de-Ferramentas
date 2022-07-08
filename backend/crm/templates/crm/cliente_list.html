@@ -6,40 +6,36 @@
     <div class="d-flex bd-highlight">
       <div class="card-body">
 
-        <h4 class="card-title mb-3">Clientes</h4>
-        <div class="d-flex justify-content-start">
-          <div class="btn-group" role="group" aria-label="Basic outlined example">
-            <div class="p-2 bd-highlight">
-              <div class="dropdown d-inline ">
-                <a class="dropdown-toggle text-reset mb-auto" href={% url 'crm:cliente_create' %} aria-haspopup="true"
-                  aria-expanded="false">
-                  <button type="button" class="btn btn-link shadow-none"><span
-                    class="fw-semibold">Cadastrar</span></button>
+
+      <h4 class="card-title mb-3">
+        Clientes
+        <a class="dropdown-toggle text-reset mb-auto" href={% url 'crm:cliente_create' %} aria-haspopup="true"
+          aria-expanded="false">
+          <button type="button" class="btn btn-link shadow-none"><span class="fw-semibold">Cadastrar</span></button>
+        </a>
+        <div class="dropdown d-inline">
+          <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <button type="button" class="btn btn-link shadow-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-search icon-sm">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg><span>Buscar</span>
+            </button></a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+            <form class="p-2">
+              <div class="search-box">
+                <div class="position-relative">
+                  <input type="text" class="form-control rounded bg-light border-0" placeholder="Buscar...">
+                  <i class="font-size-16 search-icon"></i>
+
                 </div>
               </div>
-
-              <div class="p-2 bd-highlight">
-                <div class="dropdown d-inline">
-                  <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <button type="button" class="btn btn-link shadow-none ">
-                      <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
-                    </button></a>
-                  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-                    <form class="p-2">
-                      <div class="search-box">
-                        <div class="position-relative">
-                          <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
-                          <i class="bx bx-search font-size-16 search-icon"></i>
-                        </div>
-
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </form>
           </div>
+
 
 
 
@@ -86,6 +82,7 @@
                       <div class="d-flex align-items-center">
                         <!-- Imagem do produto -->
                         <!--
+
                                   <div class="me-2">
                                       <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
                                   </div>
@@ -99,6 +96,7 @@
                     <td>
                       {{ object.nome_fantasia }}
                     </td>
+
 
                     <td>
                       {{ object.address }}
@@ -147,6 +145,7 @@
             </table><!-- end table -->
           </div>
         </div>
+
       </div>
     </div>
 {% endblock content %}
