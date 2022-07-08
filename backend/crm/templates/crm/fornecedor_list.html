@@ -2,34 +2,42 @@
 {% load static %}
 
 {% block content %}
-  <div class="card">
+<div class="card">
+  <div class="d-flex bd-highlight">
     <div class="card-body">
-      <div class="d-flex justify-content-between">
-        <h4 class="card-title mb-4">Fornecedor</h4>
-        <div>
 
-          <div class="dropdown d-inline ">
-            <a class="dropdown-toggle text-reset mb-auto" href={% url 'crm:fornecedor_create' %}  aria-haspopup="true" aria-expanded="false">
-              <span class="fw-semibold">Cadastrar</span>
+      <h4 class="card-title mb-3">Fornecedor</h4>
+      <div class="d-flex justify-content-start">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <div class="p-2 bd-highlight">
+            <div class="dropdown d-inline ">
+              <a class="dropdown-toggle text-reset mb-auto"  href={% url 'crm:fornecedor_create' %} aria-haspopup="true"
+                aria-expanded="false">
+                <button type="button" class="btn btn-link shadow-none"><span
+                    class="fw-semibold">Cadastrar</span></button>
             </div>
           </div>
-          <div class="dropdown d-inline">
-            <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="bx bx-search font-size-16"></i><span>Buscar</span>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-              <form class="p-2">
-                <div class="search-box">
-                  <div class="position-relative">
-                    <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
-                    <i class="bx bx-search font-size-16 search-icon"></i>
+          <div class="p-2 bd-highlight">
+            <div class="dropdown d-inline">
+              <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-link shadow-none">
+                  <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
+                </button></a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+                <form class="p-2">
+                  <div class="search-box">
+                    <div class="position-relative">
+                      <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
+                      <i class="bx bx-search font-size-16 search-icon"></i>
+                    </div>
                   </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
         <div class="table-responsive">
           <table class="table table-hover mb-0 align-middle">
