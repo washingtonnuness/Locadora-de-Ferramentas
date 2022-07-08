@@ -1,6 +1,4 @@
 dj-database-url==0.5.0
-dj-database-url==0.5.0
-django-crispy-forms==1.14.0
 django-crispy-forms==1.14.0
 django-extensions==3.1.*
 django-htmx==1.9.0

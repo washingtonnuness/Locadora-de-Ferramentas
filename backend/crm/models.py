@@ -71,6 +71,10 @@ class Fornecedor(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
         verbose_name = 'Fornecedor'
         verbose_name_plural = 'Fornecedores'
 
+    @property
+    def codigo(self):
+        return str(self.pk).zfill(3)
+
     def __str__(self):
         return f'{self.nome}'
 

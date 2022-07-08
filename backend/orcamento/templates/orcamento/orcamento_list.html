@@ -6,19 +6,14 @@
   <div class="d-flex bd-highlight">
     <div class="card-body">
 
-      <h4 class="card-title mb-3">Orçamentos</h4>
-      <div class="d-flex justify-content-start">
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <div class="p-2 bd-highlight">
-            <div class="dropdown d-inline ">
-              <a class="dropdown-toggle text-reset mb-auto" href={% url 'orcamento:orcamento_create' %}
-                aria-haspopup="true" aria-expanded="false">
+
+      <h4 class="card-title mb-3">
+      Orçamentos
+      <a class="dropdown-toggle text-reset mb-auto"  href={% url 'orcamento:orcamento_create' %} aria-haspopup="true"
+                aria-expanded="false">
                 <button type="button" class="btn btn-link shadow-none"><span
                     class="fw-semibold">Cadastrar</span></button>
-            </div>
-          </div>
-
-          <div class="p-2 bd-highlight">
+              </a>
             <div class="dropdown d-inline">
               <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -29,8 +24,9 @@
                 <form class="p-2">
                   <div class="search-box">
                     <div class="position-relative">
-                      <input type="text" class="form-control rounded bg-light border-0" placeholder="Search...">
-                      
+
+                      <input type="text" class="form-control rounded bg-light border-0" placeholder="Buscar...">
+                      <i class="font-size-16 search-icon"></i>
                     </div>
 
                   </div>
@@ -83,6 +79,7 @@
                 <div class="d-flex align-items-center">
                   <!-- Imagem do produto -->
                   <!--
+
                                   <div class="me-2">
                                       <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
                                   </div>
