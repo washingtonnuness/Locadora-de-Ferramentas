@@ -3,32 +3,9 @@
 
 {% block content %}
 
-<div class="card">
-  <div class="d-flex bd-highlight">
-    <div class="card-body">
-
-
-      <h4 class="card-title mb-3">
-      Orçamentos
-      <a class="dropdown-toggle text-reset mb-auto"  href={% url 'orcamento:orcamento_create' %} aria-haspopup="true"
-                aria-expanded="false">
-                <button type="button" class="btn btn-link shadow-none"><span
-                    class="fw-semibold">Cadastrar</span></button>
-              </a>
-            <div class="dropdown d-inline">
-              <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-                <button type="button" class="btn btn-link shadow-none">
-                  <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
-                </button></a>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-                <form class="p-2">
-                  <div class="search-box">
-                    <div class="position-relative">
-
-                      <input type="text" class="form-control rounded bg-light border-0" placeholder="Buscar...">
-                      <i class="font-size-16 search-icon"></i>
-                    </div>
+  <div class="card">
+    <div class="d-flex bd-highlight">
+      <div class="card-body">
 
 
         <h4 class="card-title mb-3">
@@ -48,117 +25,140 @@
               <form class="p-2">
                 <div class="search-box">
                   <div class="position-relative">
+
                     <input type="text" class="form-control rounded bg-light border-0" placeholder="Buscar...">
                     <i class="font-size-16 search-icon"></i>
                   </div>
 
-                </div>
-              </form>
-            </div>
-          </div>
 
-        </h4>
-        <div class="table-responsive">
-          <table class="table table-hover mb-0 align-middle">
-            <thead class="bg-light">
-              <tr>
-                <th class="rounded-start" style="width: 15px;">
-                  <div class="form-check">
-                    <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault"> </label>
-                  </div>
-                </th>
-                <th>Código</th>
-                <th>Nome Fantasia</th>
-                <th>Endereço</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Data</th>
-                <th>Valor</th>
-                <th>Status</th>
-              </tr>
-              <!-- end tr -->
-            </thead>
-            <!-- end thead -->
-            <tbody>
-              {% for object in object_list %}
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckexampleone">
-                      <label class="form-check-label" for="flexCheckexampleone">
-                      </label>
+                  <h4 class="card-title mb-3">
+                    Orçamentos
+                    <a class="dropdown-toggle text-reset mb-auto"  href={% url 'orcamento:orcamento_create' %} aria-haspopup="true"
+                      aria-expanded="false">
+                      <button type="button" class="btn btn-link shadow-none"><span
+                        class="fw-semibold">Cadastrar</span></button>
+                    </a>
+                    <div class="dropdown d-inline">
+                      <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-link shadow-none">
+                          <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
+                        </button></a>
+                      <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+                        <form class="p-2">
+                          <div class="search-box">
+                            <div class="position-relative">
+                              <input type="text" class="form-control rounded bg-light border-0" placeholder="Buscar...">
+                              <i class="font-size-16 search-icon"></i>
+                            </div>
+
+                          </div>
+                        </form>
+                      </div>
                     </div>
-                  </td>
-                  <td class="fw-medium">
-                    {{ object }}
-                  </td>
-                  <td>
-                    <a href="{{ object.get_absolute_url }}">{{ object.nome }}</a>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <!-- Imagem do produto -->
-                      <!--
+
+                  </h4>
+                  <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                      <thead class="bg-light">
+                        <tr>
+                          <th class="rounded-start" style="width: 15px;">
+                            <div class="form-check">
+                              <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault"> </label>
+                            </div>
+                          </th>
+                          <th>Código</th>
+                          <th>Nome Fantasia</th>
+                          <th>Endereço</th>
+                          <th>Bairro</th>
+                          <th>Cidade</th>
+                          <th>Data</th>
+                          <th>Valor</th>
+                          <th>Status</th>
+                        </tr>
+                        <!-- end tr -->
+                      </thead>
+                      <!-- end thead -->
+                      <tbody>
+                        {% for object in object_list %}
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckexampleone">
+                                <label class="form-check-label" for="flexCheckexampleone">
+                                </label>
+                              </div>
+                            </td>
+                            <td class="fw-medium">
+                              {{ object }}
+                            </td>
+                            <td>
+                              <a href="{{ object.get_absolute_url }}">{{ object.nome }}</a>
+                            </td>
+                            <td>
+                              <div class="d-flex align-items-center">
+                                <!-- Imagem do produto -->
+                                <!--
 
                                   <div class="me-2">
                                       <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
                                   </div>
                                   -->
-                  <div>
-                    <h5 class="font-size-14 text-truncate mb-0">{{ object.nome_fantasia }}
-                    </h5>
+                                <div>
+                                  <h5 class="font-size-14 text-truncate mb-0">{{ object.nome_fantasia }}
+                                  </h5>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              {{ object.nome_fantasia }}
+                            </td>
+
+                            <td>
+                              {{ object.address }}
+                            </td>
+                            <td>
+                              {{ object.district }}
+                            </td>
+                            <td>
+                              {{ object.city }}
+                            </td>
+                            <td>
+                              {{ object.uf }}
+                            </td>
+                            <td>
+                              <div class="d-flex">
+                                <div class="me-2">
+                                  {% if object.active %}
+                                    <i class="mdi mdi-check-circle-outline text-success"></i>
+                                  {% else %}
+                                    <i class="mdi mdi-close-circle-outline text-danger"></i>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </td>
+
+                            <td>
+                              <div class="dropdown">
+                                <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                  <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
+                                    Editar</a></li>
+                                  <li><a href="#" class="dropdown-item"><i
+                                    class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
+                                    Deletar</a></li>
+                                </ul>
+                              </div>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                        <!-- end /tr -->
+                      </tbody><!-- end tbody -->
+                    </table><!-- end table -->
                   </div>
                 </div>
-              </td>
-              <td>
-                {{ object.nome_fantasia }}
-              </td>
-
-              <td>
-                {{ object.address }}
-              </td>
-              <td>
-                {{ object.district }}
-              </td>
-              <td>
-                {{ object.city }}
-              </td>
-              <td>
-                {{ object.uf }}
-              </td>
-              <td>
-                <div class="d-flex">
-                  <div class="me-2">
-                    {% if object.active %}
-                    <i class="mdi mdi-check-circle-outline text-success"></i>
-                    {% else %}
-                    <i class="mdi mdi-close-circle-outline text-danger"></i>
-                    {% endif %}
-                  </div>
-                </div>
-              </td>
-
-              <td>
-                <div class="dropdown">
-                  <a href="#" class="dropdown-toggle card-drop" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="mdi mdi-dots-horizontal font-size-18 text-muted"></i>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a href="#" class="dropdown-item"><i class="mdi mdi-pencil font-size-16 text-success me-1"></i>
-                        Editar</a></li>
-                    <li><a href="#" class="dropdown-item"><i
-                          class="mdi mdi-trash-can font-size-16 text-danger me-1"></i>
-                        Deletar</a></li>
-                  </ul>
-                </div>
-              </td>
-            </tr>
-            {% endfor %}
-            <!-- end /tr -->
-          </tbody><!-- end tbody -->
-        </table><!-- end table -->
-      </div>
-    </div>
-  </div>
-  {% endblock content %}
+              </div>
+{% endblock content %}
