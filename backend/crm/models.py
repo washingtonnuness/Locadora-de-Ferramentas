@@ -20,9 +20,9 @@ class Cliente(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
     ]
 
     tipo = models.CharField(max_length=4, choices=TIPO_REGISTRO, default=CNPJ)
-    cnpj = models.IntegerField('CNPJ', null=True, blank=True)
-    rg = models.IntegerField('RG', null=True, blank=True)
-    cpf = models.IntegerField('CPF', null=True, blank=True)
+    rg = models.CharField('RG', max_length=20, null=True, blank=True)
+    cpf = models.CharField('CPF', max_length=11, null=True, blank=True)
+    cnpj = models.CharField('CNPJ', max_length=14, null=True, blank=True)
     nome = models.CharField('Nome Completo', max_length=250)
     razao_social = models.CharField('Razão Social', max_length=250, null=True, blank=True)  # noqa E501
     nome_fantasia = models.CharField('Nome Fantasia', max_length=250, null=True, blank=True)  # noqa E501
@@ -57,9 +57,9 @@ class Fornecedor(TimeStampedModel, Address, CreatedBy, DeletedBy, Active):
     ]
 
     tipo = models.CharField(max_length=4, choices=TIPO_REGISTRO, default=CNPJ)
-    cnpj = models.IntegerField('CNPJ', null=True, blank=True)
-    rg = models.IntegerField('RG', null=True, blank=True)
-    cpf = models.IntegerField('CPF', null=True, blank=True)
+    rg = models.CharField('RG', max_length=20, null=True, blank=True)
+    cpf = models.CharField('CPF', max_length=11, null=True, blank=True)
+    cnpj = models.CharField('CNPJ', max_length=14, null=True, blank=True)
     nome = models.CharField('Nome Completo', max_length=250)
     razao_social = models.CharField('Razão Social', max_length=250, null=True, blank=True)  # noqa E501
     nome_fantasia = models.CharField('Nome Fantasia', max_length=250, null=True, blank=True)  # noqa E501

@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <div class="card">
   <div class="d-flex bd-highlight">
     <div class="card-body">
@@ -27,16 +28,19 @@
             <form class="p-2">
               <div class="search-box">
                 <div class="position-relative">
+
                           <input type="text" name="search" class="form-control rounded bg-light border-0"
                             hx-get="{% url 'produto:produto_items_search' %}"
                             hx-trigger="keyup changed delay:250ms, search"
                             hx-target="#search-results" placeholder="buscando...">
                           
                           <span id="search-results"></span>
+
                 </div>
               </div>
             </form>
           </div>
+
         </div>
       </h4>
       
@@ -148,3 +152,4 @@
   </div>
 </div>
 {% endblock content %}
+
