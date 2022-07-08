@@ -71,6 +71,8 @@ def invoice(request):
 
     context = {"results": results}
     return render(request, template, context)
+
+
 @login_required
 def clear(request):
     return HttpResponse("")
