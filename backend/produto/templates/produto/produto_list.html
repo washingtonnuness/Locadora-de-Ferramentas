@@ -2,25 +2,31 @@
 {% load static %}
 
 {% block content %}
-  <main role="main" class="ml-sm-auto">
-    <div class="row">
-      <div class="col-xx">
-        <div class="card">
-          <div class="card-body">
-            <div class="d-flex justify-content-between">
-              <h4 class="card-title mb-4">Produtos</h4>
-              <div>
-                <div class="dropdown d-inline ">
-                  <a class="dropdown-toggle text-reset mb-3" href={% url 'produto:produto_create' %}  aria-haspopup="true" aria-expanded="false">
-                    <span class="fw-semibold">Cadastrar</span>
-                  </div>
-                </div>
-                <div class="dropdown d-inline">
-                  <a class="dropdown-toggle text-muted me-3 mb-3 align-middle"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
-                  </a>
 
-                  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+<div class="card">
+  <div class="d-flex bd-highlight">
+    <div class="card-body">
+
+
+      <h4 class="card-title mb-3">Produtos</h4>
+      <div class="d-flex justify-content-start">
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <div class="p-2 bd-highlight">
+            <div class="dropdown d-inline ">
+              <a class="dropdown-toggle text-reset mb-auto"  href={% url 'produto:produto_create' %} aria-haspopup="true"
+                aria-expanded="false">
+                <button type="button" class="btn btn-link shadow-none"><span
+                    class="fw-semibold">Cadastrar</span></button>
+            </div>
+          </div>
+          <div class="p-2 bd-highlight">
+            <div class="dropdown d-inline">
+              <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-link shadow-none">
+                  <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
+                </button></a>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
                     <form class="p-2">
                       <div class="search-box">
                         <div class="position-relative">
@@ -33,9 +39,11 @@
                         </div>
                       </div>
                     </form>
-                  </div>
-                </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
               <div class="table-responsive">
                 <table class="table table-hover mb-0 align-middle">
