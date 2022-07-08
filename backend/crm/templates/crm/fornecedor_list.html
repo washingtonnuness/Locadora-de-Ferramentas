@@ -59,7 +59,7 @@
                 <th>Bairro</th>
                 <th>Cidade</th>
                 <th>Estado</th>
-                <th>Status</th>
+                <th>Ativo</th>
               </tr>
               <!-- end tr -->
             </thead>
@@ -111,6 +111,15 @@
                     {{ object.uf }}
                   </td>
                   <td>
+                    <div class="d-flex">
+                  <div class="me-2">
+                    {% if object.active %}
+                    <i class="mdi mdi-check-circle-outline text-success"></i>
+                    {% else %}
+                    <i class="mdi mdi-close-circle-outline text-danger"></i>
+                    {% endif %}
+                  </div>
+                </div>
                   </td>
 
                   <td>
