@@ -57,6 +57,11 @@
           </div>
 
           <div class="col">
+            {{ orcamento_item_form.quantidade.label }}
+            {% render_field orcamento_item_form.quantidade class="form-control" data-field='quantidade' %}
+          </div>
+
+          <div class="col">
             {{ orcamento_item_form.valor.label }}
             {% render_field orcamento_item_form.valor class="form-control" data-field='valor' %}
           </div>

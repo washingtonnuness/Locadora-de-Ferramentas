@@ -13,7 +13,15 @@ class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
         null=True,
         blank=True
     )
-    periodo = models.PositiveSmallIntegerField('Período', null=True, blank=True)  # noqa E501
+    periodo = models.PositiveSmallIntegerField('Período (em dias)', null=True, blank=True)  # noqa E501
+    desconto = models.DecimalField(
+        'Desconto (%)',
+        max_digits=4,
+        decimal_places=2,
+        blank=True,
+        null=True,
+        help_text='Em porcentagem'
+    )
 
     class Meta:
         ordering = ('-pk',)
@@ -44,6 +52,7 @@ class OrcamentoItens(models.Model):
         null=True,
         blank=True
     )
+    quantidade = models.PositiveSmallIntegerField('Quantidade', default=1)
     valor = models.DecimalField(
         'Valor',
         max_digits=8,
