@@ -1,16 +1,16 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin as LRM
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from backend.crm.models import Cliente
 from backend.produto.forms import CategoriatForm, MarcaForm, ProdutoForm
 from backend.produto.models import Produto
 
-from .forms import OrcamentoForm, OrcamentoFormSet
+from .forms import OrcamentoForm, OrcamentoItemsFormset, OrcamentoItensForm
 from .models import Orcamento, OrcamentoItens
 
 
@@ -20,37 +20,48 @@ class OrcamentoListView(LRM, ListView):
 
 @login_required
 def orcamento_create(request, client_pk):
-    template_name = 'orcamento_form_add.html'
-    name = request.GET.get("searchField")
-
-    if name == None:
-        name = ''
-        cliente = Cliente.objects.filter(nome__icontains=name)
-        cliente = Cliente.objects.get(pk=client_pk)
-    else:
-        # add film
-        cliente = Cliente.objects.filter(nome__icontains=name)
-        context = {
-            'object_list': cliente,
-            'title': 'Cadastro Orçamentos',
-        }
-        return render(request, template_name, context)
-    # add the film to the user's list
-    # request.user.filclientems.add(cliente)
-
-    # return template fragment with all the user's films
-    context = {
-        'object_list': cliente,
-        'title': 'Cadastro Orçamentos',
-    }
-    return render(request, template_name, context)
+    cliente = Cliente.objects.get(pk=client_pk)
+    orcamento = Orcamento.objects.create(cliente=cliente)
+    return redirect(reverse_lazy('orcamento:orcamento_update', kwargs={'pk': orcamento.pk}))  # noqa E501
 
 
 @login_required
-def add_orcamento(request, client_pk):
-    template_name = 'orcamento_form_add.html'
-    cliente = Cliente.objects.get(pk=client_pk)
-    context = {'object_list': cliente}
+def orcamento_update(request, pk):
+    template_name = 'orcamento/orcamento_form.html'
+    orcamento_instance = Orcamento.objects.get(pk=pk)
+
+    form = OrcamentoForm(request.POST or None, instance=orcamento_instance, prefix='main')  # noqa E501
+    formset = OrcamentoItemsFormset(request.POST or None, instance=orcamento_instance, prefix='items')  # noqa E501
+
+    if request.method == 'POST':
+        if form.is_valid() and formset.is_valid():
+            form.save()
+            formset.save()
+            return redirect('orcamento:orcamento_list')
+
+    context = {'form': form, 'formset': formset}
+    return render(request, template_name, context)
+
+
+def add_row_orcamento_items_hx(request):
+    template_name = 'orcamento/hx/row_orcamento_items_hx.html'
+    form = OrcamentoItensForm()
+    context = {'orcamento_item_form': form}
+    return render(request, template_name, context)
+
+
+def produto_preco(request):
+    template_name = 'orcamento/hx/produto_preco_hx.html'
+    url = request.get_full_path()
+    print('url', url)
+    print(url.split('-'))
+    item = url.split('-')[1]
+    print('item', item)
+    print('list', list(request.GET.values()))
+    produto_pk = list(request.GET.values())[0]
+    produto = Produto.objects.get(pk=produto_pk)
+
+    context = {'produto': produto, 'item': item[0]}
     return render(request, template_name, context)
 
 

@@ -50,9 +50,10 @@ class OrcamentoItens(models.Model):
         blank=True,
         null=True
     )
+    periodo = models.PositiveSmallIntegerField('Período', null=True, blank=True)  # noqa E501
 
     class Meta:
-        ordering = ('-pk',)
+        ordering = ('pk',)
         verbose_name = 'Orçamento Item'
         verbose_name_plural = 'Orçamento Itens'
 

@@ -18,4 +18,4 @@ class OrcamentoAdmin(admin.ModelAdmin):
 
 @admin.register(OrcamentoItens)
 class OrcamentoItensAdmin(admin.ModelAdmin):
-    list_display = ('orcamento', 'produto', 'patrimonio', 'valor')
+    list_display = ('orcamento', 'produto', 'patrimonio', 'valor', 'periodo')

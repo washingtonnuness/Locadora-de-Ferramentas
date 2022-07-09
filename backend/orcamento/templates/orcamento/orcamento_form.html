@@ -3,7 +3,7 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <h4>Cadastrar Produto</h4>
+  <h4>Orçamento</h4>
   <form action="." method="POST">
     {% csrf_token %}
 
@@ -25,32 +25,47 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <legend class="legend">Número de controle</legend>
+        <legend class="legend">Itens do Orçamento</legend>
         <div>
           <button
             id="addItem"
             class='btn btn-primary mb-2'
-            hx-get="{% url 'produto:add_row_produto_items_hx' %}"
-            hx-target="#produto"
+            hx-get="{% url 'orcamento:add_row_orcamento_items_hx' %}"
+            hx-target="#orcamento"
             hx-swap="beforeend"
           >Adicionar</button>
         </div>
       </div>
     </div>
 
-    <div id="produto">
+    <div id="orcamento" class="form-inline">
 
-      {% for produto_item_form in formset %}
-        <div class="row d-flex align-items-end">
-          <div class="col-md-6">
-            <div id="item-{{ forloop.counter0 }}" class="form-group">
-              {% render_field produto_item_form.produto data-field='produto' %}
+      {% for orcamento_item_form in formset %}
+        <div id="item-{{ forloop.counter0 }}" class="row d-flex align-items-end">
+          <div class="col">
+            {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
+            {{ orcamento_item_form.id }}
 
-              <label>{{ produto_item_form.titulo.label }}</label>
-              {% render_field produto_item_form.titulo class="form-control" data-field='titulo' %}
-            </div>
+            {{ orcamento_item_form.produto.label }}
+            {% render_field orcamento_item_form.produto class="form-control" hx-get="/orcamento/produto/preco/" hx-target="#id_valor" hx-swap="outerHTML" data-field='produto' %}
           </div>
-          <div class="col-md-6">
+
+          <div class="col">
+            {{ orcamento_item_form.patrimonio.label }}
+            {% render_field orcamento_item_form.patrimonio class="form-control" data-field='patrimonio' %}
+          </div>
+
+          <div class="col">
+            {{ orcamento_item_form.valor.label }}
+            {% render_field orcamento_item_form.valor class="form-control" data-field='valor' %}
+          </div>
+
+          <div class="col">
+            {{ orcamento_item_form.periodo.label }}
+            {% render_field orcamento_item_form.periodo class="form-control" data-field='periodo' %}
+          </div>
+
+          <div class="col-auto">
             <span class="span-is-link no ml-2" onclick="removeRow()">
               <i class="fa fa-times fa-lg"></i>
             </span>
@@ -69,7 +84,7 @@
 {% endblock content %}
 
 {% block js %}
-  <script src="{% static 'js/produto.js' %}"></script>
+  <script src="{% static 'js/orcamento.js' %}"></script>
 
   <script>
     // Necessário por causa do delete
