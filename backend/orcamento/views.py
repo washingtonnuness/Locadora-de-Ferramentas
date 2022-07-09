@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin as LRM
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from backend.crm.models import Cliente
@@ -43,14 +43,6 @@ def orcamento_create(request, client_pk):
         'object_list': cliente,
         'title': 'Cadastro Orçamentos',
     }
-    return render(request, template_name, context)
-
-
-@login_required
-def add_orcamento(request, client_pk):
-    template_name = 'orcamento_form_add.html'
-    cliente = Cliente.objects.get(pk=client_pk)
-    context = {'object_list': cliente}
     return render(request, template_name, context)
 
 
