@@ -27,7 +27,7 @@ def orcamento_create(request, client_pk):
 
 @login_required
 def orcamento_update(request, pk):
-    template_name = 'orcamento/orcamento_form.html'
+    template_name = 'orcamento/orcamento_invoice.html'
     orcamento_instance = Orcamento.objects.get(pk=pk)
 
     form = OrcamentoForm(request.POST or None, instance=orcamento_instance, prefix='main')  # noqa E501
@@ -66,11 +66,10 @@ def produto_preco(request):
 
 
 @login_required
-def search(request):
-    template = 'hx/orcamento_results_search.html'
+def produto_items_search(request):
+    template = 'orcamento/hx/orcamento_results_search.html'
     search_text = request.GET.get('search')
     results = Produto.objects.filter(titulo__icontains=search_text)
-
     context = {"results": results}
     return render(request, template, context)
 

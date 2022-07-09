@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
   <div class="main-content">
@@ -15,7 +16,8 @@
         </div>
       </div>
       <!-- end page title -->
-
+      <form action="." method="POST">
+        {% csrf_token %}
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
@@ -39,14 +41,17 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="text-muted">
-                    <h5 class="font-size-14 mb-3">LOCATÁRIO:</h5>
+                    {% for field in form.visible_fields %}
+                    <h5 class="font-size-14 mb-3"></h5>
                     <div class="mb-2">
+                      
                       <img src={% static 'img/cliente_logos/suzano-logo-1.png' %} alt="logo" height="40">
                     </div>
-                    <h5 class="font-size-12 mb-2">SUZANO S.A. - CNPJ:6.404.287/0462-28 </h5>
+                    <h5 class="font-size-12 mb-2">{% render_field field %}</h5>
                     <p class="mb-1">Rodovia Aracruz x Barra do Riacho, S/N km25 portaria sul - Barra do Riacho</p>
                     <p class="mb-1">Aracruz - ES CEP:29197-900</p>
                     <p>Tel:</p>
+                    {% endfor %}
                   </div>
                 </div>
                 <!-- end col -->
@@ -58,11 +63,11 @@
                     </div>
                     <div class="mt-4">
                       <h5 class="font-size-15 mb-1">Data de ínicio:</h5>
-                      <p>08 Julho, 2022</p>
+                      <input type="date" name="" id="">
                     </div>
                     <div class="mt-4">
                       <h5 class="font-size-15 mb-1">Data de fim</h5>
-                      <p>13 Julho, 2022</p>
+                        <input type="date" name="" id="">
                     </div>
                   </div>
                 </div>
@@ -73,6 +78,23 @@
               <div class="py-2">
                 <div class="font-size-15 mb-1 text-center"><h5>Romaneio de entrega</h5></div>
                 <h5 class="font-size-15">Itens</h5>
+                <div>
+                  <form class="p-2">
+                    <div class="search-box">
+                      <div class="position-relative">
+                        <input type="text" name="search" class="form-control rounded bg-light border-0"
+                          hx-get="{% url 'orcamento:produto_items_search' %}"
+                          hx-swap="beforeend"
+                          hx-trigger="keyup changed delay:250ms, search"
+                          hx-target="#search-results">
+
+    
+                        <span id="search-results"></span>
+    
+                      </div>
+                    </div>
+                  </form>
+                </div>
                 <div class="table-responsive">
                   <table class="table align-middle table-nowrap table-centered mb-0">
                     <thead>
@@ -85,20 +107,11 @@
                         <th class="text-end" style="width: 120px;">Total</th>
                       </tr>
                     </thead><!-- end thead -->
-                    <tbody>
-                      <tr>
-                        <th scope="row">01</th>
-                        <td>
-                          <div>
-                            <h5 class="text-truncate font-size-14 mb-1">Talhas corrente de 2t elevação de 5 metros</h5>
-                            <p class="text-muted mb-0">corrente de acionamento 10 metros</p>
-                          </div>
-                        </td>
-                        <td> </td>
-                        <td>R$  </td>
-                        <td>2</td>
-                        <td class="text-end">R$  </td>
-                      </tr>
+                    <tbody id="orcamento">
+                      {% for orcamento_item_form in formset %}
+
+                        {% endfor %}
+
                       <!-- end tr -->
                       <tr>
                         <th scope="row" colspan="4" class="text-end">Sub Total</th>
@@ -126,7 +139,7 @@
                 <div class="d-print-none mt-4">
                   <div class="float-end">
                     <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
-                    <a href="#" class="btn btn-primary w-md">Enviar</a>
+                    <a class="btn btn-primary w-md"><button class='btn btn-primary' type="submit">Enviar</button></a>
                   </div>
                 </div>
               </div>
@@ -134,9 +147,21 @@
           </div>
         </div><!-- end col -->
       </div><!-- end row -->
-
+    </form>
     </div> <!-- container-fluid -->
   </div>
   <!-- End Page-content -->
 
 {% endblock content %}
+
+{% block js %}
+  <script src="{% static 'js/orcamento.js' %}"></script>
+
+  <script>
+    // Necessário por causa do delete
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+  </script>
+
+{% endblock js %}
