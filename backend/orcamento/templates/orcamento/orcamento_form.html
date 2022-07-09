@@ -3,7 +3,7 @@
 {% load widget_tweaks %}
 
 {% block content %}
-  <h4>Cadastrar Orçamento</h4>
+  <h4>Orçamento</h4>
   <form action="." method="POST">
     {% csrf_token %}
 
@@ -30,24 +30,24 @@
           <button
             id="addItem"
             class='btn btn-primary mb-2'
-            hx-get="{% url 'produto:add_row_produto_items_hx' %}"
-            hx-target="#produto"
+            hx-get="{% url 'orcamento:add_row_orcamento_items_hx' %}"
+            hx-target="#orcamento"
             hx-swap="beforeend"
           >Adicionar</button>
         </div>
       </div>
     </div>
 
-    <div id="produto">
+    <div id="orcamento">
 
-      {% for produto_item_form in formset %}
+      {% for orcamento_item_form in formset %}
         <div class="row d-flex align-items-end">
           <div class="col-md-6">
             <div id="item-{{ forloop.counter0 }}" class="form-group">
-              {% render_field produto_item_form.produto data-field='produto' %}
+              {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
 
-              <label>{{ produto_item_form.titulo.label }}</label>
-              {% render_field produto_item_form.titulo class="form-control" data-field='titulo' %}
+              <label>{{ orcamento_item_form.produto.label }}</label>
+              {% render_field orcamento_item_form.produto class="form-control" data-field='produto' %}
             </div>
           </div>
           <div class="col-md-6">
@@ -69,7 +69,7 @@
 {% endblock content %}
 
 {% block js %}
-  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/orcamento.js' %}"></script>
 
   <script>
     // Necessário por causa do delete

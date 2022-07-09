@@ -10,7 +10,7 @@ from backend.crm.models import Cliente
 from backend.produto.forms import CategoriatForm, MarcaForm, ProdutoForm
 from backend.produto.models import Produto
 
-from .forms import OrcamentoForm, OrcamentoFormSet
+from .forms import OrcamentoForm, OrcamentoItemsFormset, OrcamentoItensForm
 from .models import Orcamento, OrcamentoItens
 
 
@@ -28,8 +28,25 @@ def orcamento_create(request, client_pk):
 @login_required
 def orcamento_update(request, pk):
     template_name = 'orcamento/orcamento_form.html'
-    orcamento = Orcamento.objects.get(pk=pk)
-    context = {'object': orcamento}
+    orcamento_instance = Orcamento.objects.get(pk=pk)
+
+    form = OrcamentoForm(request.POST or None, instance=orcamento_instance, prefix='main')  # noqa E501
+    formset = OrcamentoItemsFormset(request.POST or None, instance=orcamento_instance, prefix='items')  # noqa E501
+
+    if request.method == 'POST':
+        if form.is_valid() and formset.is_valid():
+            form.save()
+            formset.save()
+            return redirect('orcamento:orcamento_list')
+
+    context = {'form': form, 'formset': formset}
+    return render(request, template_name, context)
+
+
+def add_row_orcamento_items_hx(request):
+    template_name = 'orcamento/hx/row_orcamento_items_hx.html'
+    form = OrcamentoItensForm()
+    context = {'orcamento_item_form': form}
     return render(request, template_name, context)
 
 

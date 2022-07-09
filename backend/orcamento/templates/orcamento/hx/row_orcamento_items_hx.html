@@ -1,0 +1,17 @@
+{% load widget_tweaks %}
+
+<div class="row d-flex align-items-end">
+  <div class="col-md-6">
+    <div id="item-{{ forloop.counter0 }}" class="form-group">
+      {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
+
+      <label>{{ orcamento_item_form.produto.label }}</label>
+      {% render_field orcamento_item_form.produto class="form-control" data-field='produto' %}
+    </div>
+  </div>
+  <div class="col-md-6">
+    <span class="span-is-link no ml-2" onclick="removeRow()">
+      <i class="fa fa-times fa-lg"></i>
+    </span>
+  </div>
+</div>

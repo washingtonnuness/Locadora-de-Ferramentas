@@ -1,43 +1,46 @@
-from django.forms import ModelForm, inlineformset_factory
+from django import forms
+from django.forms import inlineformset_factory
 
 from .models import Orcamento, OrcamentoItens
 
 
-class OrcamentoForm(ModelForm):
+class OrcamentoForm(forms.ModelForm):
     required_css_class = 'required'
 
     class Meta:
         model = Orcamento
-        fields = '__all__'
-        exclude = ('cliente', 'created_user', 'delete_user',
-                   'create_at', 'update_at', 'delete_at')
+        fields = ('cliente',)
 
     def __init__(self, *args, **kwargs):
         super(OrcamentoForm, self).__init__(*args, **kwargs)
+
         for field_name, field in self.fields.items():
             field = self.fields.get(field_name)
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
 
 
-class OrcamentoItensForm(ModelForm):
-    required_css_class = 'required'
+class OrcamentoItensForm(forms.ModelForm):
+    id = forms.IntegerField()
 
     class Meta:
         model = OrcamentoItens
-        fields = '__all__'
-        exclude = ('cliente', 'created_user', 'delete_user',
-                   'create_at', 'update_at', 'delete_at')
+        fields = ('orcamento', 'id', 'produto')
 
     def __init__(self, *args, **kwargs):
-        super(OrcamentoItens, self).__init__(*args, **kwargs)
+        super(OrcamentoItensForm, self).__init__(*args, **kwargs)
+
         for field_name, field in self.fields.items():
-            field = self.fields.get(field_name)
-            field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
 
+        self.fields['orcamento'].label = ''
+        self.fields['orcamento'].widget = forms.HiddenInput()
 
-OrcamentoFormSet = inlineformset_factory(
+        self.fields['id'].label = ''
+        self.fields['id'].widget = forms.HiddenInput()
+
+
+OrcamentoItemsFormset = inlineformset_factory(
     Orcamento,
     OrcamentoItens,
     form=OrcamentoItensForm,
