@@ -30,9 +30,6 @@ function reorderItems() {
 
       item.querySelector('[data-field="valor"]').setAttribute('name', 'items-' + i + '-valor')
       item.querySelector('[data-field="valor"]').setAttribute('id', 'id_items-' + i + '-valor')
-
-      item.querySelector('[data-field="periodo"]').setAttribute('name', 'items-' + i + '-periodo')
-      item.querySelector('[data-field="periodo"]').setAttribute('id', 'id_items-' + i + '-periodo')
   })
 
   Array.from(document.querySelectorAll("#id_id"))

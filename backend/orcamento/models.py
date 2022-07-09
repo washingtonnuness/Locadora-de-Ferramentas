@@ -13,6 +13,7 @@ class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
         null=True,
         blank=True
     )
+    periodo = models.PositiveSmallIntegerField('Período', null=True, blank=True)  # noqa E501
 
     class Meta:
         ordering = ('-pk',)
@@ -50,7 +51,6 @@ class OrcamentoItens(models.Model):
         blank=True,
         null=True
     )
-    periodo = models.PositiveSmallIntegerField('Período', null=True, blank=True)  # noqa E501
 
     class Meta:
         ordering = ('pk',)
