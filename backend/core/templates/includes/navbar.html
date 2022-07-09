@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-down" href={% url 'orcamento:orcamento_list' %} id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle arrow-down" href="{% url 'orcamento:orcamento_list' %}" id="navbarDropdown">
                 <i class="icon nav-icon" data-feather="grid"></i> Orçamentos
               </a>
             </li>
@@ -53,8 +53,8 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">Empresa</a></li>
-                <li><a class="dropdown-item" href={% url 'crm:cliente_list' %}>Clientes</a></li>
-                <li><a class="dropdown-item" href={% url 'crm:produto_list' %}">Fornecedores</a></li>
+                <li><a class="dropdown-item" href="{% url 'crm:cliente_list' %}">Clientes</a></li>
+                <li><a class="dropdown-item" href="{% url 'crm:fornecedor_list' %}">Fornecedores</a></li>
                 <li><a class="dropdown-item" href="#">Contas</a></li>
               </ul>
             </li>
