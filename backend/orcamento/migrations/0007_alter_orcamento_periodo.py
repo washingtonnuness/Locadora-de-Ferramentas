@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='orcamento',
             name='periodo',
-            field=models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='Período (em dias)'),
+            field=models.PositiveSmallIntegerField(
+                blank=True, null=True, verbose_name='Período (em dias)'),
         ),
     ]

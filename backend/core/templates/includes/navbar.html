@@ -1,88 +1,88 @@
 {% load static %}
 <header id="page-topbar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a href="index.html" class="logo logo-dark">
-        <span class="logo-sm">
-          <img src={% static '/img/logo-sm.png' %} alt="" height="22">
-        </span>
-        <span class="logo-lg">
-          <img src={% static '/img/logo-dark.png' %} alt="" height="22">
-        </span>
-      </a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="index.html" class="logo logo-dark">
+      <span class="logo-sm">
+        <img src={% static '/img/logo-sm.png' %} alt="" height="22">
+      </span>
+      <span class="logo-lg">
+        <img src={% static '/img/logo-dark.png' %} alt="" height="22">
+      </span>
+    </a>
 
-      <a href="index.html" class="logo logo-light">
-        <span class="logo-sm">
-          <img src={% static '/img/logo-sm.png' %} alt="" height="22">
-        </span>
-        <span class="logo-lg">
-          <img src={% static '/img/logo-light.png' %} alt="" height="22">
-        </span>
-      </a>
-      
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-down" href="{% url 'orcamento:orcamento_list' %}" id="navbarDropdown">
-                <i class="icon nav-icon" data-feather="grid"></i> Orçamentos
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-down" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="icon nav-icon" data-feather="grid"></i> Financeiro
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-down" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="icon nav-icon" data-feather="package"></i> Estoque
-              </a>
-            </li>
+    <a href="index.html" class="logo logo-light">
+      <span class="logo-sm">
+        <img src={% static '/img/logo-sm.png' %} alt="" height="22">
+      </span>
+      <span class="logo-lg">
+        <img src={% static '/img/logo-light.png' %} alt="" height="22">
+      </span>
+    </a>
 
-            <!-- <li class="nav-item dropdown">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle arrow-down" href="{% url 'orcamento:orcamento_list' %}" id="navbarDropdown">
+            <i class="icon nav-icon" data-feather="grid"></i> Orçamentos
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle arrow-down" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="icon nav-icon" data-feather="grid"></i> Financeiro
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle arrow-down" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="icon nav-icon" data-feather="package"></i> Estoque
+          </a>
+        </li>
+
+        <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
                 <i class="icon nav-icon" data-feather="file"></i>
                 <span data-key="t-extra-pages">Relatórios</span>
                 <div class="arrow-down"></div>
               </a>
             </li> -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle arrow-down" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="icon nav-icon" data-feather="grid"></i> Cadastros
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Empresa</a></li>
-                <li><a class="dropdown-item" href="{% url 'crm:cliente_list' %}">Clientes</a></li>
-                <li><a class="dropdown-item" href="{% url 'crm:fornecedor_list' %}">Fornecedores</a></li>
-                <li><a class="dropdown-item" href="#">Contas</a></li>
-              </ul>
-            </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle arrow-down" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="icon nav-icon" data-feather="grid"></i> Cadastros
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Empresa</a></li>
+            <li><a class="dropdown-item" href="{% url 'crm:cliente_list' %}">Clientes</a></li>
+            <li><a class="dropdown-item" href="{% url 'crm:fornecedor_list' %}">Fornecedores</a></li>
+            <li><a class="dropdown-item" href="#">Contas</a></li>
           </ul>
-          <div class="dropdown d-inline-block">
-            <button type="button" class="btn header-item user text-start d-flex align-items-center"
-              id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="rounded-circle header-profile-user" src={% static 'img/users/avatar-1.jpg' %} alt="Header Avatar">
-              <span class="ms-2 d-none d-sm-block user-item-desc">
-                <span class="user-name">{{user.first_name}}</span>
-                <span class="user-sub-title">{{user.email}}</span>
-              </span>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end pt-0">
-              <div class="p-3 bg-primary border-bottom">
-                <h6 class="mb-0 text-white">{{user.first_name}}</h6>
-                <p class="mb-0 font-size-11 text-white-50 fw-semibold">{{user.email}}</p>
-              </div>
-              {% if request.user.is_authenticated %}
-                <a class="dropdown-item" href="{% url 'logout' %}"><i
-                  class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
-                    class="align-middle">Sair</span></a>
-              {% endif %}
-  
-            </div>
+        </li>
+      </ul>
+      <div class="dropdown d-inline-block">
+        <button type="button" class="btn header-item user text-start d-flex align-items-center"
+          id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="rounded-circle header-profile-user" src={% static 'img/users/avatar-1.jpg' %} alt="Header Avatar">
+          <span class="ms-2 d-none d-sm-block user-item-desc">
+            <span class="user-name">{{user.first_name}}</span>
+            <span class="user-sub-title">{{user.email}}</span>
+          </span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end pt-0">
+          <div class="p-3 bg-primary border-bottom">
+            <h6 class="mb-0 text-white">{{user.first_name}}</h6>
+            <p class="mb-0 font-size-11 text-white-50 fw-semibold">{{user.email}}</p>
           </div>
-        </div>
+          {% if request.user.is_authenticated %}
+            <a class="dropdown-item" href="{% url 'logout' %}"><i
+              class="mdi mdi-logout text-muted font-size-16 align-middle me-1"></i> <span
+                class="align-middle">Sair</span></a>
+          {% endif %}
 
+        </div>
       </div>
-    </nav>
+    </div>
+
+  </div>
+</nav>
 </header>

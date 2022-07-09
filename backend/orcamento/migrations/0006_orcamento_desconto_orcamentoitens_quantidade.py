@@ -13,11 +13,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orcamento',
             name='desconto',
-            field=models.DecimalField(blank=True, decimal_places=2, help_text='Em porcentagem', max_digits=4, null=True, verbose_name='Desconto (%)'),
+            field=models.DecimalField(blank=True, decimal_places=2, help_text='Em porcentagem',
+                                      max_digits=4, null=True, verbose_name='Desconto (%)'),
         ),
         migrations.AddField(
             model_name='orcamentoitens',
             name='quantidade',
-            field=models.PositiveSmallIntegerField(default=1, verbose_name='Quantidade'),
+            field=models.PositiveSmallIntegerField(
+                default=1, verbose_name='Quantidade'),
         ),
     ]

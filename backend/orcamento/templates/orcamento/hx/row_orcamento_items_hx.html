@@ -1,14 +1,14 @@
 {% load widget_tweaks %}
 <tr>
-<th id="item-{{ forloop.counter0 }}">
-      {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
-<th>
-  {{ orcamento_item_form.produto.label }}
+  <th id="item-{{ forloop.counter0 }}">
+    {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
+    <th>
+      {{ orcamento_item_form.produto.label }}
       {% render_field orcamento_item_form.produto  data-field='produto' %}
-</th>  
-    
-</th> 
-<th>
+    </th>
+
+  </th>
+  <th>
     {{ orcamento_item_form.patrimonio.label }}
 
     {% render_field orcamento_item_form.patrimonio class="form-control" data-field='patrimonio' %}
@@ -25,10 +25,10 @@
   </div>
 
 
-<th>
+  <th>
     <span class="span-is-link no ml-2" onclick="removeRow()">
       <i class="fa fa-times fa-lg"></i>
     </span>
-</th>
+  </th>
 
 </tr>
