@@ -1,0 +1,135 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block content %}
+  <div class="main-content">
+
+    <div class="container-fluid">
+
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0">Contrato</h4>
+          </div>
+        </div>
+      </div>
+      <!-- end page title -->
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="invoice-title">
+                <h4 class="float-end font-size-15">Contrato #SL0001 <span class="badge bg-success font-size-12 ms-2">AF</span></h4>
+                <div class="mb-3">
+                  <img src={% static 'img/cliente_logos/serviloc-logo-1.png' %} alt="logo" height="40">
+                </div>
+                <div class="text-muted">
+                  <h5 class="font-size-14 mb-3">SERVILOC LOCACOES E SERVICOS LTDA</h5>
+                  <p class="mb-1">CNPJ: 42.307.180/0001-07, IE: Isento</p>
+                  <p class="mb-1">Rua: Felisberto Modenesi, S/n - Saue </p>
+                  <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> locacao@serviloc.com.br</p>
+                  <p><i class="uil uil-phone me-1"> 27 98135-2872,</i></p>
+                </div>
+              </div>
+
+              <hr class="my-4">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="text-muted">
+                    <h5 class="font-size-14 mb-3">LOCATÁRIO:</h5>
+                    <h5 class="font-size-12 mb-2">SUZANO S.A. - CNPJ:6.404.287/0462-28 </h5>
+                    <p class="mb-1">Rodovia Aracruz x Barra do Riacho, S/N km25 portaria sul - Barra do Riacho</p>
+                    <p class="mb-1">Aracruz - ES CEP:29197-900</p>
+                    <p>Tel:</p>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-sm-6">
+                  <div class="text-muted text-sm-end">
+                    <div>
+                      <h5 class="font-size-15 mb-1">AF No:</h5>
+                      <p></p>
+                    </div>
+                    <div class="mt-4">
+                      <h5 class="font-size-15 mb-1">Data de ínicio:</h5>
+                      <p>08 Julho, 2022</p>
+                    </div>
+                    <div class="mt-4">
+                      <h5 class="font-size-15 mb-1">Data de fim</h5>
+                      <p>13 Julho, 2022</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+
+              <div class="py-2">
+                <h5 class="font-size-15">Itens</h5>
+
+                <div class="table-responsive">
+                  <table class="table align-middle table-nowrap table-centered mb-0">
+                    <thead>
+                      <tr>
+                        <th style="width: 70px;">No.</th>
+                        <th>Item</th>
+                        <th>Patrimônio</th>
+                        <th>Preço</th>
+                        <th>Quantidad</th>
+                        <th class="text-end" style="width: 120px;">Total</th>
+                      </tr>
+                    </thead><!-- end thead -->
+                    <tbody>
+                      <tr>
+                        <th scope="row">01</th>
+                        <td>
+                          <div>
+                            <h5 class="text-truncate font-size-14 mb-1">Talhas corrente de 2t elevação de 5 metros</h5>
+                            <p class="text-muted mb-0">corrente de acionamento 10 metros</p>
+                          </div>
+                        </td>
+                        <td> </td>
+                        <td>R$  </td>
+                        <td>2</td>
+                        <td class="text-end">R$  </td>
+                      </tr>
+                      <!-- end tr -->
+                      <tr>
+                        <th scope="row" colspan="4" class="text-end">Sub Total</th>
+                        <td class="text-end">R$ </td>
+                      </tr>
+                      <!-- end tr -->
+                      <tr>
+                        <th scope="row" colspan="4" class="border-0 text-end">
+                          Desconto :</th>
+                        <td class="border-0 text-end">- R$ </td>
+                      </tr>
+                      <!-- end tr -->
+                      <tr>
+                        <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                        <td class="border-0 text-end"><h4 class="m-0 fw-semibold">R$</h4></td>
+                      </tr>
+                      <!-- end tr -->
+                    </tbody><!-- end tbody -->
+                  </table><!-- end table -->
+                </div><!-- end table responsive -->
+                <div class="d-print-none mt-4">
+                  <div class="float-end">
+                    <a href="javascript:window.print()" class="btn btn-success me-1"><i class="fa fa-print"></i></a>
+                    <a href="#" class="btn btn-primary w-md">Enviar</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end col -->
+      </div><!-- end row -->
+
+    </div> <!-- container-fluid -->
+  </div>
+  <!-- End Page-content -->
+
+{% endblock content %}
