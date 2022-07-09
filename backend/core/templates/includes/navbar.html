@@ -3,19 +3,19 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a href="index.html" class="logo logo-dark">
       <span class="logo-sm">
-        <img src={% static '/img/logo-sm.png' %} alt="" height="22">
+        <img src="{% static '/img/logo-sm.png' %}" alt="" height="22">
       </span>
       <span class="logo-lg">
-        <img src={% static '/img/logo-dark.png' %} alt="" height="22">
+        <img src="{% static '/img/logo-dark.png' %}" alt="" height="22">
       </span>
     </a>
 
     <a href="index.html" class="logo logo-light">
       <span class="logo-sm">
-        <img src={% static '/img/logo-sm.png' %} alt="" height="22">
+        <img src="{% static '/img/logo-sm.png' %}" alt="" height="22">
       </span>
       <span class="logo-lg">
-        <img src={% static '/img/logo-light.png' %} alt="" height="22">
+        <img src="{% static '/img/logo-light.png' %}" alt="" height="22">
       </span>
     </a>
 
@@ -62,7 +62,7 @@
       <div class="dropdown d-inline-block">
         <button type="button" class="btn header-item user text-start d-flex align-items-center"
           id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img class="rounded-circle header-profile-user" src={% static 'img/users/avatar-1.jpg' %} alt="Header Avatar">
+          <img class="rounded-circle header-profile-user" src="{% static 'img/users/avatar-1.jpg' %}" alt="Header Avatar">
           <span class="ms-2 d-none d-sm-block user-item-desc">
             <span class="user-name">{{user.first_name}}</span>
             <span class="user-sub-title">{{user.email}}</span>
