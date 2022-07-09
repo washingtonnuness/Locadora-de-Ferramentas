@@ -55,13 +55,13 @@
                   </div>
                 </th>
                 <th>Código</th>
-                <th>Nome</th>
-                <th>Razão Social</th>
-                <th>Nome Fantasia</th>
-                <th>Endereço</th>
-                <th>Bairro</th>
-                <th>Cidade</th>
-                <th>Estado</th>
+                <th>Titulo</th>
+                <th>Categoria</th>
+                <th>Marca</th>
+                <th>Preço de Compra</th>
+                <th>Preço Diária</th>
+                <th>Estoque Mínimo</th>
+                <th>Estoque Atual</th>
                 <th>Ativo</th>
                 <th></th>
               </tr>
@@ -82,38 +82,14 @@
                     {{ object.codigo }}
                   </td>
                   <td>
-                    <a href="{{ object.get_absolute_url }}">{{ object.nome }}</a>
+                    <a href="{{ object.get_absolute_url }}">{{ object.titulo }}</a>
                   </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <!-- Imagem do produto -->
-                      <!--
-                                  <div class="me-2">
-                                      <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
-                                  </div>
-                                  -->
-                      <div>
-                        <h5 class="font-size-14 text-truncate mb-0">{{ object.razao_social }}
-                        </h5>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    {{ object.nome_fantasia }}
-                  </td>
-
-                  <td>
-                    {{ object.address }}
-                  </td>
-                  <td>
-                    {{ object.district }}
-                  </td>
-                  <td>
-                    {{ object.city }}
-                  </td>
-                  <td>
-                    {{ object.uf }}
-                  </td>
+                  <td>{{ object.categoria|default:"---" }}</td>
+                  <td>{{ object.marca|default:"---" }}</td>
+                  <td>{{ object.preco_compra|default:"---" }}</td>
+                  <td>{{ object.preco_diaria|default:"---" }}</td>
+                  <td>{{ object.estoque_minimo|default:"---" }}</td>
+                  <td>{{ object.estoque_atual|default:"---" }}</td>
                   <td>
                     <div class="d-flex">
                       <div class="me-2">

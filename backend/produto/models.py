@@ -6,7 +6,7 @@ from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
 
 class Produto(TimeStampedModel, CreatedBy, DeletedBy, Active):
     codigo = models.PositiveIntegerField('Código')
-    titulo = models.CharField('titulo', max_length=100)
+    titulo = models.CharField('Título', max_length=100)
     categoria = models.ForeignKey(
         'Categoria',
         on_delete=models.SET_NULL,
@@ -49,7 +49,7 @@ class Produto(TimeStampedModel, CreatedBy, DeletedBy, Active):
 
 
 class Patrimonio(TimeStampedModel, CreatedBy, DeletedBy, Active):
-    titulo = models.CharField('titulo', max_length=100, unique=True)
+    titulo = models.CharField('Título', max_length=100, unique=True)
     produto = models.ForeignKey(
         Produto,
         on_delete=models.SET_NULL,
