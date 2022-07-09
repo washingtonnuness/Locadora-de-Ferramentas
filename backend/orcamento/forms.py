@@ -25,7 +25,14 @@ class OrcamentoItensForm(forms.ModelForm):
 
     class Meta:
         model = OrcamentoItens
-        fields = ('orcamento', 'id', 'produto')
+        fields = (
+            'orcamento',
+            'id',
+            'produto',
+            'patrimonio',
+            'valor',
+            'periodo',
+        )
 
     def __init__(self, *args, **kwargs):
         super(OrcamentoItensForm, self).__init__(*args, **kwargs)

@@ -50,6 +50,7 @@ class OrcamentoItens(models.Model):
         blank=True,
         null=True
     )
+    periodo = models.PositiveSmallIntegerField('Período', null=True, blank=True)
 
     class Meta:
         ordering = ('-pk',)
