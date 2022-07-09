@@ -35,7 +35,7 @@ def produto_create(request):
 def add_row_produto_items_hx(request):
     template_name = 'produto/hx/row_produto_items_hx.html'
     form = PatrimonioForm()
-    context = {'produto_item_row_form': form}
+    context = {'produto_item_form': form}
     return render(request, template_name, context)
 
 

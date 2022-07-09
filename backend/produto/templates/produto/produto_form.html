@@ -4,8 +4,9 @@
 
 {% block content %}
   <h4>Cadastrar Produto</h4>
-  <form method="POST">
+  <form action="." method="POST">
     {% csrf_token %}
+
     <div class="form-row">
       <div class="row">
         {% for field in form.visible_fields %}
@@ -19,6 +20,7 @@
         {% endfor %}
       </div>
     </div>
+
     {{ formset.management_form }}
 
     <div class="row">
@@ -38,15 +40,20 @@
 
     <div id="produto">
 
-      {% for produto_item_form in produto_item_row_form %}
-        <div class="row">
-          <div class="form-group">
-            <div id="item-{{ forloop.counter0 }}">
-              teste
-              {% render_field produto_item_form data-field='produto' %}
-              {{ produto_item_form.patrimonio.label }}
-              {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
+      {% for produto_item_form in formset %}
+        <div class="row d-flex align-items-end">
+          <div class="col-md-6">
+            <div id="item-{{ forloop.counter0 }}" class="form-group">
+              {% render_field produto_item_form.produto data-field='produto' %}
+
+              <label>{{ produto_item_form.titulo.label }}</label>
+              {% render_field produto_item_form.titulo class="form-control" data-field='titulo' %}
             </div>
+          </div>
+          <div class="col-md-6">
+            <span class="span-is-link no ml-2" onclick="removeRow()">
+              <i class="fa fa-times fa-lg"></i>
+            </span>
           </div>
         </div>
       {% endfor %}

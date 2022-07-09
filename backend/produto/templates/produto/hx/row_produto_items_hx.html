@@ -1,15 +1,17 @@
 {% load widget_tweaks %}
 
-<div class="row">
-  <div id="item-{{ forloop.counter0 }}" class="form-group">
-    {% render_field produto_item_form.produto data-field='produto' %}
-    {{ forloop.counter0 }}
-    <label>{{ produto_item_form.patrimonio.label }}</label>
-    {% render_field produto_item_form.patrimonio class="form-control" data-field='patrimonio' %}
+<div class="row d-flex align-items-end">
+  <div class="col-md-6">
+    <div id="item-{{ forloop.counter0 }}" class="form-group">
+      {% render_field produto_item_form.produto data-field='produto' %}
+
+      <label>{{ produto_item_form.titulo.label }}</label>
+      {% render_field produto_item_form.titulo class="form-control" data-field='titulo' %}
+    </div>
   </div>
-
-  <span class="span-is-link no ml-2" onclick="removeRow()">
-    <i class="fa fa-times fa-lg"></i>
-  </span>
+  <div class="col-md-6">
+    <span class="span-is-link no ml-2" onclick="removeRow()">
+      <i class="fa fa-times fa-lg"></i>
+    </span>
+  </div>
 </div>
-

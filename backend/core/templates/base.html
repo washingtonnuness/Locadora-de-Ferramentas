@@ -199,8 +199,7 @@
     <!-- Right bar overlay-->
     <div class="rightbar-overlay"></div>
 
-    {% block js %}{% endblock js %}
-    <!-- JAVASCRIPT -->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
     <script src={% static 'libs/bootstrap/js/bootstrap.bundle.min.js' %}></script>
     <script src={% static 'libs/metismenujs/metismenujs.min.js' %}></script>
     <script src={% static 'libs/simplebar/simplebar.min.js' %}></script>
@@ -216,6 +215,8 @@
     <script src={% static 'libs/js/pages/dashboard-sales.init.js' %}></script>
 
     <script src={% static 'js/app.js' %}></script>
+
+    {% block js %}{% endblock js %}
 
   </body>
 </html>
