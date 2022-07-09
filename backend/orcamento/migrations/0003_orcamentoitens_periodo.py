@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='orcamentoitens',
             name='periodo',
-            field=models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='Período'),
+            field=models.PositiveSmallIntegerField(
+                blank=True, null=True, verbose_name='Período'),
         ),
     ]
