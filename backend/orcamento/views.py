@@ -1,9 +1,9 @@
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin as LRM
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from backend.crm.models import Cliente
@@ -20,29 +20,16 @@ class OrcamentoListView(LRM, ListView):
 
 @login_required
 def orcamento_create(request, client_pk):
-    template_name = 'orcamento_form_add.html'
-    name = request.GET.get("searchField")
+    cliente = Cliente.objects.get(pk=client_pk)
+    orcamento = Orcamento.objects.create(cliente=cliente)
+    return redirect(reverse_lazy('orcamento:orcamento_update', kwargs={'pk': orcamento.pk}))  # noqa E501
 
-    if name == None:
-        name = ''
-        cliente = Cliente.objects.filter(nome__icontains=name)
-        cliente = Cliente.objects.get(pk=client_pk)
-    else:
-        # add film
-        cliente = Cliente.objects.filter(nome__icontains=name)
-        context = {
-            'object_list': cliente,
-            'title': 'Cadastro Orçamentos',
-        }
-        return render(request, template_name, context)
-    # add the film to the user's list
-    # request.user.filclientems.add(cliente)
 
-    # return template fragment with all the user's films
-    context = {
-        'object_list': cliente,
-        'title': 'Cadastro Orçamentos',
-    }
+@login_required
+def orcamento_update(request, pk):
+    template_name = 'orcamento/orcamento_form.html'
+    orcamento = Orcamento.objects.get(pk=pk)
+    context = {'object': orcamento}
     return render(request, template_name, context)
 
 

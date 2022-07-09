@@ -1,60 +1,81 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
-  <div class="card">
-    <div class="card-body">
-      <div class="d-flex justify-content-between">
-        <h4 class="card-title mb-4">{{object_list.id}} - {{object_list.nome}}</h4>
-        <div>
-        </div>
-        <div class="dropdown d-inline">
-          <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <i class="icon-sm" data-feather="search"></i><span>Buscar</span>
-          </a>
+  <h4>Cadastrar Orçamento</h4>
+  <form action="." method="POST">
+    {% csrf_token %}
 
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
-            <form class="p-2">
-              <div class="search-box">
-                <div class="position-relative">
-                  <input type="text" name="search" class="form-control rounded bg-light border-0" placeholder="Search..."
-                    hx-get="{% url 'orcamento:search' %}" hx-trigger="keyup changed delay:250ms, search"
-                    hx-target="#search-results">
-
-                  <span id="search-results"></span>
-                </div>
-              </div>
-            </form>
+    <div class="form-row">
+      <div class="row">
+        {% for field in form.visible_fields %}
+          <div class="form-group col-sm-3">
+            <label>{{ field.label }}</label>
+            {% render_field field class="form-control" %}
+            {% for error in field.errors %}
+              <span class="text-muted">{{ error }}</span>
+            {% endfor %}
           </div>
-        </div>
-      </div>
-
-      <div class="table-responsive">
-        <table class="table table-hover mb-0 align-middle">
-          <thead class="bg-light">
-            <tr>
-              <th class="rounded-start" style="width: 15px;">
-                <div class="form-check">
-                  <input class="form-check-input font-size-16" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault"> </label>
-                </div>
-              </th>
-              <th>Código</th>
-              <th>Nome</th>
-              <th>Marca</th>
-              <th>Modelo</th>
-              <th>Estoque</th>
-              <th>Qnt</th>
-              <th>Valor</th>
-              <th>Status</th>
-            </tr>
-            <!-- end tr -->
-          </thead>
-          <!-- end thead -->
-          {% include "hx/orcamento_table.html" %}
-        </table><!-- end table -->
+        {% endfor %}
       </div>
     </div>
-  </div>
+
+    {{ formset.management_form }}
+
+    <div class="row">
+      <div class="col-sm-12">
+        <legend class="legend">Itens do Orçamento</legend>
+        <div>
+          <button
+            id="addItem"
+            class='btn btn-primary mb-2'
+            hx-get="{% url 'produto:add_row_produto_items_hx' %}"
+            hx-target="#produto"
+            hx-swap="beforeend"
+          >Adicionar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="produto">
+
+      {% for produto_item_form in formset %}
+        <div class="row d-flex align-items-end">
+          <div class="col-md-6">
+            <div id="item-{{ forloop.counter0 }}" class="form-group">
+              {% render_field produto_item_form.produto data-field='produto' %}
+
+              <label>{{ produto_item_form.titulo.label }}</label>
+              {% render_field produto_item_form.titulo class="form-control" data-field='titulo' %}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <span class="span-is-link no ml-2" onclick="removeRow()">
+              <i class="fa fa-times fa-lg"></i>
+            </span>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="mt-4">
+      <button class='btn btn-primary' type="submit">Salvar</button>
+      <button type="button" class="btn btn-danger">Cancelar</button>
+    </div>
+
+  </form>
 {% endblock content %}
+
+{% block js %}
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <script>
+    // Necessário por causa do delete
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+  </script>
+
+{% endblock js %}

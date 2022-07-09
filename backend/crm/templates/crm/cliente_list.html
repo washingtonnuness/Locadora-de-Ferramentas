@@ -83,14 +83,9 @@
                   <td>
                     <div class="d-flex align-items-center">
                       <!-- Imagem do produto -->
-                      <!--
-
-
-                                  <div class="me-2">
-                                      <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
-                                  </div>
-                                  -->
-
+                      <!-- <div class="me-2">
+                          <img src="assets/images/users/avatar-2.jpg" class="avatar-sm img-thumbnail h-auto rounded-circle" alt="Error">
+                      </div> -->
                       <div>
                         <h5 class="font-size-14 text-truncate mb-0">{{ object.razao_social }}
                         </h5>
@@ -113,11 +108,14 @@
                   <td>
                     {{ object.uf }}
                   </td>
-                  <td>
+                  <td style="min-width: 200px">
                     <div class="d-flex">
-                      <div class="me-2">
+                      <div>
                         {% if object.active %}
-                          <i class="mdi mdi-check-circle-outline text-success"></i>
+                          <i class="mdi mdi-check-circle-outline text-success me-2"></i>
+                          <a href="{% url 'orcamento:orcamento_create' object.pk %}">
+                            <button type="button" class="btn btn-outline-success">Gerar Orçamento</button>
+                          </a>
                         {% else %}
                           <i class="mdi mdi-close-circle-outline text-danger"></i>
                         {% endif %}

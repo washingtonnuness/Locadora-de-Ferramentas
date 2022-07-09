@@ -6,10 +6,10 @@ app_name = 'orcamento'
 
 
 urlpatterns = [
-    path('list/', v.OrcamentoListView.as_view(), name='orcamento_list'),
-    path('create/', v.orcamento_create, name='orcamento_create'),
-    path('search/', v.search, name='search'),
-    path('add-row/<int:pk>', v.add_row_hx, name='add_row_hx'),
-    path('invoice/', v.invoice, name='orcamento_invoice'),
-
+    path('list/', v.OrcamentoListView.as_view(), name='orcamento_list'),  # noqa E501
+    path('create/<int:client_pk>/', v.orcamento_create, name='orcamento_create'),  # noqa E501
+    path('update/<int:pk>/', v.orcamento_update, name='orcamento_update'),  # noqa E501
+    path('search/', v.search, name='search'),  # noqa E501
+    path('add-row/<int:pk>', v.add_row_hx, name='add_row_hx'),  # noqa E501
+    path('invoice/', v.invoice, name='orcamento_invoice'),  # noqa E501
 ]
