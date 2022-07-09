@@ -47,7 +47,7 @@
             {{ orcamento_item_form.id }}
 
             {{ orcamento_item_form.produto.label }}
-            {% render_field orcamento_item_form.produto class="form-control" data-field='produto' %}
+            {% render_field orcamento_item_form.produto class="form-control" hx-get="/orcamento/produto/preco/" hx-target="#id_valor" hx-swap="outerHTML" data-field='produto' %}
           </div>
 
           <div class="col">

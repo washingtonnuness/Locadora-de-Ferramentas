@@ -13,7 +13,6 @@ function reorderItems() {
   Array.from(document.querySelectorAll("[id^='item-']"))
     .forEach((item, i) => {
       item.setAttribute('id', 'item-' + i)
-      console.log(i)
 
       if (!item.querySelector('[data-field="orcamento"]')) {
         return
@@ -24,6 +23,7 @@ function reorderItems() {
 
       item.querySelector('[data-field="produto"]').setAttribute('name', 'items-' + i + '-produto')
       item.querySelector('[data-field="produto"]').setAttribute('id', 'id_items-' + i + '-produto')
+      item.querySelector('[data-field="produto"]').setAttribute('hx-target', '#id_items-'+ i +'-valor')
 
       item.querySelector('[data-field="patrimonio"]').setAttribute('name', 'items-' + i + '-patrimonio')
       item.querySelector('[data-field="patrimonio"]').setAttribute('id', 'id_items-' + i + '-patrimonio')
