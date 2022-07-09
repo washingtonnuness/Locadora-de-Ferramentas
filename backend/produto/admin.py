@@ -42,7 +42,9 @@ class ProdutoAdmin(admin.ModelAdmin):
         'preco_diaria',
         'estoque_minimo',
         'estoque_atual',
+        'active',
     )
     list_display_links = ('titulo',)
     readonly_fields = ('created_by', 'deleted_by', 'deleted',)
     search_fields = ('titulo',)
+    list_filter = ('active',)

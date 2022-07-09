@@ -9,9 +9,10 @@
 
         <h4 class="card-title mb-3">
           Produtos
-          <a class="dropdown-toggle text-reset mb-auto" href={% url 'produto:produto_create' %} aria-haspopup="true"
-            aria-expanded="false">
-            <button type="button" class="btn btn-link shadow-none"><span class="fw-semibold">Cadastrar</span></button>
+          <a href="{% url 'produto:produto_create' %}">
+            <button type="button" class="btn btn-link shadow-none">
+              <span class="fw-semibold">Cadastrar</span>
+            </button>
           </a>
           <div class="dropdown d-inline">
             <a class="dropdown-toggle text-muted me-3 mb-3 align-middle" href="#" data-bs-toggle="dropdown"
@@ -54,15 +55,15 @@
                     <label class="form-check-label" for="flexCheckDefault"> </label>
                   </div>
                 </th>
-                <th>Código</th>
+                <th class="text-center">Código</th>
                 <th>Titulo</th>
                 <th>Categoria</th>
                 <th>Marca</th>
                 <th>Preço de Compra</th>
                 <th>Preço Diária</th>
-                <th>Estoque Mínimo</th>
-                <th>Estoque Atual</th>
-                <th>Ativo</th>
+                <th class="text-center">Estoque Mínimo</th>
+                <th class="text-center">Estoque Atual</th>
+                <th class="text-center">Ativo</th>
                 <th></th>
               </tr>
               <!-- end tr -->
@@ -78,27 +79,27 @@
                       </label>
                     </div>
                   </td>
-                  <td class="fw-medium">
-                    {{ object.codigo }}
-                  </td>
+                  <td class="text-center">{{ object.codigo }}</td>
                   <td>
                     <a href="{{ object.get_absolute_url }}">{{ object.titulo }}</a>
                   </td>
                   <td>{{ object.categoria|default:"---" }}</td>
                   <td>{{ object.marca|default:"---" }}</td>
-                  <td>{{ object.preco_compra|default:"---" }}</td>
-                  <td>{{ object.preco_diaria|default:"---" }}</td>
-                  <td>{{ object.estoque_minimo|default:"---" }}</td>
-                  <td>{{ object.estoque_atual|default:"---" }}</td>
                   <td>
-                    <div class="d-flex">
-                      <div class="me-2">
-                        {% if object.active %}
-                          <i class="mdi mdi-check-circle-outline text-success"></i>
-                        {% else %}
-                          <i class="mdi mdi-close-circle-outline text-danger"></i>
-                        {% endif %}
-                      </div>
+                    R$ <span style="float: right">{{ object.preco_compra|default:"---" }}</span>
+                  </td>
+                  <td>
+                    R$ <span style="float: right">{{ object.preco_diaria|default:"---" }}</span>
+                  </td>
+                  <td class="text-center">{{ object.estoque_minimo|default:"---" }}</td>
+                  <td class="text-center">{{ object.estoque_atual|default:"---" }}</td>
+                  <td>
+                    <div class="text-center">
+                      {% if object.active %}
+                        <i class="mdi mdi-check-circle-outline text-success"></i>
+                      {% else %}
+                        <i class="mdi mdi-close-circle-outline text-danger"></i>
+                      {% endif %}
                     </div>
                   </td>
                   <td style="min-width: 70px">
