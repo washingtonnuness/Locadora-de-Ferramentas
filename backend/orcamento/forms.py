@@ -19,6 +19,8 @@ class OrcamentoForm(forms.ModelForm):
             field.widget.attrs.update({'placeholder': field.label})
             field.widget.attrs['class'] = 'form-control'
 
+        self.fields['cliente'].disabled = True
+
 
 class OrcamentoItensForm(forms.ModelForm):
     id = forms.IntegerField()
