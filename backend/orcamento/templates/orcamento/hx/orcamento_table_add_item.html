@@ -1,10 +1,49 @@
+{% for orcamento_item_form in formset %}
+<tr>
+  {{ orcamento_item_form.id }}
 
-<tbody id="table-list">
-  <tr>
-    <td>{{object_list_product.codigo}}</td>
-    <td>{{object_list_product.nome}}</td>
-    <td>{{object_list_product.id_grupo}}</td>
-    <td>{{object_list_product.nome}}</td>
-    <td>{{object_list_product.valor_Locacao}}</td>
-  </tr>
-</tbody>
+  <th scope="row">{{ forloop.counter0 }}</th>
+  <td>
+    {% render_field orcamento_item_form.produto  data-field='produto' %}
+
+  </td>
+  <td>
+    {% render_field orcamento_item_form.produto  data-field='produto' %}
+
+  </td>
+  <td>
+    {% render_field orcamento_item_form.produto  data-field='produto' %}
+
+  </td>
+  <td>
+    {% render_field orcamento_item_form.produto  data-field='produto' %}
+
+  </td>
+  <td>
+    <div class="col-auto">
+      <span class="span-is-link no ml-2" onclick="removeRow()">
+        <i class="fa fa-times fa-lg"></i>
+      </span>
+    </div>
+  </td>
+</tr>
+{% endfor %}
+
+<!-- end tr -->
+<tr>
+<th scope="row" colspan="4" class="text-end">Sub Total</th>
+<td class="text-end">R$ </td>
+</tr>
+<!-- end tr -->
+<tr>
+<th scope="row" colspan="4" class="border-0 text-end">
+  Desconto :</th>
+<td class="border-0 text-end">- R$ </td>
+</tr>
+<!-- end tr -->
+<tr>
+<th scope="row" colspan="4" class="border-0 text-end">Total</th>
+<td class="border-0 text-end"><h4 class="m-0 fw-semibold">R$</h4></td>
+</tr>
+<!-- end tr -->
+</tbody><!-- end tbody -->

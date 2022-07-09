@@ -83,9 +83,11 @@
                     <div class="search-box">
                       <div class="position-relative">
                         <input type="text" name="search" class="form-control rounded bg-light border-0"
-                          hx-get="{% url 'produto:produto_items_search' %}"
+                          hx-get="{% url 'orcamento:produto_items_search' %}"
+                          hx-swap="beforeend"
                           hx-trigger="keyup changed delay:250ms, search"
-                          hx-target="#search-results" placeholder="buscando...">
+                          hx-target="#search-results">
+
     
                         <span id="search-results"></span>
     
@@ -105,12 +107,13 @@
                         <th class="text-end" style="width: 120px;">Total</th>
                       </tr>
                     </thead><!-- end thead -->
-                    <tbody id=table-list>
-                      <div id="orcamento">
-                      </div>
+                    <tbody id="orcamento">
+                      {% for orcamento_item_form in formset %}
+
+                        {% endfor %}
 
                       <!-- end tr -->
-                      <tr id="table-list">
+                      <tr>
                         <th scope="row" colspan="4" class="text-end">Sub Total</th>
                         <td class="text-end">R$ </td>
                       </tr>
@@ -150,3 +153,15 @@
   <!-- End Page-content -->
 
 {% endblock content %}
+
+{% block js %}
+  <script src="{% static 'js/orcamento.js' %}"></script>
+
+  <script>
+    // Necessário por causa do delete
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+  </script>
+
+{% endblock js %}

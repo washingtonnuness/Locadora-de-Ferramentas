@@ -1,31 +1,33 @@
 {% load widget_tweaks %}
-
-<div id="item-{{ forloop.counter0 }}" class="row d-flex align-items-end">
-  <div class="col">
-    {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
-
-    {{ orcamento_item_form.produto.label }}
-    {% render_field orcamento_item_form.produto class="form-control" data-field='produto' %}
-  </div>
-
-  <div class="col">
+<tr>
+<th id="item-{{ forloop.counter0 }}">
+      {% render_field orcamento_item_form.orcamento data-field='orcamento' %}
+<th>
+  {{ orcamento_item_form.produto.label }}
+      {% render_field orcamento_item_form.produto  data-field='produto' %}
+</th>  
+    
+</th> 
+<th>
     {{ orcamento_item_form.patrimonio.label }}
-    {% render_field orcamento_item_form.patrimonio class="form-control" data-field='patrimonio' %}
-  </div>
-
-  <div class="col">
+    {% render_field orcamento_item_form.patrimonio data-field='patrimonio' %}
+</th>
+<th>
     {{ orcamento_item_form.valor.label }}
-    {% render_field orcamento_item_form.valor class="form-control" data-field='valor' %}
-  </div>
-
-  <div class="col">
+    {% render_field orcamento_item_form.valor data-field='valor' %}
+</th>
+<th>
+  
+</th>
+<th>
     {{ orcamento_item_form.periodo.label }}
-    {% render_field orcamento_item_form.periodo class="form-control" data-field='periodo' %}
-  </div>
+    {% render_field orcamento_item_form.periodo data-field='periodo' %}
+</th>
 
-  <div class="col-auto">
+<th>
     <span class="span-is-link no ml-2" onclick="removeRow()">
       <i class="fa fa-times fa-lg"></i>
     </span>
-  </div>
-</div>
+</th>
+
+</tr>

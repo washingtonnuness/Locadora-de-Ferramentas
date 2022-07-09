@@ -67,7 +67,7 @@ def produto_preco(request):
 
 @login_required
 def produto_items_search(request):
-    template = 'produto/hx/search-results.html'
+    template = 'orcamento/hx/orcamento_results_search.html'
     search_text = request.GET.get('search')
     results = Produto.objects.filter(titulo__icontains=search_text)
     context = {"results": results}
