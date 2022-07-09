@@ -7,7 +7,7 @@
         <span class="badge badge-success badge-pill"
           style="cursor: pointer;"
           hx-trigger="click"
-          hx-post="{% url 'orcamento:add_row_hx' result.id %}"
+          hx-post="{% url 'orcamento:add_row_orcamento_items_hx' result.id %}"
           hx-swap= "beforebegin"
           hx-vals='{"result_name": "{{result.titulo}}"'
           hx-target="#table-list">{{ result.titulo }}
