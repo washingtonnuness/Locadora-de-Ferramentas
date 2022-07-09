@@ -10,19 +10,20 @@
 </th> 
 <th>
     {{ orcamento_item_form.patrimonio.label }}
-    {% render_field orcamento_item_form.patrimonio data-field='patrimonio' %}
-</th>
-<th>
+
+    {% render_field orcamento_item_form.patrimonio class="form-control" data-field='patrimonio' %}
+  </div>
+
+  <div class="col">
+    {{ orcamento_item_form.quantidade.label }}
+    {% render_field orcamento_item_form.quantidade class="form-control" data-field='quantidade' %}
+  </div>
+
+  <div class="col">
     {{ orcamento_item_form.valor.label }}
-    {% render_field orcamento_item_form.valor data-field='valor' %}
-</th>
-<th>
-  
-</th>
-<th>
-    {{ orcamento_item_form.periodo.label }}
-    {% render_field orcamento_item_form.periodo data-field='periodo' %}
-</th>
+    {% render_field orcamento_item_form.valor class="form-control" data-field='valor' %}
+  </div>
+
 
 <th>
     <span class="span-is-link no ml-2" onclick="removeRow()">

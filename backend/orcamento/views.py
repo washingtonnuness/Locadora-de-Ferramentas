@@ -39,7 +39,11 @@ def orcamento_update(request, pk):
             formset.save()
             return redirect('orcamento:orcamento_list')
 
-    context = {'form': form, 'formset': formset}
+    context = {
+        'form': form,
+        'formset': formset,
+        'orcamento': orcamento_instance
+    }
     return render(request, template_name, context)
 
 
@@ -53,11 +57,7 @@ def add_row_orcamento_items_hx(request):
 def produto_preco(request):
     template_name = 'orcamento/hx/produto_preco_hx.html'
     url = request.get_full_path()
-    print('url', url)
-    print(url.split('-'))
     item = url.split('-')[1]
-    print('item', item)
-    print('list', list(request.GET.values()))
     produto_pk = list(request.GET.values())[0]
     produto = Produto.objects.get(pk=produto_pk)
 

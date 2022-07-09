@@ -4,6 +4,7 @@
 
 {% block content %}
   <h4>Orçamento</h4>
+  <p>Data Inicial: {{ orcamento.created|date:"d/m/Y" }}</p>
   <form action="." method="POST">
     {% csrf_token %}
 
@@ -56,13 +57,13 @@
           </div>
 
           <div class="col">
-            {{ orcamento_item_form.valor.label }}
-            {% render_field orcamento_item_form.valor class="form-control" data-field='valor' %}
+            {{ orcamento_item_form.quantidade.label }}
+            {% render_field orcamento_item_form.quantidade class="form-control" data-field='quantidade' %}
           </div>
 
           <div class="col">
-            {{ orcamento_item_form.periodo.label }}
-            {% render_field orcamento_item_form.periodo class="form-control" data-field='periodo' %}
+            {{ orcamento_item_form.valor.label }}
+            {% render_field orcamento_item_form.valor class="form-control" data-field='valor' %}
           </div>
 
           <div class="col-auto">

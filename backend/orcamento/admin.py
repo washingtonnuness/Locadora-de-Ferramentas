@@ -11,11 +11,11 @@ class OrcamentoItensInline(admin.TabularInline):
 @admin.register(Orcamento)
 class OrcamentoAdmin(admin.ModelAdmin):
     inlines = (OrcamentoItensInline,)
-    list_display = ('__str__', 'cliente')
+    list_display = ('__str__', 'cliente', 'periodo')
     readonly_fields = ('created_by', 'deleted_by', 'deleted',)
     search_fields = ('titulo',)
 
 
 @admin.register(OrcamentoItens)
 class OrcamentoItensAdmin(admin.ModelAdmin):
-    list_display = ('orcamento', 'produto', 'patrimonio', 'valor', 'periodo')
+    list_display = ('orcamento', 'produto', 'patrimonio', 'quantidade', 'valor')  # noqa E501
