@@ -11,7 +11,7 @@ from backend.produto.forms import CategoriatForm, MarcaForm, ProdutoForm
 from backend.produto.models import Produto
 
 from .forms import OrcamentoForm, OrcamentoItemsFormset, OrcamentoItensForm
-from .models import Orcamento, OrcamentoItens
+from .models import Contrato, Orcamento, OrcamentoItens
 
 
 class OrcamentoListView(LRM, ListView):
@@ -31,7 +31,7 @@ def orcamento_create(request, client_pk):
 
 @login_required
 def orcamento_update(request, pk):
-    template_name = 'orcamento/orcamento_invoice.html'
+    template_name = 'orcamento/orcamento_form.html'
     orcamento_instance = Orcamento.objects.get(pk=pk)
 
     form = OrcamentoForm(request.POST or None, instance=orcamento_instance, prefix='main')  # noqa E501
@@ -74,19 +74,21 @@ def produto_items_search(request):
     template = 'orcamento/hx/orcamento_results_search.html'
     search_text = request.GET.get('search')
     results = Produto.objects.filter(titulo__icontains=search_text)
-    context = {"results": results}
+    context = {'results': results}
     return render(request, template, context)
 
 
 @login_required
-def orcamento_invoice(request):
+def orcamento_invoice(request, pk):
     template = 'orcamento/orcamento_invoice.html'
-    results = ''
+    return render(request, template)
 
-    context = {"results": results}
-    return render(request, template, context)
+
+class ContratoDetailView(LRM, DetailView):
+    template_name = 'contrato/contrato_detail.html'
+    model = Contrato
 
 
 @login_required
 def clear(request):
-    return HttpResponse("")
+    return HttpResponse('')

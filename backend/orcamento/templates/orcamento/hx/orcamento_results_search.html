@@ -1,16 +1,14 @@
 {% if results %}
-  {% csrf_token %}
   <ul class="list-group col-xs-12">
     {% for result in results %}
       <a>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-
-          <span class="badge badge-success badge-pill"
-            style="cursor: pointer;"
-            hx-trigger="click"
-            hx-swap= "beforebegin"
+          <span
             id="addItem"
+            class="badge badge-success badge-pill"
+            style="cursor: pointer;"
             hx-get="{% url 'orcamento:add_row_orcamento_items_hx' %}"
+            hx-trigger="click"
             hx-swap="beforeend"
             hx-vals='{"resultname": "{{result.titulo}}"'
             hx-target="#orcamento">{{ result.codigo }} - {{ result.titulo }}
@@ -18,7 +16,6 @@
         </li>
       </a>
     {% endfor %}
-
   </ul>
 {% else %}
   <p>Não foi encontrado nada.</p>

@@ -1,0 +1,159 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+  <div class="main-content">
+
+    <div class="container-fluid">
+
+      <!-- start page title -->
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0">Contrato</h4>
+          </div>
+        </div>
+      </div>
+      <!-- end page title -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="invoice-title">
+                <h4 class="float-end font-size-15">Contrato {{ object.codigo }} <span class="badge bg-success font-size-12 ms-2">AF</span></h4>
+                <div class="mb-3">
+                  <img src="{% static 'img/cliente_logos/serviloc-logo-1.png' %}" alt="logo" height="40">
+                </div>
+                <div class="text-muted">
+                  <h5 class="font-size-14 mb-3">SERVILOC LOCACOES E SERVICOS LTDA</h5>
+                  <p class="mb-1">CNPJ: 42.307.180/0001-07, IE: Isento</p>
+                  <p class="mb-1">Rua: Felisberto Modenesi, S/n - Saue </p>
+                  <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> locacao@serviloc.com.br</p>
+                  <p><i class="uil uil-phone me-1"> 27 98135-2872,</i></p>
+                </div>
+              </div>
+
+              <hr class="my-4">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="text-muted">
+                    <h5 class="font-size-14 mb-3"></h5>
+                    <div class="mb-2">
+
+                      <img src="{% static 'img/cliente_logos/suzano-logo-1.png' %}" alt="logo" height="40">
+                    </div>
+                    <h5 class="font-size-12 mb-2">AQUI</h5>
+                    <p class="mb-1">Rodovia Aracruz x Barra do Riacho, S/N km25 portaria sul - Barra do Riacho</p>
+                    <p class="mb-1">Aracruz - ES CEP:29197-900</p>
+                    <p>Tel:</p>
+                  </div>
+                </div>
+                <!-- end col -->
+                <div class="col-sm-6">
+                  <div class="text-muted text-sm-end">
+                    <div>
+                      <h5 class="font-size-15 mb-1">AF No:</h5>
+                      <p></p>
+                    </div>
+                    <div class="mt-4">
+                      <h5 class="font-size-15 mb-1">Data Inicial:</h5>
+                      <p>{{ object.created|date:"d/m/Y" }}</p>
+                    </div>
+                    <div class="mt-4">
+                      <h5 class="font-size-15 mb-1">Data Final:</h5>
+                      <p>{{ object.data_final|date:"d/m/Y" }}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- end col -->
+              </div>
+              <!-- end row -->
+
+              <div class="py-2">
+                <div class="font-size-15 mb-1 text-center">
+                  <h5>Romaneio de entrega</h5>
+                </div>
+
+                <h5 class="font-size-15">Itens</h5>
+
+                <div class="table-responsive">
+                  <table class="table align-middle table-nowrap table-centered mb-0">
+                    <thead>
+                      <tr>
+                        <th style="width: 70px;">No.</th>
+                        <th>Item</th>
+                        <th>Patrimônio</th>
+                        <th class="text-center">Quantidade</th>
+                        <th class="text-center">Preço</th>
+                        <th class="text-end" style="width: 120px;">Subtotal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for item in object.orcamento.orcamentos.all %}
+                        <tr>
+                          <td>{{ item.pk }}</td>
+                          <td>{{ item.produto }}</td>
+                          <td>{{ item.patrimonio }}</td>
+                          <td class="text-center">{{ item.quantidade }}</td>
+                          <td>
+                            R$ <span style="float: right">{{ item.valor }}</span>
+                          </td>
+                          <td>
+                            R$ <span style="float: right">{{ item.subtotal }}</span>
+                          </td>
+                        </tr>
+                      {% endfor %}
+
+                      <tr>
+                        <th scope="row" colspan="5" class="text-end">Sub Total</th>
+                        <td class="">R$ <span style="float: right">{{ object.orcamento.total }}</td>
+                        </tr>
+                        <!-- end tr -->
+                        <tr>
+                          <th scope="row" colspan="5" class="border-0 text-end">
+                            Desconto :</th>
+                          <td class="border-0">- R$ </td>
+                        </tr>
+                        <!-- end tr -->
+                        <tr>
+                          <th scope="row" colspan="5" class="border-0 text-end">Total</th>
+                          <td class="border-0">
+                            <h4 class="fw-semibold">R$ <span style="float: right">{{ object.orcamento.total }}</span></h4>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div class="mb-3"><strong> Data:___/____/____ </strong></div>
+                    <div><strong>Ass:_____________________________________________</strong> </div>
+
+                  </div><!-- end table responsive -->
+
+                  <div class="d-print-none mt-4">
+                    <div class="float-end">
+                      <a href="javascript:window.print()" class="btn btn-success w-md"><i class="fa fa-print"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- end col -->
+        </div><!-- end row -->
+
+      </div> <!-- container-fluid -->
+    </div>
+
+{% endblock content %}
+
+{% block js %}
+  <script src="{% static 'js/orcamento.js' %}"></script>
+
+  <script>
+    // Necessário por causa do delete
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+  </script>
+
+{% endblock js %}

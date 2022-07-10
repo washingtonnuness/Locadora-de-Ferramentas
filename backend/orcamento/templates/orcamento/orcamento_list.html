@@ -65,6 +65,7 @@
                 <th>Tempo Dias</th>
                 <th>Valor R$</th>
                 <th>Ativo</th>
+                <th>Contrato</th>
                 <th></th>
               </tr>
               <!-- end tr -->
@@ -129,6 +130,11 @@
                         {% endif %}
                       </div>
                     </div>
+                  </td>
+                  <td>
+                    {% if object.contrato %}
+                      <a href="{% url 'orcamento:contrato_detail' object.contrato.pk %}">Contrato</a>
+                    {% endif %}
                   </td>
                   <td style="min-width: 70px">
                     <span>

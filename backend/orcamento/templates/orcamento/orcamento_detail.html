@@ -10,6 +10,11 @@
           <span class="fw-semibold">Voltar</span>
         </button>
       </a>
+      <a href="{% url 'orcamento:contrato_detail' object.contrato.pk %}">
+        <button type="button" class="btn btn-link">
+          <span class="fw-semibold">Gerar Contrato</span>
+        </button>
+      </a>
     </h2>
     <div class="row">
       <div class="col-6">
