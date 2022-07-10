@@ -1,17 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin as LRM
-from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from backend.crm.models import Cliente
-from backend.produto.forms import CategoriatForm, MarcaForm, ProdutoForm
 from backend.produto.models import Produto
 
 from .forms import OrcamentoForm, OrcamentoItemsFormset, OrcamentoItensForm
-from .models import Contrato, Orcamento, OrcamentoItens
+from .models import Contrato, Orcamento
 
 
 class OrcamentoListView(LRM, ListView):
@@ -51,6 +49,7 @@ def orcamento_update(request, pk):
     return render(request, template_name, context)
 
 
+@login_required
 def add_row_orcamento_items_hx(request):
     template_name = 'orcamento/hx/row_orcamento_items_hx.html'
     form = OrcamentoItensForm()
@@ -58,6 +57,7 @@ def add_row_orcamento_items_hx(request):
     return render(request, template_name, context)
 
 
+@login_required
 def produto_preco(request):
     template_name = 'orcamento/hx/produto_preco_hx.html'
     url = request.get_full_path()
@@ -82,6 +82,13 @@ def produto_items_search(request):
 def orcamento_invoice(request, pk):
     template = 'orcamento/orcamento_invoice.html'
     return render(request, template)
+
+
+@login_required
+def contrato_create(request, orcamento_pk):
+    orcamento = get_object_or_404(Orcamento, pk=orcamento_pk)
+    contrato, _ = Contrato.objects.get_or_create(orcamento=orcamento)
+    return redirect(reverse_lazy('orcamento:contrato_detail', kwargs={'pk': contrato.pk}))  # noqa E501
 
 
 class ContratoDetailView(LRM, DetailView):

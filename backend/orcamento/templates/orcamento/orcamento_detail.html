@@ -10,11 +10,19 @@
           <span class="fw-semibold">Voltar</span>
         </button>
       </a>
-      <a href="{% url 'orcamento:contrato_detail' object.contrato.pk %}">
-        <button type="button" class="btn btn-link">
-          <span class="fw-semibold">Gerar Contrato</span>
-        </button>
-      </a>
+      {% if object.contrato %}
+        <a href="{% url 'orcamento:contrato_detail' object.contrato.pk %}">
+          <button type="button" class="btn btn-link">
+            <span class="fw-semibold">Visualizar Contrato</span>
+          </button>
+        </a>
+      {% else %}
+        <a href="{% url 'orcamento:contrato_create' object.pk %}">
+          <button type="button" class="btn btn-link">
+            <span class="fw-semibold">Gerar Contrato</span>
+          </button>
+        </a>
+      {% endif %}
     </h2>
     <div class="row">
       <div class="col-6">
