@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 
 from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
 from backend.crm.models import Cliente
@@ -30,6 +31,9 @@ class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
 
     def __str__(self):
         return f'{str(self.pk).zfill(3)}'
+
+    def get_absolute_url(self):
+        return reverse_lazy('orcamento:orcamento_detail', kwargs={'pk': self.pk})
 
 
 class OrcamentoItens(models.Model):
