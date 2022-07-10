@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.db import models
 from django.urls import reverse_lazy
 
@@ -14,7 +16,7 @@ class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
         null=True,
         blank=True
     )
-    periodo = models.PositiveSmallIntegerField('Período (em dias)', null=True, blank=True)  # noqa E501
+    periodo = models.PositiveSmallIntegerField('Período (em dias)', default=0)
     desconto = models.DecimalField(
         'Desconto (%)',
         max_digits=4,
@@ -34,6 +36,13 @@ class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
 
     def get_absolute_url(self):
         return reverse_lazy('orcamento:orcamento_detail', kwargs={'pk': self.pk})
+
+    def total(self):
+        qs = self.orcamentos.filter(orcamento=self.pk).values_list(
+            'valor', 'quantidade') or 0
+        total = 0 if isinstance(qs, int) else sum(
+            map(lambda q: q[0] * q[1], qs))
+        return total
 
 
 class OrcamentoItens(models.Model):
@@ -72,3 +81,34 @@ class OrcamentoItens(models.Model):
 
     def __str__(self):
         return f'{self.pk}'
+
+    def subtotal(self):
+        return self.valor * (self.quantidade or 0)
+
+
+class Contrato(TimeStampedModel, CreatedBy, DeletedBy, Active):
+    orcamento = models.OneToOneField(
+        Orcamento,
+        verbose_name='orçamento',
+        related_name='contrato',
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        ordering = ('-pk',)
+        verbose_name = 'contrato'
+        verbose_name_plural = 'contratos'
+
+    @property
+    def codigo(self):
+        return str(self.pk).zfill(3)
+
+    def __str__(self):
+        return f'{self.codigo}'
+
+    @property
+    def data_final(self):
+        return self.created + timedelta(self.orcamento.periodo)
+
+    def get_absolute_url(self):
+        return reverse_lazy('orcamento:contrato_detail', pk=self.pk)
