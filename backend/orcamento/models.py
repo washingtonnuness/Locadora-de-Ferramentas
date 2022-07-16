@@ -7,6 +7,12 @@ from backend.core.models import Active, CreatedBy, DeletedBy, TimeStampedModel
 from backend.crm.models import Cliente
 from backend.produto.models import Patrimonio, Produto
 
+STATUS_ORCAMENTO = (
+    ('p', 'Pendente'),
+    ('f', 'Finalizado'),
+    ('c', 'Cancelado'),
+)
+
 
 class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
     cliente = models.ForeignKey(
@@ -25,6 +31,7 @@ class Orcamento(TimeStampedModel, CreatedBy, DeletedBy, Active):
         null=True,
         help_text='Em porcentagem'
     )
+    status = models.CharField(max_length=1, choices=STATUS_ORCAMENTO, default='p')  # noqa E501
 
     class Meta:
         ordering = ('-pk',)

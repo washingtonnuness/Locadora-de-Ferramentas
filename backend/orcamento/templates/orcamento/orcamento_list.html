@@ -64,6 +64,7 @@
                 <th>Período</th>
                 <th>Tempo Dias</th>
                 <th>Valor R$</th>
+                <th>Status</th>
                 <th>Ativo</th>
                 <th>Contrato</th>
                 <th></th>
@@ -121,6 +122,9 @@
                     {{ object }}
                   </td>
                   <td>
+                    {{ object.get_status_display }}
+                  </td>
+                  <td>
                     <div class="d-flex">
                       <div class="me-2">
                         {% if object.active %}
@@ -137,9 +141,11 @@
                     {% endif %}
                   </td>
                   <td style="min-width: 70px">
-                    <span>
-                      <a href="{% url 'orcamento:orcamento_update' object.pk %}"><i class="mdi mdi-pencil text-success me-1"></i></a>
-                    </span>
+                    {% if object.status != 'f' %}
+                      <span>
+                        <a href="{% url 'orcamento:orcamento_update' object.pk %}"><i class="mdi mdi-pencil text-success me-1"></i></a>
+                      </span>
+                    {% endif %}
                     <span>
                       <a href="#"><i class="mdi mdi-trash-can text-danger me-1"></i></a>
                     </span>

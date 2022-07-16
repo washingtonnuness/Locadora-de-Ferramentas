@@ -11,10 +11,10 @@ class OrcamentoItensInline(admin.TabularInline):
 @admin.register(Orcamento)
 class OrcamentoAdmin(admin.ModelAdmin):
     inlines = (OrcamentoItensInline,)
-    list_display = ('__str__', 'cliente', 'periodo', 'active')
+    list_display = ('__str__', 'cliente', 'periodo', 'status', 'active')
     readonly_fields = ('created_by', 'deleted_by', 'deleted',)
     search_fields = ('titulo',)
-    list_filter = ('active',)
+    list_filter = ('status', 'active',)
 
 
 @admin.register(OrcamentoItens)

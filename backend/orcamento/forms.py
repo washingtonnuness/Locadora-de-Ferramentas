@@ -9,7 +9,7 @@ class OrcamentoForm(forms.ModelForm):
 
     class Meta:
         model = Orcamento
-        fields = ('cliente', 'periodo', 'desconto')
+        fields = ('cliente', 'periodo', 'desconto', 'status')
 
     def __init__(self, *args, **kwargs):
         super(OrcamentoForm, self).__init__(*args, **kwargs)

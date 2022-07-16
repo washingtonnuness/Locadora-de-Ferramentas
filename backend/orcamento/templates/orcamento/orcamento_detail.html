@@ -43,6 +43,11 @@
         </div>
 
         <div class="mt-4">
+          <p class="text-muted mb-1">Status:</p>
+          <h5 class="font-size-14">{{ object.get_status_display }}</h5>
+        </div>
+
+        <div class="mt-4">
           <p class="text-muted mb-1">Ativo:</p>
           {% if object.active %}
             <i class="mdi mdi-check-circle-outline text-success"></i>

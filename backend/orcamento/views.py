@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin as LRM
 from django.http import HttpResponse
@@ -31,6 +32,11 @@ def orcamento_create(request, client_pk):
 def orcamento_update(request, pk):
     template_name = 'orcamento/orcamento_form.html'
     orcamento_instance = Orcamento.objects.get(pk=pk)
+
+    if orcamento_instance.status == 'f':
+        # Se orçamento estiver 'Finalizado'...
+        messages.add_message(request, messages.ERROR, 'Não é permitido editar orçamento já finalizado.')  # noqa E501
+        return redirect(reverse_lazy('orcamento:orcamento_list'))
 
     form = OrcamentoForm(request.POST or None, instance=orcamento_instance, prefix='main')  # noqa E501
     formset = OrcamentoItemsFormset(request.POST or None, instance=orcamento_instance, prefix='items')  # noqa E501
