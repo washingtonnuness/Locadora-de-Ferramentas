@@ -93,6 +93,13 @@ class OrcamentoItens(models.Model):
         return self.valor * (self.quantidade or 0)
 
 
+STATUS_CONTRATO = (
+    ('p', 'Pendente'),
+    ('f', 'Finalizado'),
+    ('c', 'Cancelado'),
+)
+
+
 class Contrato(TimeStampedModel, CreatedBy, DeletedBy, Active):
     orcamento = models.OneToOneField(
         Orcamento,
@@ -100,6 +107,7 @@ class Contrato(TimeStampedModel, CreatedBy, DeletedBy, Active):
         related_name='contrato',
         on_delete=models.CASCADE
     )
+    status = models.CharField(max_length=1, choices=STATUS_CONTRATO, default='p')  # noqa E501
 
     class Meta:
         ordering = ('-pk',)

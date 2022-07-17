@@ -30,9 +30,10 @@ class ContratoAdmin(admin.ModelAdmin):
         'get_periodo',
         'created',
         'data_final',
+        'status',
         'active'
     )
-    list_filter = ('active',)
+    list_filter = ('status', 'active')
 
     @admin.display(description='cliente')
     def get_cliente(self, obj):

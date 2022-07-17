@@ -17,8 +17,8 @@ orcamento_patterns = [
 ]
 
 contrato_patterns = [
-    path('contrato/create/<int:orcamento_pk>/', v.contrato_create, name='contrato_create'),  # noqa E501
-    path('contrato/<int:pk>/', v.ContratoDetailView.as_view(), name='contrato_detail'),  # noqa E501
+    path('create/<int:orcamento_pk>/', v.contrato_create, name='contrato_create'),  # noqa E501
+    path('<int:pk>/', v.ContratoDetailView.as_view(), name='contrato_detail'),  # noqa E501
 ]
 
 urlpatterns = [
